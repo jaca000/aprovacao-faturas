@@ -1,6 +1,6 @@
 const msalConfig = {
     auth: {
-        clientId: "81693cb9-9ffb-41d0-b0ff-41dbf29990eb",
+        clientId: "COLOCA_AQUI_O_CLIENT_ID",
         authority: "https://login.microsoftonline.com/common",
         redirectUri: window.location.origin
     }
@@ -18,14 +18,15 @@ async function iniciarLogin() {
 
     if (contas.length === 0) {
 
+        console.log("Sem sessão. Redirecionar para login...");
+
         await msalInstance.loginRedirect(loginRequest);
 
     } else {
 
         const utilizador = contas[0];
 
-        console.log("Utilizador autenticado:", utilizador.name);
-        console.log("Email:", utilizador.username);
+        console.log("Utilizador autenticado:", utilizador);
 
         sessionStorage.setItem("userName", utilizador.name);
         sessionStorage.setItem("userEmail", utilizador.username);
