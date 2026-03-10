@@ -8,9 +8,13 @@ async function iniciarApp() {
 
     if (email) {
 
-        console.log("Utilizador:", email);
+        console.log("Utilizador autenticado:", email);
 
         window.location.href = "pages/dashboard.html";
+
+    } else {
+
+        console.log("A aguardar login...");
 
     }
 
