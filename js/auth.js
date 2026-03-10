@@ -14,6 +14,8 @@ const loginRequest = {
 
 async function iniciarLogin() {
 
+    await msalInstance.handleRedirectPromise();
+
     const contas = msalInstance.getAllAccounts();
 
     if (contas.length === 0) {
