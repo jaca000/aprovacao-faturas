@@ -1,4 +1,19 @@
 console.log("Aplicação iniciada");
 
-// redirecionar para o dashboard
-window.location.href = "pages/dashboard.html";
+async function iniciarApp() {
+
+    await iniciarLogin();
+
+    const email = sessionStorage.getItem("userEmail");
+
+    if (email) {
+
+        console.log("Utilizador:", email);
+
+        window.location.href = "pages/dashboard.html";
+
+    }
+
+}
+
+iniciarApp();
