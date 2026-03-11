@@ -37,8 +37,12 @@ async function testarLigacao(){
 
     console.log("A testar ligação ao Microsoft Graph");
 
-    const dados = await testarGraph();
+    const utilizador = await testarGraph();
 
-    console.log("Utilizador Graph:", dados);
+    console.log("Utilizador Graph:", utilizador);
+
+    const sites = await obterSitesSharePoint();
+
+    console.log("Sites SharePoint encontrados:", sites);
 
 }
