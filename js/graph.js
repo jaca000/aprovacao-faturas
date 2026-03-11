@@ -92,3 +92,27 @@ async function obterListas(){
     return dados;
 
 }
+async function obterPedidosFaturas(){
+
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+
+    const siteId = site.id;
+
+    const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+    const resposta = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items?expand=fields`,
+        {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }
+    );
+
+    const dados = await resposta.json();
+
+    return dados;
+
+}
