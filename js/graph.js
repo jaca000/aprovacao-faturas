@@ -24,9 +24,7 @@ async function getAccessToken() {
 }
 
 
-async function testarGraph() {
-
-    console.log("A testar ligação ao Microsoft Graph");
+async function testarGraph(){
 
     const token = await getAccessToken();
 
@@ -41,6 +39,6 @@ async function testarGraph() {
 
     const dados = await resposta.json();
 
-    console.log("Dados do utilizador Graph:", dados);
+    return dados;
 
 }
