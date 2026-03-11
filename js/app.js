@@ -45,4 +45,8 @@ async function testarLigacao(){
 
     console.log("Site da aplicação:", site);
 
+    const pedidos = await obterPedidos();
+
+    console.log("Pedidos da lista:", pedidos);
+
 }
