@@ -46,4 +46,7 @@ async function testarLigacao(){
     const listas = await obterListas();
     console.log("Listas do site:", listas);
 
+    const pedidos = await obterPedidosFaturas();
+    console.log("Pedidos da lista:", pedidos);
+
 }
