@@ -17,7 +17,7 @@ async function login() {
     try {
 
         const response = await msalInstance.loginPopup(loginRequest);
-
+window.location.href = "pages/dashboard.html";
         console.log("Login efetuado:", response.account);
 
         mostrarDashboard(response.account);
