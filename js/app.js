@@ -10,9 +10,9 @@ function mostrarDashboard(utilizador){
 
         <h2>Dashboard</h2>
 
-        <p>Bem-vindo ${utilizador.name}</p>
+        <p>Bem-vindo ${utilizador.name} | Monte do Pasto</p>
 
-        <button onclick="testar()">Testar ligação</button>
+        <button onclick="testarLigacao()">Testar ligação</button>
 
     `;
 
