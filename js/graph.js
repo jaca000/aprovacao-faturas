@@ -32,3 +32,21 @@ async function testarGraph(){
     return dados;
 
 }
+async function obterSitesSharePoint(){
+
+    const token = await getAccessToken();
+
+    const resposta = await fetch(
+        "https://graph.microsoft.com/v1.0/sites?search=*",
+        {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }
+    );
+
+    const dados = await resposta.json();
+
+    return dados;
+
+}
