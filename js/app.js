@@ -38,15 +38,12 @@ async function testarLigacao(){
     console.log("A testar ligação ao Microsoft Graph");
 
     const utilizador = await testarGraph();
-
     console.log("Utilizador Graph:", utilizador);
 
     const site = await obterSiteApp();
-
     console.log("Site da aplicação:", site);
 
-    const pedidos = await obterPedidos();
-
-    console.log("Pedidos da lista:", pedidos);
+    const listas = await obterListas();
+    console.log("Listas do site:", listas);
 
 }
