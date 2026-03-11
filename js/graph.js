@@ -54,12 +54,10 @@ async function obterPedidos(){
 
     const token = await getAccessToken();
 
-    const siteId = "montedopastopt.sharepoint.com,309b2348-8df0-4dbe-9...,45126c5bec7,3a90922f-7a65-44d9-ae1e-ef11c749a820";
+    const siteId = "montedopastopt.sharepoint.com,309b2348-8df0-4dbe-9d3b2348-8df0-4dbe-945126c5bec7,3a90922f-7a65-44d9-ae1e-ef11c749a820";
 
     const resposta = await fetch(
-        `https://graph.microsoft.com/v1.0/sites/${montedopastopt.sharepoint.com,
-309b2348-8df0-4dbe-9…,
-45126c5bec7,3a90922f-7a65-44d9-ae1e-ef11c749a820}/lists/PedidosAprovacao/items?expand=fields`,
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/PedidosAprovacao/items?expand=fields`,
         {
             headers: {
                 Authorization: "Bearer " + token
