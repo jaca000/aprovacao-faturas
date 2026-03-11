@@ -10,13 +10,23 @@ async function iniciarApp() {
 
         console.log("Utilizador autenticado:", email);
 
-        window.location.href = "pages/dashboard.html";
-
-    } else {
-
-        console.log("A aguardar login...");
+        carregarDashboard();
 
     }
+
+}
+
+function carregarDashboard(){
+
+    document.getElementById("conteudo").innerHTML = `
+    
+    <h2>Dashboard</h2>
+    
+    <p>Aplicação em construção</p>
+    
+    <button onclick="testarGraph()">Testar ligação Graph</button>
+
+    `;
 
 }
 
