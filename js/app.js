@@ -39,7 +39,8 @@ async function testarLigacao(){
 
     const utilizador = await testarGraph();
     console.log("Utilizador Graph:", utilizador);
-
+document.getElementById("utilizador").innerText =
+"Bem-vindo " + utilizador.displayName;
     const site = await obterSiteApp();
     console.log("Site da aplicação:", site);
 
