@@ -1,6 +1,6 @@
 const msalConfig = {
     auth: {
-        clientId: "O_TEU_CLIENT_ID",
+        clientId: "81693cb9-9ffb-41d0-b0ff-41dbf29990eb",
         authority: "https://login.microsoftonline.com/ee417351-ea90-41e0-9147-5ea6ab38ea49",
         redirectUri: "https://jaca000.github.io/"
     }
