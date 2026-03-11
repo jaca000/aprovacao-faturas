@@ -41,8 +41,8 @@ async function testarLigacao(){
 
     console.log("Utilizador Graph:", utilizador);
 
-    const sites = await obterSitesSharePoint();
+    const site = await obterSiteApp();
 
-    console.log("Sites SharePoint encontrados:", sites);
+    console.log("Site da aplicação:", site);
 
 }
