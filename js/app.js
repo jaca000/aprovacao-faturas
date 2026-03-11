@@ -18,8 +18,27 @@ function mostrarDashboard(utilizador){
 
 }
 
-function testar(){
+function mostrarDashboard(utilizador){
 
-    console.log("Dashboard ativo");
+    document.getElementById("app").innerHTML = `
+
+        <h2>Dashboard</h2>
+
+        <p>Bem-vindo ${utilizador.name} | Monte do Pasto</p>
+
+        <button onclick="testarLigacao()">Testar ligação</button>
+
+    `;
+
+}
+
+
+async function testarLigacao(){
+
+    console.log("A testar ligação ao Microsoft Graph");
+
+    const dados = await testarGraph();
+
+    console.log("Utilizador Graph:", dados);
 
 }
