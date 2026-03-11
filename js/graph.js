@@ -32,12 +32,12 @@ async function testarGraph(){
     return dados;
 
 }
-async function obterSitesSharePoint(){
+async function obterSiteApp(){
 
     const token = await getAccessToken();
 
     const resposta = await fetch(
-        "https://graph.microsoft.com/v1.0/sites?search=*",
+        "https://graph.microsoft.com/v1.0/sites/montedopastopt.sharepoint.com:/sites/AppRegistoFaturas",
         {
             headers: {
                 Authorization: "Bearer " + token
