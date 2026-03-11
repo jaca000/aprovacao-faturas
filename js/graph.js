@@ -70,3 +70,25 @@ async function obterPedidos(){
     return dados;
 
 }
+async function obterListas(){
+
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+
+    const siteId = site.id;
+
+    const resposta = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists`,
+        {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }
+    );
+
+    const dados = await resposta.json();
+
+    return dados;
+
+}
