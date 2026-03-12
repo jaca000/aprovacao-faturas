@@ -1,8 +1,12 @@
 console.log("App iniciada");
 
-document.getElementById("app").innerHTML = `
-<button onclick="login()">Iniciar sessão Microsoft</button>
-`;
+const appDiv = document.getElementById("app");
+
+if(appDiv){
+    appDiv.innerHTML = `
+    <button onclick="login()">Iniciar sessão Microsoft</button>
+    `;
+}
 
 function mostrarDashboard(utilizador){
 
