@@ -160,7 +160,7 @@ window.addEventListener("load", () => {
         }
 
     }
-async function guardarFatura(){
+window.guardarFatura = async function guardarFatura()
 
     const fornecedor = document.getElementById("fornecedor").value;
     const numeroFatura = document.getElementById("numeroFatura").value;
