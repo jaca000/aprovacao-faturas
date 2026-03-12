@@ -150,30 +150,47 @@ async function obterPerfilUtilizador(){
     return "Utilizador";
 
 }
-async function uploadPdfSharePoint(file){
+async function uploadPdfSharePoint(ficheiro){
 
     const token = await getAccessToken();
 
     const site = await obterSiteApp();
-
     const siteId = site.id;
 
-    const nomeFicheiro = file.name;
+    // obter drives do site
+    const drivesResp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/drives`,
+        {
+            headers: { Authorization: "Bearer " + token }
+        }
+    );
 
-    const urlUpload =
-    `https://graph.microsoft.com/v1.0/sites/${siteId}/drives/Documents/root:/DocumentosAprovacao/${nomeFicheiro}:/content`;
+    const drives = await drivesResp.json();
 
-    const resposta = await fetch(urlUpload,{
-        method:"PUT",
-        headers:{
-            Authorization:"Bearer " + token,
-            "Content-Type":"application/pdf"
+    // encontrar biblioteca DocumentosAprovacao
+    const drive = drives.value.find(d => d.name === "DocumentosAprovacao");
+
+    if(!drive){
+        throw new Error("Biblioteca DocumentosAprovacao não encontrada");
+    }
+
+    const driveId = drive.id;
+
+    const uploadUrl =
+        `https://graph.microsoft.com/v1.0/drives/${driveId}/root:/${ficheiro.name}:/content`;
+
+    const uploadResp = await fetch(uploadUrl,{
+        method: "PUT",
+        headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": ficheiro.type
         },
-        body:file
+        body: ficheiro
     });
 
-    const dados = await resposta.json();
+    const resultado = await uploadResp.json();
 
-    return dados;
+    console.log("Upload PDF:", resultado);
 
+    return resultado;
 }
