@@ -160,14 +160,14 @@ window.addEventListener("load", () => {
         }
 
     }
-window.guardarFatura = async function guardarFatura()
+window.guardarFatura = async function guardarFatura(){
 
     const fornecedor = document.getElementById("fornecedor").value;
     const numeroFatura = document.getElementById("numeroFatura").value;
     const valor = document.getElementById("valor").value;
     const dataDocumento = document.getElementById("dataFatura").value;
     const dataVencimento = document.getElementById("dataVencimento").value;
-const ficheiro = document.getElementById("ficheiroPDF").files[0];
+    const ficheiro = document.getElementById("ficheiroPDF").files[0];
     const utilizador = await testarGraph();
 
     const token = await getAccessToken();
