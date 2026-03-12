@@ -150,3 +150,30 @@ async function obterPerfilUtilizador(){
     return "Utilizador";
 
 }
+async function uploadPdfSharePoint(file){
+
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+
+    const siteId = site.id;
+
+    const nomeFicheiro = file.name;
+
+    const urlUpload =
+    `https://graph.microsoft.com/v1.0/sites/${siteId}/drives/Documents/root:/DocumentosAprovacao/${nomeFicheiro}:/content`;
+
+    const resposta = await fetch(urlUpload,{
+        method:"PUT",
+        headers:{
+            Authorization:"Bearer " + token,
+            "Content-Type":"application/pdf"
+        },
+        body:file
+    });
+
+    const dados = await resposta.json();
+
+    return dados;
+
+}
