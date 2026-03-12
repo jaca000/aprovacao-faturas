@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nova Fatura</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+
+<body>
+
+<h1>Registar Fatura</h1>
+
+<div>
+
+<label>Fornecedor</label><br>
+<input type="text" id="fornecedor"><br><br>
+
+<label>Nº Fatura</label><br>
+<input type="text" id="numeroFatura"><br><br>
+
+<label>Valor</label><br>
+<input type="number" id="valor"><br><br>
+
+<label>Data da Fatura</label><br>
+<input type="date" id="dataFatura"><br><br>
+
+<label>Data de Vencimento</label><br>
+<input type="date" id="dataVencimento"><br><br>
+
+<label>PDF da Fatura</label><br>
+<input type="file" id="ficheiroPDF" accept="application/pdf"><br><br>
+
+<button onclick="guardarFatura()">Guardar Fatura</button>
+
+</div>
+
+<br>
+
+<a href="dashboard.html">Voltar ao Dashboard</a>
+
+<script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
+
+<script src="../js/auth.js"></script>
+<script src="../js/graph.js"></script>
+<script src="../js/app.js"></script>
+
+</body>
+
+</html>
