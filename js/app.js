@@ -206,7 +206,8 @@ const ficheiro = document.getElementById("ficheiroPDF").files[0];
             DataCriacaoPedido: new Date().toISOString(),
 
             EstadoPedido: "Pendente"
-
+PdfUrl: pdfUrl,
+PdfNomeFicheiro: pdfNome
         }
     };
 
