@@ -29,18 +29,7 @@ async function testarLigacao(){
     console.log("A testar ligação ao Microsoft Graph");
 
     const utilizador = await testarGraph();
-    let pdfUrl = "";
-let pdfNome = "";
-
-if(ficheiro){
-
-    const upload = await uploadPdfSharePoint(ficheiro);
-
-    pdfUrl = upload.webUrl;
-
-    pdfNome = upload.name;
-
-}
+ 
     console.log("Utilizador Graph:", utilizador);
 document.getElementById("utilizador").innerText =
 "Bem-vindo " + utilizador.displayName;
