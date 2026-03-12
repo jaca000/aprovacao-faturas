@@ -77,7 +77,27 @@ async function carregarDashboard(){
     document.getElementById("pendentes").innerText = pendentes;
     document.getElementById("aprovados").innerText = aprovados;
     document.getElementById("rejeitados").innerText = rejeitados;
+const tabela = document.getElementById("listaPedidos");
 
+tabela.innerHTML = "";
+
+lista.forEach(p => {
+
+    const f = p.fields;
+
+    const linha = document.createElement("tr");
+
+    linha.innerHTML = `
+        <td>${p.id}</td>
+        <td>${f.Fornecedor || ""}</td>
+        <td>${f.NumeroFatura || ""}</td>
+        <td>${f.Valor || ""}</td>
+        <td>${f.Estado || ""}</td>
+    `;
+
+    tabela.appendChild(linha);
+
+});
 }
 window.addEventListener("load", () => {
 
