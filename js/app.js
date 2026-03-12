@@ -205,7 +205,7 @@ window.guardarFatura = async function guardarFatura(){
 
             DataCriacaoPedido: new Date().toISOString(),
 
-            EstadoPedido: "Pendente"
+            EstadoPedido: "Pendente",
 PdfUrl: pdfUrl,
 PdfNomeFicheiro: pdfNome
         }
