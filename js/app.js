@@ -148,5 +148,75 @@ window.addEventListener("load", () => {
         }
 
     }
+async function guardarFatura(){
 
+    const fornecedor = document.getElementById("fornecedor").value;
+    const numeroFatura = document.getElementById("numeroFatura").value;
+    const valor = document.getElementById("valor").value;
+    const dataDocumento = document.getElementById("dataFatura").value;
+    const dataVencimento = document.getElementById("dataVencimento").value;
+
+    const utilizador = await testarGraph();
+
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+
+    const siteId = site.id;
+
+    const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+    const body = {
+        fields: {
+
+            Titulo: fornecedor,
+
+            TipoDocumento: "Fatura",
+
+            Fornecedor: fornecedor,
+
+            NumeroFaturaOriginal: numeroFatura,
+
+            NumeroFaturaNormalizado: numeroFatura.toUpperCase(),
+
+            ValorDocumento: parseFloat(valor),
+
+            Moeda: "EUR",
+
+            DataDocumento: dataDocumento,
+
+            DataVencimento: dataVencimento,
+
+            CriadoPorNome: utilizador.displayName,
+
+            CriadoPorEmail: utilizador.mail || utilizador.userPrincipalName,
+
+            DataCriacaoPedido: new Date().toISOString(),
+
+            EstadoPedido: "Pendente"
+
+        }
+    };
+
+    const resposta = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items`,
+        {
+            method: "POST",
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        }
+    );
+
+    const resultado = await resposta.json();
+
+    console.log("Pedido criado:", resultado);
+
+    alert("Fatura registada com sucesso");
+
+    window.location.href = "dashboard.html";
+
+}
 });
