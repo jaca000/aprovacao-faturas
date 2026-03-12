@@ -172,7 +172,7 @@ if(ficheiro){
     const body = {
         fields: {
 
-            Title: Fornecedor,
+            Title: fornecedor,
 
             TipoDocumento: "Fatura",
 
