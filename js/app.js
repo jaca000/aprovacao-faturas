@@ -136,7 +136,17 @@ lista.forEach(p => {
 window.addEventListener("load", () => {
 
     if(window.location.pathname.includes("dashboard.html")){
+
         carregarDashboard();
+
+        const btnFatura = document.getElementById("btnNovaFatura");
+
+        if(btnFatura){
+            btnFatura.onclick = () => {
+                window.location.href = "nova-fatura.html";
+            };
+        }
+
     }
 
 });
