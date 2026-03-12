@@ -216,9 +216,14 @@ PdfNomeFicheiro: pdfNome
 
     const resultado = await resposta.json();
 
-    console.log("Pedido criado:", resultado);
+console.log("Resposta Graph:", resultado);
 
-    alert("Fatura registada com sucesso");
+if(!resposta.ok){
+    alert("Erro ao gravar no SharePoint");
+    return;
+}
+
+alert("Fatura registada com sucesso");
 
     window.location.href = "dashboard.html";
 
