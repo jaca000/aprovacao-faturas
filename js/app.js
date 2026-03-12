@@ -51,3 +51,31 @@ document.getElementById("utilizador").innerText =
     console.log("Pedidos da lista:", pedidos);
 
 }
+async function carregarDashboard(){
+
+    const pedidos = await obterPedidosFaturas();
+
+    const lista = pedidos.value;
+
+    const total = lista.length;
+
+    let pendentes = 0;
+    let aprovados = 0;
+    let rejeitados = 0;
+
+    lista.forEach(p => {
+
+        const estado = p.fields.Estado;
+
+        if(estado === "Pendente") pendentes++;
+        if(estado === "Aprovado") aprovados++;
+        if(estado === "Rejeitado") rejeitados++;
+
+    });
+
+    document.getElementById("totalPedidos").innerText = total;
+    document.getElementById("pendentes").innerText = pendentes;
+    document.getElementById("aprovados").innerText = aprovados;
+    document.getElementById("rejeitados").innerText = rejeitados;
+
+}
