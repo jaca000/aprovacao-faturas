@@ -22,19 +22,6 @@ function mostrarDashboard(utilizador){
 
 }
 
-function mostrarDashboard(utilizador){
-
-    document.getElementById("app").innerHTML = `
-
-        <h2>Dashboard</h2>
-
-        <p>Bem-vindo ${utilizador.name} | Monte do Pasto</p>
-
-        <button onclick="testarLigacao()">Testar ligação</button>
-
-    `;
-
-}
 
 
 async function testarLigacao(){
