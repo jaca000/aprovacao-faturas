@@ -91,7 +91,7 @@ else{
 
     lista.forEach(p => {
 
-        const estado = p.fields.Estado;
+        const estado = p.fields.EstadoPedido;
 
         if(estado === "Pendente") pendentes++;
         if(estado === "Aprovado") aprovados++;
