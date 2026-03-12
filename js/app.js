@@ -79,3 +79,10 @@ async function carregarDashboard(){
     document.getElementById("rejeitados").innerText = rejeitados;
 
 }
+window.addEventListener("load", () => {
+
+    if(window.location.pathname.includes("dashboard.html")){
+        carregarDashboard();
+    }
+
+});
