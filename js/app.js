@@ -55,6 +55,33 @@ async function carregarDashboard(){
 const perfil = await obterPerfilUtilizador();
 
 console.log("Perfil do utilizador:", perfil);
+    const btnFatura = document.getElementById("btnNovaFatura");
+const btnDespesa = document.getElementById("btnNovaDespesa");
+const btnAdmin = document.getElementById("btnAdmin");
+
+if(perfil === "Admin"){
+
+    btnFatura.style.display = "inline-block";
+    btnDespesa.style.display = "inline-block";
+    btnAdmin.style.display = "inline-block";
+
+}
+
+else if(perfil === "GestorFaturas"){
+
+    btnFatura.style.display = "inline-block";
+    btnDespesa.style.display = "inline-block";
+    btnAdmin.style.display = "none";
+
+}
+
+else{
+
+    btnFatura.style.display = "none";
+    btnDespesa.style.display = "inline-block";
+    btnAdmin.style.display = "none";
+
+}
     const pedidos = await obterPedidosFaturas();
 
     const lista = pedidos.value;
