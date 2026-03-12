@@ -56,6 +56,11 @@ const perfil = await obterPerfilUtilizador();
 
 console.log("Perfil do utilizador:", perfil);
     const btnFatura = document.getElementById("btnNovaFatura");
+    btnFatura.onclick = () => {
+
+    window.location.href = "nova-fatura.html";
+
+};
 const btnDespesa = document.getElementById("btnNovaDespesa");
 const btnAdmin = document.getElementById("btnAdmin");
 
