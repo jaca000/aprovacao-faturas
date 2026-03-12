@@ -242,5 +242,6 @@ PdfNomeFicheiro: pdfNome
 
     window.location.href = "dashboard.html";
 
-}
+};
+
 });
