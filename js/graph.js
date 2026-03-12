@@ -116,3 +116,37 @@ async function obterPedidosFaturas(){
     return dados;
 
 }
+async function obterPerfilUtilizador(){
+
+    const token = await getAccessToken();
+
+    const utilizador = await testarGraph();
+
+    const email = utilizador.mail || utilizador.userPrincipalName;
+
+    const site = await obterSiteApp();
+
+    const siteId = site.id;
+
+    const resposta = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/UtilizadoresApp/items?expand=fields`,
+        {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }
+    );
+
+    const dados = await resposta.json();
+
+    const lista = dados.value;
+
+    const encontrado = lista.find(u => u.fields.Email === email);
+
+    if(encontrado){
+        return encontrado.fields.Perfil;
+    }
+
+    return "Utilizador";
+
+}
