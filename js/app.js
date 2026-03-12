@@ -155,7 +155,7 @@ async function guardarFatura(){
     const valor = document.getElementById("valor").value;
     const dataDocumento = document.getElementById("dataFatura").value;
     const dataVencimento = document.getElementById("dataVencimento").value;
-
+const ficheiro = document.getElementById("ficheiroPDF").files[0];
     const utilizador = await testarGraph();
 
     const token = await getAccessToken();
