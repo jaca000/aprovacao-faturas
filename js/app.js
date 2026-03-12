@@ -168,6 +168,17 @@ window.guardarFatura = async function guardarFatura(){
     const dataDocumento = document.getElementById("dataFatura").value;
     const dataVencimento = document.getElementById("dataVencimento").value;
     const ficheiro = document.getElementById("ficheiroPDF").files[0];
+    let pdfUrl = "";
+let pdfNome = "";
+
+if(ficheiro){
+
+    const upload = await uploadPdfSharePoint(ficheiro);
+
+    pdfUrl = upload.webUrl;
+    pdfNome = upload.name;
+
+}
     const utilizador = await testarGraph();
 
     const token = await getAccessToken();
