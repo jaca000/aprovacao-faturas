@@ -52,7 +52,9 @@ document.getElementById("utilizador").innerText =
 
 }
 async function carregarDashboard(){
+const perfil = await obterPerfilUtilizador();
 
+console.log("Perfil do utilizador:", perfil);
     const pedidos = await obterPedidosFaturas();
 
     const lista = pedidos.value;
