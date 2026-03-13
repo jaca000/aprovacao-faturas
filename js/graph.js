@@ -221,3 +221,49 @@ async function verificarFaturaDuplicada(numeroNormalizado){
     return existe;
 
 }
+async function gerarNumeroInterno(){
+
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items?$expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const dados = await resp.json();
+
+    const lista = dados.value || [];
+
+    const ano = new Date().getFullYear();
+
+    const numeros = lista
+        .map(i => i.fields.NumeroInterno)
+        .filter(n => n && n.includes(ano));
+
+    let ultimo = 0;
+
+    numeros.forEach(n => {
+
+        const partes = n.split("-");
+        const seq = parseInt(partes[2]);
+
+        if(seq > ultimo){
+            ultimo = seq;
+        }
+
+    });
+
+    const novo = ultimo + 1;
+
+    const numeroFormatado = String(novo).padStart(3,"0");
+
+    return `FRL-${ano}-${numeroFormatado}`;
+
+}
