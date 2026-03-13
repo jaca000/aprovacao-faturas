@@ -204,7 +204,7 @@ async function verificarFaturaDuplicada(numeroNormalizado){
     const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
 
     const url =
-`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items?expand=fields&$filter=fields/NumeroFaturaNormalizado eq '${numeroNormalizado}'`;
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items?$expand=fields&$filter=fields/NumeroFaturaNormalizado eq '${encodeURIComponent(numeroNormalizado)}'`;
 
     const resp = await fetch(url,{
         headers:{ Authorization:"Bearer " + token }
