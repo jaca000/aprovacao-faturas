@@ -144,6 +144,17 @@ window.guardarFatura = async function guardarFatura(){
 
     const fornecedor = document.getElementById("fornecedor").value;
     const numeroFatura = document.getElementById("numeroFatura").value;
+    const numeroNormalizado = numeroFatura.toUpperCase().trim();
+
+const duplicado = await verificarFaturaDuplicada(numeroNormalizado);
+
+if(duplicado){
+
+    alert("Esta fatura já existe no sistema.");
+
+    return;
+
+}
     const valor = document.getElementById("valor").value;
     const dataDocumento = document.getElementById("dataFatura").value;
     const dataVencimento = document.getElementById("dataVencimento").value;
