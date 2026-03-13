@@ -269,7 +269,12 @@ async function carregarPedido(){
         <p><b>Estado:</b> ${f.EstadoPedido}</p>
     `;
 
-    document.getElementById("pdfViewer").src = f.PdfUrl;
+    document.getElementById("dadosPedido").innerHTML += `
+<br>
+<button onclick="abrirPdf('${f.PdfUrl}')">
+Ver PDF da fatura
+</button>
+`;
 
 }
 if(window.location.pathname.includes("ver-pedido.html")){
