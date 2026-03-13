@@ -1,7 +1,7 @@
 body{
 margin:0;
 font-family:Arial;
-background:#f4f6f9;
+background:#f3f1ea;
 }
 
 .app{
@@ -31,7 +31,7 @@ flex:1;
 
 .sidebar{
 width:220px;
-background:#111827;
+background:#2f6d2f;
 padding:20px;
 display:flex;
 flex-direction:column;
@@ -43,13 +43,14 @@ background:none;
 border:none;
 color:white;
 text-align:left;
-padding:10px;
+padding:12px;
 cursor:pointer;
 border-radius:6px;
+font-size:14px;
 }
 
 .sidebar button:hover{
-background:#374151;
+background:#3f8a3f;
 }
 
 .content{
