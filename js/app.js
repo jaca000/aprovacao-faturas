@@ -191,7 +191,7 @@ if(ficheiro){
 
             NumeroFaturaOriginal: numeroFatura,
 
-            NumeroFaturaNormalizado: numeroFatura.toUpperCase(),
+            NumeroFaturaNormalizado: numeroNormalizado,
 
             ValorDocumento: parseFloat(valor),
 
