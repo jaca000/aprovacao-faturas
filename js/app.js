@@ -235,11 +235,9 @@ if(!resposta.ok){
 
 alert("Fatura registada com sucesso");
 
-    window.location.href = "dashboard.html";
+window.location.href = "dashboard.html";
 
 };
-
-});
 async function carregarPedido(){
 
     const params = new URLSearchParams(window.location.search);
