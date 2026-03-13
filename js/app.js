@@ -328,3 +328,6 @@ function aprovarPedido(){
 function rejeitarPedido(){
     atualizarEstadoPedido("Rejeitado");
 }
+function abrirPdf(url){
+    window.open(url, "_blank");
+}
