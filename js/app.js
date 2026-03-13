@@ -112,7 +112,9 @@ lista.forEach(p => {
     const f = p.fields;
 
     const linha = document.createElement("tr");
-
+linha.onclick = () => {
+    window.location.href = `ver-pedido.html?id=${p.id}`;
+};
     linha.innerHTML = `
         <td>${f.NumeroInterno || ""}</td>
         <td>${f.Fornecedor || ""}</td>
@@ -244,3 +246,40 @@ alert("Fatura registada com sucesso");
 };
 
 });
+async function carregarPedido(){
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}?expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const dados = await resp.json();
+
+    const f = dados.fields;
+
+    document.getElementById("dadosPedido").innerHTML = `
+        <p><b>Nº Interno:</b> ${f.NumeroInterno}</p>
+        <p><b>Fornecedor:</b> ${f.Fornecedor}</p>
+        <p><b>Nº Fatura:</b> ${f.NumeroFaturaOriginal}</p>
+        <p><b>Valor:</b> ${f.ValorDocumento}</p>
+        <p><b>Estado:</b> ${f.EstadoPedido}</p>
+    `;
+
+    document.getElementById("pdfViewer").src = f.PdfUrl;
+
+}
+if(window.location.pathname.includes("ver-pedido.html")){
+    carregarPedido();
+}
