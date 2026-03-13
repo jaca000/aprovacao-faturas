@@ -145,6 +145,7 @@ window.guardarFatura = async function guardarFatura(){
     const fornecedor = document.getElementById("fornecedor").value;
     const numeroFatura = document.getElementById("numeroFatura").value;
     const numeroNormalizado = numeroFatura.toUpperCase().trim();
+    const numeroInterno = await gerarNumeroInterno();
 
 const duplicado = await verificarFaturaDuplicada(numeroNormalizado);
 
@@ -184,6 +185,8 @@ if(ficheiro){
         fields: {
 
             Title: fornecedor,
+            
+            NumeroInterno: numeroInterno,
 
             TipoDocumento: "Fatura",
 
