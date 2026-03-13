@@ -283,3 +283,51 @@ async function carregarPedido(){
 if(window.location.pathname.includes("ver-pedido.html")){
     carregarPedido();
 }
+async function atualizarEstadoPedido(novoEstado){
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+    const body = {
+        fields:{
+            EstadoPedido: novoEstado
+        }
+    };
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
+        {
+            method: "PATCH",
+            headers:{
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        }
+    );
+
+    if(!resp.ok){
+        alert("Erro ao atualizar o estado");
+        return;
+    }
+
+    alert("Estado atualizado para: " + novoEstado);
+
+    window.location.href = "dashboard.html";
+
+}
+
+function aprovarPedido(){
+    atualizarEstadoPedido("Aprovado");
+}
+
+function rejeitarPedido(){
+    atualizarEstadoPedido("Rejeitado");
+}
