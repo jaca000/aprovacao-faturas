@@ -114,12 +114,12 @@ lista.forEach(p => {
     const linha = document.createElement("tr");
 
     linha.innerHTML = `
-        <td>${p.id}</td>
+        <td>${f.NumeroInterno || ""}</td>
         <td>${f.Fornecedor || ""}</td>
-        <td>${f.NumeroFatura || ""}</td>
-        <td>${f.Valor || ""}</td>
-        <td>${f.Estado || ""}</td>
-    `;
+        <td>${f.NumeroFaturaOriginal || ""}</td>
+        <td>${f.ValorDocumento || ""}</td>
+        <td>${f.EstadoPedido || ""}</td>
+`;
 
     tabela.appendChild(linha);
 
