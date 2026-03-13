@@ -11,12 +11,12 @@ height:100vh;
 }
 
 .topbar{
-background:#1f2937;
+background:#5b0f0b;
 color:white;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 25px;
+padding:12px 25px;
 }
 
 .logo{
