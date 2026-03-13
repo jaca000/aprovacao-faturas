@@ -105,3 +105,17 @@ tr:hover{
 background:#f1f5f9;
 cursor:pointer;
 }
+.logo-area{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo{
+height:40px;
+}
+
+.titulo-app{
+font-size:18px;
+font-weight:bold;
+}
