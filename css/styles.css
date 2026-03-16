@@ -485,3 +485,44 @@ background:#f8fafc;
 transform:scale(1.003);
 
 }
+.nav-btn{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+background:transparent;
+border:none;
+
+color:#cbd5e1;
+
+padding:14px 16px;
+
+border-radius:12px;
+
+font-size:14px;
+font-weight:500;
+
+cursor:pointer;
+
+transition:all .2s ease;
+
+position:relative;
+
+}
+
+.nav-btn svg{
+width:18px;
+height:18px;
+stroke-width:2;
+}
+
+.nav-btn:hover{
+
+background:rgba(255,255,255,0.08);
+
+transform:translateX(6px);
+
+color:white;
+
+}
