@@ -1,8 +1,4 @@
-body{
-margin:0;
-font-family:Arial;
-background:#f3f1ea;
-}
+body
 
 .app{
 display:flex;
