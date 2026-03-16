@@ -167,10 +167,21 @@ box-shadow:
 }
 
 th{
-background:#1f2937;
+
+background:linear-gradient(
+90deg,
+#1e293b,
+#0f172a
+);
+
 color:white;
-padding:14px;
-text-align:left;
+
+padding:16px;
+
+font-weight:600;
+font-size:13px;
+
+letter-spacing:0.3px;
 }
 
 td{
