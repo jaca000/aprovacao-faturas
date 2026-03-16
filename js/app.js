@@ -129,6 +129,7 @@ return 0;
     document.getElementById("pendentes").innerText = pendentes;
     document.getElementById("aprovados").innerText = aprovados;
     document.getElementById("rejeitados").innerText = rejeitados;
+    document.getElementById("meusPendentes").innerText = meusPendentes.length;
 const tabela = document.getElementById("listaPedidos");
 
 tabela.innerHTML = "";
