@@ -196,7 +196,39 @@ f.Aprovador2Email === email
 linha.classList.add("linha-para-aprovar");
 }
 linha.onclick = () => {
-    window.location.href = `ver-pedido.html?id=${p.id}`;
+
+const preview = document.getElementById("previewPdf");
+const previewInfo = document.getElementById("previewInfo");
+const btnAbrirPedido = document.getElementById("btnAbrirPedido");
+const btnAbrirPdf = document.getElementById("btnAbrirPdf");
+
+if(preview){
+    preview.src = f.PdfUrl || "";
+}
+
+if(previewInfo){
+    previewInfo.innerHTML = `
+    <b>${f.NumeroInterno || ""}</b><br>
+    ${f.Fornecedor || ""}<br>
+    ${f.NumeroFaturaOriginal || ""}<br>
+    ${f.ValorDocumento || ""} €
+    `;
+}
+
+if(btnAbrirPedido){
+    btnAbrirPedido.style.display = "inline-block";
+    btnAbrirPedido.onclick = () => {
+        window.location.href = \`ver-pedido.html?id=${p.id}\`;
+    };
+}
+
+if(btnAbrirPdf){
+    btnAbrirPdf.style.display = "inline-block";
+    btnAbrirPdf.onclick = () => {
+        abrirPdf(f.PdfUrl);
+    };
+}
+
 };
 const dias = diasParaVencimento(f.DataVencimento);
 
