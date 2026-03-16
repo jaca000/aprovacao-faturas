@@ -331,3 +331,27 @@ function rejeitarPedido(){
 function abrirPdf(url){
     window.open(url, "_blank");
 }
+function ordenarTabela(coluna){
+
+const tabela = document.getElementById("tabelaPedidos");
+
+const linhas = Array.from(tabela.rows).slice(1);
+
+const asc = tabela.classList.toggle("asc");
+
+linhas.sort((a,b)=>{
+
+let A = a.cells[coluna].innerText;
+let B = b.cells[coluna].innerText;
+
+if(!isNaN(A) && !isNaN(B)){
+return asc ? A-B : B-A;
+}
+
+return asc ? A.localeCompare(B) : B.localeCompare(A);
+
+});
+
+linhas.forEach(l => tabela.appendChild(l));
+
+}
