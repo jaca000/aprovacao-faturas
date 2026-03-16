@@ -542,3 +542,15 @@ c.checked = this.checked;
 });
 
 }
+function diasParaVencimento(data){
+
+if(!data) return null;
+
+const hoje = new Date();
+const venc = new Date(data);
+
+const diff = venc - hoje;
+
+return Math.ceil(diff / (1000*60*60*24));
+
+}
