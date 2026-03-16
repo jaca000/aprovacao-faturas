@@ -408,3 +408,18 @@ return '<span class="badge rejeitado">Rejeitado</span>';
 return estado;
 
 }
+async function aprovarSelecionados(){
+
+const selecionados = document.querySelectorAll(".checkPedido:checked");
+
+for(const check of selecionados){
+
+await atualizarEstadoPedidoId(check.value,"Aprovado");
+
+}
+
+alert("Pedidos aprovados");
+
+location.reload();
+
+}
