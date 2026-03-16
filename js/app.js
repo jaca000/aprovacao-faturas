@@ -632,3 +632,8 @@ return;
 await atualizarEstadoPedido("Rejeitado", comentario);
 
 }
+function rejeitarPedido(){
+
+mostrarAreaRejeicao();
+
+}
