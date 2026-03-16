@@ -376,3 +376,14 @@ border:none;
 border-radius:8px;
 background:#f3f4f6;
 }
+.topbar-direita{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+#dataHora{
+font-size:13px;
+color:#cbd5e1;
+font-weight:500;
+}
