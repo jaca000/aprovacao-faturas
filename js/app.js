@@ -139,6 +139,18 @@ lista.forEach(p => {
     const f = p.fields;
 
     const linha = document.createElement("tr");
+    const utilizador = await testarGraph();
+const email = utilizador.mail || utilizador.userPrincipalName;
+
+if(
+f.EstadoPedido === "Pendente" &&
+(
+f.Aprovador1Email === email ||
+f.Aprovador2Email === email
+)
+){
+linha.classList.add("linha-para-aprovar");
+}
 linha.onclick = () => {
     window.location.href = `ver-pedido.html?id=${p.id}`;
 };
