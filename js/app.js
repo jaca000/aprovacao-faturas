@@ -366,7 +366,11 @@ Ver PDF da fatura
 
 }
 if(window.location.pathname.includes("ver-pedido.html")){
-    carregarPedido();
+
+testarGraph().then(()=>{
+carregarPedido();
+});
+
 }
 async function atualizarEstadoPedido(novoEstado, comentario=""){
 
