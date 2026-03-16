@@ -385,3 +385,20 @@ linha.innerText.toLowerCase().includes(termo)
 });
 
 }
+function badgeEstado(estado){
+
+if(estado === "Pendente"){
+return '<span class="badge pendente">Pendente</span>';
+}
+
+if(estado === "Aprovado"){
+return '<span class="badge aprovado">Aprovado</span>';
+}
+
+if(estado === "Rejeitado"){
+return '<span class="badge rejeitado">Rejeitado</span>';
+}
+
+return estado;
+
+}
