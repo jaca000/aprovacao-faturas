@@ -423,3 +423,18 @@ alert("Pedidos aprovados");
 location.reload();
 
 }
+async function rejeitarSelecionados(){
+
+const selecionados = document.querySelectorAll(".checkPedido:checked");
+
+for(const check of selecionados){
+
+await atualizarEstadoPedidoId(check.value,"Rejeitado");
+
+}
+
+alert("Pedidos rejeitados");
+
+location.reload();
+
+}
