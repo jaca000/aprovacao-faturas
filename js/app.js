@@ -581,3 +581,29 @@ const pdfFinal = await pdfDoc.save();
 return pdfFinal;
 
 }
+function atualizarDataHora(){
+
+const agora = new Date();
+
+const data = agora.toLocaleDateString("pt-PT",{
+weekday:"short",
+day:"2-digit",
+month:"short",
+year:"numeric"
+});
+
+const hora = agora.toLocaleTimeString("pt-PT",{
+hour:"2-digit",
+minute:"2-digit"
+});
+
+const el = document.getElementById("dataHora");
+
+if(el){
+el.innerText = data + " • " + hora;
+}
+
+}
+
+setInterval(atualizarDataHora,1000);
+atualizarDataHora();
