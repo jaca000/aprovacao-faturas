@@ -184,30 +184,6 @@ linha.onclick = () => {
 window.location.href = `ver-pedido.html?id=${p.id}`;
 };
 
-if(previewInfo){
-    previewInfo.innerHTML = `
-    <b>${f.NumeroInterno || ""}</b><br>
-    ${f.Fornecedor || ""}<br>
-    ${f.NumeroFaturaOriginal || ""}<br>
-    ${f.ValorDocumento || ""} €
-    `;
-}
-
-if(btnAbrirPedido){
-    btnAbrirPedido.style.display = "inline-block";
-    btnAbrirPedido.onclick = () => {
-    window.location.href = `ver-pedido.html?id=${p.id}`;
-};
-}
-
-if(btnAbrirPdf){
-    btnAbrirPdf.style.display = "inline-block";
-    btnAbrirPdf.onclick = () => {
-        abrirPdf(f.PdfUrl);
-    };
-}
-
-};
 const dias = diasParaVencimento(f.DataVencimento);
 
 let alerta = "";
