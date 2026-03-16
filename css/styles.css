@@ -90,9 +90,10 @@ background:white;
 }
 
 th{
-background:#1f2937;
+background:linear-gradient(90deg,#243042,#1f2937);
 color:white;
-padding:12px;
+padding:14px;
+text-align:left;
 }
 
 td{
