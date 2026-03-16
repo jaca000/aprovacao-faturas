@@ -107,21 +107,6 @@ outros.push(p);
 
 });
 
-const f = p.fields;
-
-if(
-f.EstadoPedido === "Pendente" &&
-(
-f.Aprovador1Email === email ||
-f.Aprovador2Email === email
-)
-){
-paraMim.push(p);
-}else{
-outros.push(p);
-}
-
-});
 const meusPendentes = lista.filter(p => {
 
 const f = p.fields;
