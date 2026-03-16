@@ -117,6 +117,15 @@ f.Aprovador2Email === email
 );
 
 });
+let valorAprovar = 0;
+
+meusPendentes.forEach(p => {
+
+const v = parseFloat(p.fields.ValorDocumento || 0);
+
+valorAprovar += v;
+
+});
 lista.sort((a,b)=>{
 
 const estadoA = a.fields.EstadoPedido;
