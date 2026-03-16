@@ -81,7 +81,23 @@ else{
 }
     const pedidos = await obterPedidosFaturas();
 
-    const lista = pedidos.value;
+    const utilizador = await testarGraph();
+
+const email = utilizador.mail || utilizador.userPrincipalName;
+
+const lista = pedidos.value;
+
+const meusPendentes = lista.filter(p => {
+
+const f = p.fields;
+
+return f.EstadoPedido === "Pendente" &&
+(
+f.Aprovador1Email === email ||
+f.Aprovador2Email === email
+);
+
+});
 lista.sort((a,b)=>{
 
 const estadoA = a.fields.EstadoPedido;
