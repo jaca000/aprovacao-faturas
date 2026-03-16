@@ -88,17 +88,18 @@ margin-bottom:30px;
 }
 
 .card{
+background:#ffffff;
+padding:20px;
+border-radius:14px;
+border:1px solid #e5e7eb;
+box-shadow:0 4px 10px rgba(0,0,0,0.04);
+width:200px;
+transition:all 0.15s;
+}
 
-background:rgba(255,255,255,0.95);
-
-padding:18px;
-
-border-radius:12px;
-
-box-shadow:0 8px 18px rgba(0,0,0,0.12);
-
-width:190px;
-
+.card:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 18px rgba(0,0,0,0.08);
 }
 
 .card h3{
