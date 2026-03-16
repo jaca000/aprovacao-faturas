@@ -158,6 +158,8 @@ return 0;
     document.getElementById("aprovados").innerText = aprovados;
     document.getElementById("rejeitados").innerText = rejeitados;
     document.getElementById("meusPendentes").innerText = meusPendentes.length;
+    document.getElementById("valorAprovar").innerText =
+valorAprovar.toLocaleString("pt-PT",{style:"currency",currency:"EUR"});
 const tabela = document.getElementById("listaPedidos");
 
 tabela.innerHTML = "";
