@@ -349,13 +349,19 @@ async function carregarPedido(){
 
     const f = dados.fields;
 
-    document.getElementById("dadosPedido").innerHTML = `
-        <p><b>Nº Interno:</b> ${f.NumeroInterno}</p>
-        <p><b>Fornecedor:</b> ${f.Fornecedor}</p>
-        <p><b>Nº Fatura:</b> ${f.NumeroFaturaOriginal}</p>
-        <p><b>Valor:</b> ${f.ValorDocumento}</p>
-        <p><b>Estado:</b> ${f.EstadoPedido}</p>
-    `;
+   document.getElementById("dadosPedido").innerHTML = `
+
+<h3>${f.Fornecedor}</h3>
+
+<p><b>Nº Interno:</b> ${f.NumeroInterno || "-"}</p>
+
+<p><b>Nº Fatura:</b> ${f.NumeroFaturaOriginal}</p>
+
+<p><b>Valor:</b> ${f.ValorDocumento} €</p>
+
+<p><b>Estado:</b> ${badgeEstado(f.EstadoPedido)}</p>
+
+`;
 
     document.getElementById("dadosPedido").innerHTML += `
 <br>
