@@ -59,29 +59,19 @@ font-size:14px;
 }
 
 .sidebar button{
-
-background:rgba(255,255,255,0.04);
-
+background:transparent;
 border:none;
-
-color:#e5e7eb;
-
+color:#e2e8f0;
 text-align:left;
-
-padding:12px;
-
+padding:12px 14px;
 cursor:pointer;
-
 border-radius:8px;
-
 font-size:14px;
-
-transition:all 0.2s;
-
+transition:all 0.15s ease;
 }
 
 .sidebar button:hover{
-background:#374151;
+background:#334155;
 transform:translateX(4px);
 }
 
