@@ -607,3 +607,4 @@ el.innerText = data + " • " + hora;
 
 setInterval(atualizarDataHora,1000);
 atualizarDataHora();
+lucide.createIcons();
