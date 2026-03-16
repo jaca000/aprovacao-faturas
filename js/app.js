@@ -368,97 +368,66 @@ if(window.location.pathname.includes("ver-pedido.html")){
 }
 async function atualizarEstadoPedido(novoEstado){
 
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
 
-    const token = await getAccessToken();
+const token = await getAccessToken();
 
-    const site = await obterSiteApp();
-    const siteId = site.id;
+const site = await obterSiteApp();
+const siteId = site.id;
 
-    const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
 
-    const body = {
-        fields:{
-            EstadoPedido: novoEstado
-        }
-    };
+/* buscar pedido */
 
-    const resp = await fetch(
-        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
-        {
-            method: "PATCH",
-            headers:{
-                Authorization: "Bearer " + token,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        }
-    );
+const respPedido = await fetch(
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}?expand=fields`,
+{
+headers:{ Authorization:"Bearer "+token }
+}
+);
 
-    if(!resp.ok){
-        alert("Erro ao atualizar o estado");
-        return;
-    }
+const dados = await respPedido.json();
+const f = dados.fields;
 
-    alert("Estado atualizado para: " + novoEstado);
+/* carimbar PDF */
 
-    window.location.href = "dashboard.html";
+const pdfCarimbado = await carimbarPdf(f.PdfUrl, novoEstado);
 
+/* substituir PDF no SharePoint */
+
+const ficheiro = new Blob([pdfCarimbado],{type:"application/pdf"});
+
+await uploadPdfSharePoint(ficheiro);
+
+/* atualizar estado */
+
+const body = {
+fields:{
+EstadoPedido: novoEstado
+}
+};
+
+const resp = await fetch(
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
+{
+method:"PATCH",
+headers:{
+Authorization:"Bearer "+token,
+"Content-Type":"application/json"
+},
+body:JSON.stringify(body)
+}
+);
+
+if(!resp.ok){
+alert("Erro ao atualizar estado");
+return;
 }
 
-function aprovarPedido(){
-    atualizarEstadoPedido("Aprovado");
-}
+alert("Pedido "+novoEstado);
 
-function rejeitarPedido(){
-    atualizarEstadoPedido("Rejeitado");
-}
-function abrirPdf(url){
-    window.open(url, "_blank");
-}
-function ordenarTabela(coluna){
-
-const tabela = document.getElementById("tabelaPedidos");
-
-const linhas = Array.from(tabela.rows).slice(1);
-
-const asc = tabela.classList.toggle("asc");
-
-linhas.sort((a,b)=>{
-
-let A = a.cells[coluna].innerText;
-let B = b.cells[coluna].innerText;
-
-if(!isNaN(A) && !isNaN(B)){
-return asc ? A-B : B-A;
-}
-
-return asc ? A.localeCompare(B) : B.localeCompare(A);
-
-});
-
-linhas.forEach(l => tabela.appendChild(l));
-
-}
-const pesquisa = document.getElementById("pesquisa");
-
-if(pesquisa){
-
-pesquisa.addEventListener("keyup",function(){
-
-const termo = this.value.toLowerCase();
-
-document.querySelectorAll("#listaPedidos tr").forEach(linha=>{
-
-linha.style.display =
-linha.innerText.toLowerCase().includes(termo)
-? ""
-: "none";
-
-});
-
-});
+window.location.href="dashboard.html";
 
 }
 function badgeEstado(estado){
