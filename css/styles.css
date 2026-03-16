@@ -71,8 +71,34 @@ border-radius:6px;
 font-size:14px;
 }
 
+.sidebar button{
+
+background:rgba(255,255,255,0.05);
+
+border:none;
+
+color:white;
+
+text-align:left;
+
+padding:12px;
+
+cursor:pointer;
+
+border-radius:8px;
+
+font-size:14px;
+
+transition:all 0.2s;
+
+}
+
 .sidebar button:hover{
-background:#3f8a3f;
+
+background:rgba(255,255,255,0.15);
+
+transform:translateX(4px);
+
 }
 
 .content{
