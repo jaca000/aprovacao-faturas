@@ -125,18 +125,15 @@ lista.forEach(p => {
 linha.onclick = () => {
     window.location.href = `ver-pedido.html?id=${p.id}`;
 };
-    linha.innerHTML = `
-
+linha.innerHTML = `
 <td>
-<input type="checkbox" class="checkPedido" value="${p.id}">
+<input type="checkbox" class="checkPedido" value="${p.id}" onclick="event.stopPropagation()">
 </td>
-
 <td>${f.NumeroInterno || ""}</td>
 <td>${f.Fornecedor || ""}</td>
 <td>${f.NumeroFaturaOriginal || ""}</td>
 <td>${f.ValorDocumento || ""}</td>
 <td>${badgeEstado(f.EstadoPedido)}</td>
-
 `;
 
     tabela.appendChild(linha);
