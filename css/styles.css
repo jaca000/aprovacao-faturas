@@ -1,3 +1,5 @@
+/* ================= BASE ================= */
+
 body{
 margin:0;
 font-family:system-ui, Arial, sans-serif;
@@ -7,6 +9,8 @@ radial-gradient(circle at 10% 20%, #e0e7ff 0%, transparent 35%),
 radial-gradient(circle at 85% 30%, #dbeafe 0%, transparent 35%),
 linear-gradient(180deg,#f8fafc,#eef2f7);
 }
+
+/* ================= TOPBAR ================= */
 
 .topbar{
 background:linear-gradient(90deg,#1e293b,#0f172a);
@@ -19,174 +23,6 @@ box-shadow:0 10px 30px rgba(0,0,0,0.25);
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-.logo{
-font-weight:bold;
-font-size:18px;
-}
-
-.main{
-display:flex;
-flex:1;
-}
-
-.sidebar{
-width:230px;
-
-background:linear-gradient(
-180deg,
-#1e293b 0%,
-#0f172a 100%
-);
-
-padding:28px 18px;
-
-display:flex;
-flex-direction:column;
-
-gap:10px;
-
-box-shadow:
-6px 0 30px rgba(0,0,0,0.18);
-}
-
-.sidebar button{
-background:rgba(255,255,255,0.04);
-border:none;
-color:#e2e8f0;
-padding:12px 16px;
-border-radius:10px;
-font-size:14px;
-font-weight:500;
-display:flex;
-align-items:center;
-gap:10px;
-
-transition:
-transform .18s ease,
-background .18s ease,
-box-shadow .18s ease;
-}
-
-.sidebar button:hover{
-
-background:rgba(255,255,255,0.10);
-
-transform:translateX(6px);
-
-box-shadow:
-0 6px 16px rgba(0,0,0,0.25);
-
-}  
-
-.content{
-flex:1;
-padding:40px 48px;
-overflow:auto;
-}
-
-.cards{
-display:flex;
-gap:24px;
-margin-bottom:36px;
-flex-wrap:wrap;
-}
-
-.card{
-
-background:linear-gradient(
-145deg,
-#ffffff,
-#f8fafc
-);
-
-padding:24px;
-
-border-radius:18px;
-
-border:1px solid rgba(0,0,0,0.04);
-
-box-shadow:
-0 12px 28px rgba(0,0,0,0.08),
-0 2px 6px rgba(0,0,0,0.06);
-
-width:210px;
-
-transition:all .25s ease;
-}
-
-.card:hover{
-
-transform:
-translateY(-6px)
-scale(1.02);
-
-box-shadow:
-0 24px 48px rgba(0,0,0,0.18),
-0 8px 16px rgba(0,0,0,0.08);
-
-}
-
-.card h3{
-font-size:13px;
-color:#64748b;
-font-weight:500;
-}
-
-.card p{
-font-size:28px;
-margin:5px 0 0;
-font-weight:bold;
-}
-
-table{
-
-width:100%;
-
-border-collapse:collapse;
-
-background:linear-gradient(
-180deg,
-#ffffff,
-#f8fafc
-);
-
-border-radius:14px;
-
-overflow:hidden;
-
-box-shadow:
-0 10px 28px rgba(0,0,0,0.08);
-
-}
-
-th{
-
-background:linear-gradient(
-90deg,
-#1e293b,
-#0f172a
-);
-
-color:white;
-
-padding:16px;
-
-font-weight:600;
-font-size:13px;
-
-letter-spacing:0.3px;
-}
-
-td{
-padding:14px 16px;
-border-bottom:1px solid #e5e7eb;
-font-size:14px;
-color:#334155;
-}
-tr:hover{
-background:#f8fafc;
-cursor:pointer;
-}
 .logo-area{
 display:flex;
 align-items:center;
@@ -201,14 +37,223 @@ height:40px;
 font-size:18px;
 font-weight:bold;
 }
-.toolbar{
 
+.topbar-direita{
 display:flex;
+align-items:center;
+gap:20px;
+}
 
+#dataHora{
+font-size:16px;
+font-weight:600;
+letter-spacing:0.5px;
+color:#e2e8f0;
+}
+
+/* ================= LAYOUT ================= */
+
+.main{
+display:flex;
+flex:1;
+}
+
+.content{
+flex:1;
+padding:40px 48px;
+overflow:auto;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+width:230px;
+background:linear-gradient(180deg,#1e293b 0%,#0f172a 100%);
+padding:28px 18px;
+display:flex;
+flex-direction:column;
+gap:10px;
+box-shadow:6px 0 30px rgba(0,0,0,0.18);
+}
+
+.nav-btn{
+display:flex;
+align-items:center;
+gap:12px;
+background:transparent;
+border:none;
+color:#cbd5e1;
+padding:14px 16px;
+border-radius:12px;
+font-size:14px;
+font-weight:500;
+cursor:pointer;
+transition:all .2s ease;
+}
+
+.nav-btn svg{
+width:18px;
+height:18px;
+stroke-width:2;
+}
+
+.nav-btn:hover{
+background:rgba(255,255,255,0.08);
+transform:translateX(6px);
+color:white;
+}
+
+.nav-active{
+background:rgba(255,255,255,0.14);
+box-shadow:inset 0 0 0 1px rgba(255,255,255,0.1);
+color:#ffffff;
+}
+
+/* ================= DASHBOARD CARDS ================= */
+
+.cards{
+display:flex;
+gap:24px;
+margin-bottom:36px;
+flex-wrap:wrap;
+}
+
+.card{
+background:linear-gradient(145deg,#ffffff,#f8fafc);
+padding:24px;
+border-radius:18px;
+border:1px solid rgba(0,0,0,0.04);
+box-shadow:
+0 12px 28px rgba(0,0,0,0.08),
+0 2px 6px rgba(0,0,0,0.06);
+width:210px;
+transition:all .25s ease;
+position:relative;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+height:4px;
+width:100%;
+background:linear-gradient(90deg,#3b82f6,#6366f1);
+border-radius:18px 18px 0 0;
+}
+
+.card:hover{
+transform:translateY(-6px) scale(1.02);
+box-shadow:
+0 24px 48px rgba(0,0,0,0.18),
+0 8px 16px rgba(0,0,0,0.08);
+}
+
+.card h3{
+font-size:13px;
+color:#64748b;
+font-weight:500;
+}
+
+.card p{
+font-size:28px;
+margin:5px 0 0;
+font-weight:bold;
+}
+
+/* ================= TABELAS ================= */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:linear-gradient(180deg,#ffffff,#f8fafc);
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 10px 28px rgba(0,0,0,0.08);
+}
+
+th{
+background:linear-gradient(90deg,#1e293b,#0f172a);
+color:white;
+padding:16px;
+font-weight:600;
+font-size:13px;
+letter-spacing:0.3px;
+}
+
+td{
+padding:14px 16px;
+border-bottom:1px solid #e5e7eb;
+font-size:14px;
+color:#334155;
+}
+
+tbody tr{
+transition:background .15s ease, transform .15s ease;
+}
+
+tbody tr:hover{
+background:#f8fafc;
+transform:scale(1.003);
+cursor:pointer;
+}
+
+/* ================= BADGES ================= */
+
+.badge{
+padding:4px 10px;
+border-radius:12px;
+font-size:12px;
+font-weight:600;
+}
+
+.pendente{
+background:#fef3c7;
+color:#92400e;
+}
+
+.aprovado{
+background:#dcfce7;
+color:#166534;
+}
+
+.rejeitado{
+background:#fee2e2;
+color:#991b1b;
+}
+
+/* ================= ALERTAS ================= */
+
+.linha-para-aprovar{
+background:#fff8e1;
+border-left:4px solid #f59e0b;
+font-weight:500;
+}
+
+.vencimento-alerta{
+margin-left:8px;
+font-size:12px;
+color:#b45309;
+background:#fef3c7;
+padding:3px 6px;
+border-radius:6px;
+}
+
+.vencimento-urgente{
+margin-left:8px;
+font-size:12px;
+color:#991b1b;
+background:#fee2e2;
+padding:3px 6px;
+border-radius:6px;
+}
+
+/* ================= TOOLBAR ================= */
+
+.toolbar{
+display:flex;
 gap:15px;
-
 margin-bottom:15px;
-
 }
 
 .toolbar input{
@@ -220,144 +265,38 @@ box-shadow:0 2px 6px rgba(0,0,0,0.04);
 }
 
 .toolbar select{
-
 padding:10px;
-
 border-radius:6px;
-
 border:1px solid #ddd;
-
-}
-.badge{
-
-padding:4px 10px;
-
-border-radius:12px;
-
-font-size:12px;
-
-font-weight:600;
-
 }
 
-.pendente{
+/* ================= BOTÕES TABELA ================= */
 
-background:#fef3c7;
-
-color:#92400e;
-
-}
-
-.aprovado{
-
-background:#dcfce7;
-
-color:#166534;
-
-}
-
-.rejeitado{
-
-background:#fee2e2;
-
-color:#991b1b;
-
-}
 .acoes-tabela{
-
 display:flex;
-
 gap:10px;
-
 margin-bottom:10px;
-
 }
 
 .acoes-tabela button{
-
-background:#1f2937;
-
-color:white;
-
+background:linear-gradient(135deg,#3b82f6,#2563eb);
 border:none;
-
-padding:10px 14px;
-
-border-radius:6px;
-
-cursor:pointer;
-
-}
-
-.acoes-tabela button:hover{
-
-background:#374151;
-
-}
-
-.linha-para-aprovar{
-
-background:#fff8e1;
-
-border-left:4px solid #f59e0b;
-
-font-weight:500;
-
-}
-.vencimento-alerta{
-
-margin-left:8px;
-font-size:12px;
-color:#b45309;
-background:#fef3c7;
-padding:3px 6px;
-border-radius:6px;
-
-}
-
-.vencimento-urgente{
-
-margin-left:8px;
-font-size:12px;
-color:#991b1b;
-background:#fee2e2;
-padding:3px 6px;
-border-radius:6px;
-
-}
-
-.acoes-tabela button{
-
-background:linear-gradient(
-135deg,
-#3b82f6,
-#2563eb
-);
-
-border:none;
-
 color:white;
-
 padding:10px 18px;
-
 border-radius:10px;
-
 font-weight:500;
-
-box-shadow:
-0 6px 16px rgba(37,99,235,0.35);
-
+box-shadow:0 6px 16px rgba(37,99,235,0.35);
 transition:all 0.25s;
+cursor:pointer;
 }
 
 .acoes-tabela button:hover{
-
 transform:translateY(-2px);
-
-box-shadow:
-0 12px 26px rgba(37,99,235,0.45);
-
+box-shadow:0 12px 26px rgba(37,99,235,0.45);
 }
+
+/* ================= PREVIEW PDF ================= */
+
 .area-trabalho{
 display:flex;
 gap:20px;
@@ -390,22 +329,6 @@ font-size:13px;
 color:#6b7280;
 }
 
-#btnAbrirPedido,
-#btnAbrirPdf{
-background:#1f2937;
-color:white;
-border:none;
-padding:10px 12px;
-border-radius:6px;
-cursor:pointer;
-font-size:13px;
-}
-
-#btnAbrirPedido:hover,
-#btnAbrirPdf:hover{
-background:#374151;
-}
-
 #previewPdf{
 width:100%;
 height:520px;
@@ -413,487 +336,103 @@ border:none;
 border-radius:8px;
 background:#f3f4f6;
 }
-.topbar-direita{
-display:flex;
-align-items:center;
-gap:20px;
-}
 
-#dataHora{
-font-size:16px;
-font-weight:600;
-letter-spacing:0.5px;
-color:#e2e8f0;
-}
-.nav-btn{
-display:flex;
-align-items:center;
-gap:10px;
-}
+/* ================= DETALHE DO PEDIDO ================= */
 
-.nav-btn svg{
-width:18px;
-height:18px;
-}
-.card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-left:0;
-
-height:4px;
-width:100%;
-
-background:linear-gradient(
-90deg,
-#3b82f6,
-#6366f1
-);
-
-border-radius:18px 18px 0 0;
-
-}
-.nav-active{
-
-background:rgba(255,255,255,0.14);
-
-box-shadow:
-inset 0 0 0 1px rgba(255,255,255,0.1);
-
-color:#ffffff;
-
-}
-
-.nav-active svg{
-color:#60a5fa;
-}
-tbody tr{
-
-transition:
-background .15s ease,
-transform .15s ease;
-
-}
-
-tbody tr:hover{
-
-background:#f8fafc;
-
-transform:scale(1.003);
-
-}
-.nav-btn{
-
-display:flex;
-align-items:center;
-gap:12px;
-
-background:transparent;
-border:none;
-
-color:#cbd5e1;
-
-padding:14px 16px;
-
-border-radius:12px;
-
-font-size:14px;
-font-weight:500;
-
-cursor:pointer;
-
-transition:all .2s ease;
-
-position:relative;
-
-}
-
-.nav-btn svg{
-width:18px;
-height:18px;
-stroke-width:2;
-}
-
-.nav-btn:hover{
-
-background:rgba(255,255,255,0.08);
-
-transform:translateX(6px);
-
-color:white;
-
-}
-.detalhe-card{
-
-max-width:800px;
-
-display:flex;
-flex-direction:column;
-gap:20px;
-
-}
-
-.pdf-area iframe{
-
-width:100%;
-height:600px;
-
-border:none;
-
-border-radius:10px;
-
-background:#f1f5f9;
-
-}
-
-.acoes-pedido{
-
-display:flex;
-gap:12px;
-
-}
-
-.btn-aprovar{
-
-background:linear-gradient(135deg,#16a34a,#22c55e);
-
-border:none;
-
-color:white;
-
-padding:12px 22px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-weight:600;
-
-}
-
-.btn-rejeitar{
-
-background:linear-gradient(135deg,#dc2626,#ef4444);
-
-border:none;
-
-color:white;
-
-padding:12px 22px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-weight:600;
-
-}
-
-.area-rejeicao{
-
-display:none;
-
-flex-direction:column;
-
-gap:10px;
-
-}
-
-.area-rejeicao textarea{
-
-width:100%;
-
-height:90px;
-
-padding:10px;
-
-border-radius:8px;
-
-border:1px solid #ddd;
-
-font-family:inherit;
-
-}
-
-.btn-confirmar-rejeicao{
-
-background:#ef4444;
-
-border:none;
-
-color:white;
-
-padding:10px 18px;
-
-border-radius:8px;
-
-cursor:pointer;
-
-}
-
-.btn-voltar{
-
-color:white;
-
-text-decoration:none;
-
-background:#334155;
-
-padding:8px 14px;
-
-border-radius:8px;
-
-}
 .pedido-layout{
-
 display:grid;
-
-grid-template-columns:420px 1fr;
-
-gap:24px;
-
-margin-top:20px;
-
-}
-
-.detalhe-card{
-
-display:flex;
-flex-direction:column;
-gap:16px;
-
-}
-
-.pdf-card{
-
-padding:0;
-
-overflow:hidden;
-
-}
-
-#pdfViewer{
-
-width:100%;
-height:700px;
-
-border:none;
-
-}
-
-.acoes-pedido{
-
-display:flex;
-gap:12px;
-
-}
-
-.btn-aprovar{
-
-background:linear-gradient(135deg,#16a34a,#22c55e);
-
-border:none;
-
-color:white;
-
-padding:12px 22px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-weight:600;
-
-}
-
-.btn-rejeitar{
-
-background:linear-gradient(135deg,#dc2626,#ef4444);
-
-border:none;
-
-color:white;
-
-padding:12px 22px;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-weight:600;
-
-}
-
-.area-rejeicao{
-
-display:none;
-
-flex-direction:column;
-
-gap:10px;
-
-margin-top:10px;
-
-}
-
-.area-rejeicao textarea{
-
-width:100%;
-height:90px;
-
-padding:10px;
-
-border-radius:8px;
-
-border:1px solid #ddd;
-
-}
-
-.btn-confirmar-rejeicao{
-
-background:#ef4444;
-
-border:none;
-
-color:white;
-
-padding:10px 18px;
-
-border-radius:8px;
-
-cursor:pointer;
-
-}
-
-.btn-voltar{
-
-color:white;
-
-text-decoration:none;
-
-background:#334155;
-
-padding:8px 14px;
-
-border-radius:8px;
-
-}
-.pedido-layout{
-
-display:grid;
-
 grid-template-columns:380px 1fr;
-
 gap:28px;
-
 margin-top:20px;
-
+align-items:start;
 }
 
 .detalhe-card{
-
 display:flex;
 flex-direction:column;
 gap:20px;
-
 }
 
 .pdf-card{
-
 padding:0;
-
 overflow:hidden;
-
+min-height:720px;
 }
 
 #pdfViewer{
-
 width:100%;
 height:720px;
-
 border:none;
-
+background:#f8fafc;
+border-radius:18px;
 }
 
-.acoes-pedido{
+/* ================= BOTÕES APROVAÇÃO ================= */
 
+.acoes-pedido{
 display:flex;
 gap:12px;
-
 }
 
 .btn-aprovar{
-
 background:linear-gradient(135deg,#16a34a,#22c55e);
-
 border:none;
-
 color:white;
-
-padding:12px 24px;
-
+padding:12px 22px;
 border-radius:10px;
-
 cursor:pointer;
-
 font-weight:600;
-
+box-shadow:0 8px 20px rgba(34,197,94,0.25);
 }
 
 .btn-rejeitar{
-
 background:linear-gradient(135deg,#dc2626,#ef4444);
-
 border:none;
-
 color:white;
-
-padding:12px 24px;
-
+padding:12px 22px;
 border-radius:10px;
-
 cursor:pointer;
-
 font-weight:600;
-
+box-shadow:0 8px 20px rgba(239,68,68,0.25);
 }
 
+/* ================= REJEIÇÃO ================= */
+
 .area-rejeicao{
-
 display:none;
-
 flex-direction:column;
-
 gap:10px;
-
 }
 
 .area-rejeicao textarea{
-
 width:100%;
-height:90px;
+height:110px;
+padding:12px;
+border-radius:10px;
+border:1px solid #dbe2ea;
+font-family:inherit;
+font-size:14px;
+resize:vertical;
+background:#fff;
+}
 
-padding:10px;
+.btn-confirmar-rejeicao{
+background:#ef4444;
+border:none;
+color:white;
+padding:10px 18px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+align-self:flex-start;
+}
 
+/* ================= BOTÃO VOLTAR ================= */
+
+.btn-voltar{
+color:white;
+text-decoration:none;
+background:#334155;
+padding:8px 14px;
 border-radius:8px;
-
-border:1px solid #ddd;
-
-}
-
-.timeline{
-
-margin-top:20px;
-
-}
-
-.timeline ul{
-
-padding-left:18px;
-
-color:#475569;
-
 }
