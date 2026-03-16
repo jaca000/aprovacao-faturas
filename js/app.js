@@ -637,3 +637,8 @@ function rejeitarPedido(){
 mostrarAreaRejeicao();
 
 }
+async function aprovarPedido(){
+
+await atualizarEstadoPedido("Aprovado");
+
+}
