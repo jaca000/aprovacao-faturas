@@ -348,7 +348,65 @@ async function carregarPedido(){
     const dados = await resp.json();
 
     const f = dados.fields;
+/* TIMELINE */
 
+const timeline = document.getElementById("timelinePedido");
+
+if(timeline){
+
+timeline.innerHTML = "";
+
+/* criado */
+
+timeline.innerHTML += `
+<li class="timeline-criado">
+Pedido criado por ${f.CriadoPorNome || "utilizador"}
+</li>
+`;
+
+/* enviado */
+
+timeline.innerHTML += `
+<li>
+Enviado para aprovação
+</li>
+`;
+
+/* aprovado */
+
+if(f.EstadoPedido === "Aprovado"){
+
+timeline.innerHTML += `
+<li class="timeline-aprovado">
+Aprovado
+</li>
+`;
+
+}
+
+/* rejeitado */
+
+if(f.EstadoPedido === "Rejeitado"){
+
+timeline.innerHTML += `
+<li class="timeline-rejeitado">
+Rejeitado
+</li>
+`;
+
+if(f.ComentarioRejeicao){
+
+timeline.innerHTML += `
+<li>
+Motivo: ${f.ComentarioRejeicao}
+</li>
+`;
+
+}
+
+}
+
+}
    document.getElementById("dadosPedido").innerHTML = `
 
 <h3>${f.Fornecedor}</h3>
