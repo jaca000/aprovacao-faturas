@@ -44,13 +44,20 @@ flex:1;
 }
 
 .sidebar{
-width:190px;
-background: linear-gradient(180deg,#3c7a3c,#2b5d2b);
-padding:20px 12px;
+
+width:210px;
+
+background:rgba(47,109,47,0.92);
+
+backdrop-filter:blur(6px);
+
+padding:22px 14px;
+
 display:flex;
 flex-direction:column;
-gap:12px;
-box-shadow:2px 0 8px rgba(0,0,0,0.15);
+gap:10px;
+
+box-shadow:3px 0 12px rgba(0,0,0,0.2);
 }
 
 .sidebar button{
