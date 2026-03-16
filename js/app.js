@@ -130,7 +130,7 @@ linha.onclick = () => {
         <td>${f.Fornecedor || ""}</td>
         <td>${f.NumeroFaturaOriginal || ""}</td>
         <td>${f.ValorDocumento || ""}</td>
-        <td>${f.EstadoPedido || ""}</td>
+        <td>${badgeEstado(f.EstadoPedido)}</td>
 `;
 
     tabela.appendChild(linha);
