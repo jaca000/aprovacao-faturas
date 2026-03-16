@@ -60,40 +60,38 @@
 
     <div class="pedido-layout">
 
-<div class="card detalhe-card">
+      <!-- COLUNA ESQUERDA -->
+      <div class="card detalhe-card">
 
-<div id="dadosPedido"></div>
+        <div id="dadosPedido"></div>
 
-<div class="acoes-pedido">
+        <div class="acoes-pedido">
+          <button class="btn-aprovar" onclick="aprovarPedido()">Aprovar</button>
+          <button class="btn-rejeitar" onclick="mostrarAreaRejeicao()">Rejeitar</button>
+        </div>
 
-<button class="btn-aprovar" onclick="aprovarPedido()">Aprovar</button>
+        <div id="areaRejeicao" class="area-rejeicao">
+          <textarea id="comentarioRejeicao" placeholder="Motivo da rejeição"></textarea>
+          <button class="btn-confirmar-rejeicao" onclick="confirmarRejeicao()">
+            Confirmar rejeição
+          </button>
+        </div>
 
-<button class="btn-rejeitar" onclick="mostrarAreaRejeicao()">Rejeitar</button>
-
-</div>
-
-<div id="areaRejeicao" class="area-rejeicao">
-
-<textarea id="comentarioRejeicao" placeholder="Motivo da rejeição"></textarea>
-
-<button class="btn-confirmar-rejeicao" onclick="confirmarRejeicao()">
-Confirmar rejeição
-</button>
-
-</div>
-
-</div>
+      </div>
 
 
-<div class="card contexto-card">
+      <!-- COLUNA DIREITA -->
+      <div class="card contexto-card">
 
-<h3>Histórico</h3>
+        <h3>Histórico</h3>
 
-<ul id="timelinePedido"></ul>
+        <div class="timeline">
+          <ul id="timelinePedido"></ul>
+        </div>
 
-</div>
+      </div>
 
-</div>
+    </div>
 
   </section>
 
