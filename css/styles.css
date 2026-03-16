@@ -435,3 +435,13 @@ font-weight:600;
 letter-spacing:0.5px;
 color:#e2e8f0;
 }
+.nav-btn{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.nav-btn svg{
+width:18px;
+height:18px;
+}
