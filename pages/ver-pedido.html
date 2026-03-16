@@ -62,18 +62,27 @@
 
       <div class="card detalhe-card">
 
-        <div id="dadosPedido"></div>
+<div id="dadosPedido"></div>
 
-        <div class="acoes-pedido">
-          <button class="btn-aprovar" onclick="aprovarPedido()">Aprovar</button>
-          <button class="btn-rejeitar" onclick="mostrarAreaRejeicao()">Rejeitar</button>
-        </div>
+<div class="acoes-pedido">
+<button class="btn-aprovar" onclick="aprovarPedido()">Aprovar</button>
+<button class="btn-rejeitar" onclick="mostrarAreaRejeicao()">Rejeitar</button>
+</div>
 
-        <div id="areaRejeicao" class="area-rejeicao">
-          <label for="comentarioRejeicao">Comentário da rejeição</label>
-          <textarea id="comentarioRejeicao" placeholder="Explique o motivo da rejeição..."></textarea>
-          <button class="btn-confirmar-rejeicao" onclick="confirmarRejeicao()">Confirmar rejeição</button>
-        </div>
+<div id="areaRejeicao" class="area-rejeicao">
+<textarea id="comentarioRejeicao"></textarea>
+<button onclick="confirmarRejeicao()">Confirmar rejeição</button>
+</div>
+
+<div class="timeline">
+
+<h3>Histórico</h3>
+
+<ul id="timelinePedido"></ul>
+
+</div>
+
+</div>
 
       </div>
 
