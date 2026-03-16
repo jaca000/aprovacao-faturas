@@ -126,11 +126,17 @@ linha.onclick = () => {
     window.location.href = `ver-pedido.html?id=${p.id}`;
 };
     linha.innerHTML = `
-        <td>${f.NumeroInterno || ""}</td>
-        <td>${f.Fornecedor || ""}</td>
-        <td>${f.NumeroFaturaOriginal || ""}</td>
-        <td>${f.ValorDocumento || ""}</td>
-        <td>${badgeEstado(f.EstadoPedido)}</td>
+
+<td>
+<input type="checkbox" class="checkPedido" value="${p.id}">
+</td>
+
+<td>${f.NumeroInterno || ""}</td>
+<td>${f.Fornecedor || ""}</td>
+<td>${f.NumeroFaturaOriginal || ""}</td>
+<td>${f.ValorDocumento || ""}</td>
+<td>${badgeEstado(f.EstadoPedido)}</td>
+
 `;
 
     tabela.appendChild(linha);
