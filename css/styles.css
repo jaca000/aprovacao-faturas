@@ -200,3 +200,38 @@ border-radius:6px;
 border:1px solid #ddd;
 
 }
+.badge{
+
+padding:4px 10px;
+
+border-radius:12px;
+
+font-size:12px;
+
+font-weight:600;
+
+}
+
+.pendente{
+
+background:#fef3c7;
+
+color:#92400e;
+
+}
+
+.aprovado{
+
+background:#dcfce7;
+
+color:#166534;
+
+}
+
+.rejeitado{
+
+background:#fee2e2;
+
+color:#991b1b;
+
+}
