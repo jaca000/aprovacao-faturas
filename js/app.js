@@ -368,7 +368,7 @@ Ver PDF da fatura
 if(window.location.pathname.includes("ver-pedido.html")){
     carregarPedido();
 }
-async function atualizarEstadoPedido(novoEstado){
+async function atualizarEstadoPedido(novoEstado, comentario="")
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
@@ -608,3 +608,26 @@ el.innerText = data + " • " + hora;
 setInterval(atualizarDataHora,1000);
 atualizarDataHora();
 lucide.createIcons();
+function mostrarAreaRejeicao(){
+
+document.getElementById("areaRejeicao").style.display = "flex";
+
+}
+async function confirmarRejeicao(){
+
+const comentario = document
+.getElementById("comentarioRejeicao")
+.value
+.trim();
+
+if(!comentario){
+
+alert("Tem de escrever um comentário para rejeitar.");
+
+return;
+
+}
+
+await atualizarEstadoPedido("Rejeitado", comentario);
+
+}
