@@ -368,7 +368,7 @@ Ver PDF da fatura
 if(window.location.pathname.includes("ver-pedido.html")){
     carregarPedido();
 }
-async function atualizarEstadoPedido(novoEstado, comentario="")
+async function atualizarEstadoPedido(novoEstado, comentario=""){
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
