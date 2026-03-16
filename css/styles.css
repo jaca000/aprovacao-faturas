@@ -38,19 +38,12 @@ flex:1;
 }
 
 .sidebar{
-
 width:210px;
-
-background:rgba(47,109,47,0.92);
-
-backdrop-filter:blur(6px);
-
+background:#111827;
 padding:22px 14px;
-
 display:flex;
 flex-direction:column;
 gap:10px;
-
 box-shadow:3px 0 12px rgba(0,0,0,0.2);
 }
 
