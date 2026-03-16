@@ -1,4 +1,12 @@
-body
+body{
+margin:0;
+font-family: system-ui, Arial, sans-serif;
+
+background-image:url("../assets/bg-dashboard.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
 
 .app{
 display:flex;
