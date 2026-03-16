@@ -355,3 +355,23 @@ return asc ? A.localeCompare(B) : B.localeCompare(A);
 linhas.forEach(l => tabela.appendChild(l));
 
 }
+const pesquisa = document.getElementById("pesquisa");
+
+if(pesquisa){
+
+pesquisa.addEventListener("keyup",function(){
+
+const termo = this.value.toLowerCase();
+
+document.querySelectorAll("#listaPedidos tr").forEach(linha=>{
+
+linha.style.display =
+linha.innerText.toLowerCase().includes(termo)
+? ""
+: "none";
+
+});
+
+});
+
+}
