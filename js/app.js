@@ -406,7 +406,8 @@ await uploadPdfSharePoint(ficheiro);
 
 const body = {
 fields:{
-EstadoPedido: novoEstado
+EstadoPedido: novoEstado,
+ComentarioRejeicao: comentario
 }
 };
 
