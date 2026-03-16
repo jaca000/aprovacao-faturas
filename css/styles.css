@@ -432,7 +432,8 @@ gap:20px;
 }
 
 #dataHora{
-font-size:13px;
-color:#cbd5e1;
-font-weight:500;
+font-size:16px;
+font-weight:600;
+letter-spacing:0.5px;
+color:#e2e8f0;
 }
