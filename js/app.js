@@ -139,8 +139,6 @@ lista.forEach(p => {
     const f = p.fields;
 
     const linha = document.createElement("tr");
-    const utilizador = await testarGraph();
-const email = utilizador.mail || utilizador.userPrincipalName;
 
 if(
 f.EstadoPedido === "Pendente" &&
