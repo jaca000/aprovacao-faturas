@@ -40,6 +40,8 @@ Aprovação de Faturas
 
 <h2>Detalhe da Fatura</h2>
 
+<div class="pedido-layout">
+
 <div class="card detalhe-card">
 
 <div id="dadosPedido"></div>
@@ -60,15 +62,21 @@ Rejeitar
 
 <label>Comentário da rejeição</label>
 
-<textarea id="comentarioRejeicao" placeholder="Explique o motivo da rejeição..."></textarea>
+<textarea id="comentarioRejeicao"
+placeholder="Explique o motivo da rejeição..."></textarea>
 
-<button class="btn-confirmar-rejeicao" onclick="confirmarRejeicao()">
+<button class="btn-confirmar-rejeicao"
+onclick="confirmarRejeicao()">
+
 Confirmar rejeição
+
 </button>
 
 </div>
 
-<div class="pdf-area">
+</div>
+
+<div class="card pdf-card">
 
 <iframe id="pdfViewer"></iframe>
 
