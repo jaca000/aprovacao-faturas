@@ -151,13 +151,18 @@ width:100%;
 
 border-collapse:collapse;
 
-background:rgba(255,255,255,0.96);
+background:linear-gradient(
+180deg,
+#ffffff,
+#f8fafc
+);
 
-border-radius:10px;
+border-radius:14px;
 
 overflow:hidden;
 
-box-shadow:0 6px 18px rgba(0,0,0,0.12);
+box-shadow:
+0 10px 28px rgba(0,0,0,0.08);
 
 }
 
