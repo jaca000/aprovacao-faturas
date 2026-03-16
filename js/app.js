@@ -203,8 +203,8 @@ if(previewInfo){
 if(btnAbrirPedido){
     btnAbrirPedido.style.display = "inline-block";
     btnAbrirPedido.onclick = () => {
-        window.location.href = \`ver-pedido.html?id=${p.id}\`;
-    };
+    window.location.href = `ver-pedido.html?id=${p.id}`;
+};
 }
 
 if(btnAbrirPdf){
