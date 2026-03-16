@@ -182,6 +182,22 @@ linha.classList.add("linha-para-aprovar");
 linha.onclick = () => {
     window.location.href = `ver-pedido.html?id=${p.id}`;
 };
+const dias = diasParaVencimento(f.DataVencimento);
+
+let alerta = "";
+
+if(dias !== null){
+
+if(dias <= 3){
+alerta = '<span class="vencimento-urgente">⚠ vence em '+dias+' dias</span>';
+}
+
+else if(dias <= 8){
+alerta = '<span class="vencimento-alerta">vence em '+dias+' dias</span>';
+}
+
+}
+
 linha.innerHTML = `
 <td>
 <input type="checkbox" class="checkPedido" value="${p.id}" onclick="event.stopPropagation()">
@@ -190,7 +206,7 @@ linha.innerHTML = `
 <td>${f.Fornecedor || ""}</td>
 <td>${f.NumeroFaturaOriginal || ""}</td>
 <td>${f.ValorDocumento || ""}</td>
-<td>${badgeEstado(f.EstadoPedido)}</td>
+<td>${badgeEstado(f.EstadoPedido)} ${alerta}</td>
 `;
 
     tabela.appendChild(linha);
