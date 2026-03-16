@@ -470,3 +470,18 @@ color:#ffffff;
 .nav-active svg{
 color:#60a5fa;
 }
+tbody tr{
+
+transition:
+background .15s ease,
+transform .15s ease;
+
+}
+
+tbody tr:hover{
+
+background:#f8fafc;
+
+transform:scale(1.003);
+
+}
