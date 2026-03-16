@@ -181,15 +181,8 @@ f.Aprovador2Email === email
 linha.classList.add("linha-para-aprovar");
 }
 linha.onclick = () => {
-
-const preview = document.getElementById("previewPdf");
-const previewInfo = document.getElementById("previewInfo");
-const btnAbrirPedido = document.getElementById("btnAbrirPedido");
-const btnAbrirPdf = document.getElementById("btnAbrirPdf");
-
-if(preview && f.PdfUrl){
-preview.src = f.PdfUrl + "?web=1&embedded=true";
-}
+window.location.href = `ver-pedido.html?id=${p.id}`;
+};
 
 if(previewInfo){
     previewInfo.innerHTML = `
