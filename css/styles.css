@@ -90,13 +90,28 @@ margin-bottom:30px;
 }
 
 .card{
-background:#ffffff;
-padding:20px;
-border-radius:14px;
-border:1px solid #e5e7eb;
-box-shadow:0 4px 10px rgba(0,0,0,0.04);
-width:200px;
-transition:all 0.15s;
+
+background:linear-gradient(
+145deg,
+#ffffff,
+#f1f5f9
+);
+
+padding:22px;
+
+border-radius:16px;
+
+border:1px solid rgba(255,255,255,0.4);
+
+box-shadow:
+0 8px 20px rgba(0,0,0,0.08),
+0 2px 6px rgba(0,0,0,0.06);
+
+width:210px;
+
+transition:all 0.25s ease;
+
+backdrop-filter: blur(8px);
 }
 
 .card:hover{
