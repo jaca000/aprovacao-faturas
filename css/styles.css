@@ -69,14 +69,14 @@ box-shadow .18s ease;
 
 .sidebar button:hover{
 
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.10);
 
 transform:translateX(6px);
 
 box-shadow:
-0 6px 14px rgba(0,0,0,0.25);
+0 6px 16px rgba(0,0,0,0.25);
 
-}      
+}  
 
 .content{
 flex:1;
