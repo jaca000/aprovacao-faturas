@@ -82,7 +82,17 @@ else{
     const pedidos = await obterPedidosFaturas();
 
     const lista = pedidos.value;
+lista.sort((a,b)=>{
 
+const estadoA = a.fields.EstadoPedido;
+const estadoB = b.fields.EstadoPedido;
+
+if(estadoA === "Pendente" && estadoB !== "Pendente") return -1;
+if(estadoA !== "Pendente" && estadoB === "Pendente") return 1;
+
+return 0;
+
+});
     const total = lista.length;
 
     let pendentes = 0;
