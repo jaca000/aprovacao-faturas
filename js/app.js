@@ -612,7 +612,9 @@ el.innerText = data + " • " + hora;
 
 setInterval(atualizarDataHora,1000);
 atualizarDataHora();
+if(typeof lucide !== "undefined"){
 lucide.createIcons();
+}
 function mostrarAreaRejeicao(){
 
 document.getElementById("areaRejeicao").style.display = "flex";
