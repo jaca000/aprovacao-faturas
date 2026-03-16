@@ -468,3 +468,20 @@ body:JSON.stringify(body)
 );
 
 }
+const checkTodos = document.getElementById("checkTodos");
+
+if(checkTodos){
+
+checkTodos.addEventListener("change", function(){
+
+const checks = document.querySelectorAll(".checkPedido");
+
+checks.forEach(c => {
+
+c.checked = this.checked;
+
+});
+
+});
+
+}
