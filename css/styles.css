@@ -81,11 +81,8 @@ transition:all 0.2s;
 }
 
 .sidebar button:hover{
-
-background:rgba(255,255,255,0.15);
-
+background:#374151;
 transform:translateX(4px);
-
 }
 
 .content{
