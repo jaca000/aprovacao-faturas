@@ -188,9 +188,7 @@ const btnAbrirPedido = document.getElementById("btnAbrirPedido");
 const btnAbrirPdf = document.getElementById("btnAbrirPdf");
 
 if(preview && f.PdfUrl){
-preview.src =
-"https://view.officeapps.live.com/op/embed.aspx?src=" +
-encodeURIComponent(f.PdfUrl);
+preview.src = f.PdfUrl + "?web=1&embedded=true";
 }
 
 if(previewInfo){
