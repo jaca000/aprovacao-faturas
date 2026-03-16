@@ -169,3 +169,34 @@ height:40px;
 font-size:18px;
 font-weight:bold;
 }
+.toolbar{
+
+display:flex;
+
+gap:15px;
+
+margin-bottom:15px;
+
+}
+
+.toolbar input{
+
+padding:10px 14px;
+
+border-radius:6px;
+
+border:1px solid #ddd;
+
+width:260px;
+
+}
+
+.toolbar select{
+
+padding:10px;
+
+border-radius:6px;
+
+border:1px solid #ddd;
+
+}
