@@ -38,13 +38,13 @@ flex:1;
 }
 
 .sidebar{
-width:210px;
-background:#111827;
-padding:22px 14px;
+width:220px;
+background:#1e293b;
+padding:24px 16px;
 display:flex;
 flex-direction:column;
-gap:10px;
-box-shadow:3px 0 12px rgba(0,0,0,0.2);
+gap:8px;
+box-shadow:2px 0 12px rgba(0,0,0,0.08);
 }
 
 .sidebar button{
