@@ -2,19 +2,10 @@ body{
 margin:0;
 font-family: system-ui, Arial, sans-serif;
 
-body{
-margin:0;
-font-family: system-ui, Arial, sans-serif;
-background:#f3f4f6;
-}
-
-.app{
-display:flex;
-flex-direction:column;
-height:100vh;
-
-background:rgba(255,255,255,0.88);
-backdrop-filter: blur(6px);
+background:
+radial-gradient(circle at 20% 20%, #eef2ff 0%, transparent 40%),
+radial-gradient(circle at 80% 30%, #e0f2fe 0%, transparent 40%),
+#f3f4f6;
 }
 
 .topbar{
