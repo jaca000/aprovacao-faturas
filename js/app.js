@@ -438,3 +438,36 @@ alert("Pedidos rejeitados");
 location.reload();
 
 }
+async function atualizarEstadoPedidoId(id,estado){
+
+const token = await getAccessToken();
+
+const site = await obterSiteApp();
+const siteId = site.id;
+
+const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+const body = {
+
+fields:{
+EstadoPedido: estado
+}
+
+};
+
+await fetch(
+
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
+
+{
+method:"PATCH",
+headers:{
+Authorization:"Bearer "+token,
+"Content-Type":"application/json"
+},
+body:JSON.stringify(body)
+}
+
+);
+
+}
