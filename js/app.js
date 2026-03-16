@@ -89,7 +89,7 @@ const lista = pedidos.value;
 const paraMim = [];
 const outros = [];
 
-lista.forEach(p => {
+[...paraMim, ...outros].forEach(p => {
 
 const f = p.fields;
 
