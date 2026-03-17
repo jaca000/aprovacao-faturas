@@ -215,7 +215,19 @@ login();
 }, 600);
 
 }
+function iniciarLogin(){
 
+document.getElementById("btnLogin").style.display = "none";
+document.getElementById("loadingBox").style.display = "block";
+
+document.getElementById("loginWrapper").classList.add("fade-out");
+
+setTimeout(() => {
+login();
+}, 600);
+
+}
+  
 </script>
 
 </body>
