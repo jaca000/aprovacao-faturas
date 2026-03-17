@@ -227,6 +227,38 @@ login();
 }, 600);
 
 }
+
+
+/* DETETAR SE JÁ ESTÁ LOGADO */
+window.addEventListener("load", async () => {
+
+try{
+
+const conta = msalInstance.getAllAccounts()[0];
+
+if(conta){
+
+document.getElementById("btnLogin").style.display = "none";
+document.getElementById("loadingBox").style.display = "block";
+
+const nome = conta.name || "Utilizador";
+
+const texto = document.getElementById("loadingText");
+
+texto.innerText = "Bem-vindo, " + nome.split(" ")[0];
+
+/* pequeno delay para UX */
+setTimeout(() => {
+window.location.href = "pages/dashboard.html";
+}, 1200);
+
+}
+
+}catch(e){
+console.log("Sem sessão ativa");
+}
+
+});
   
 </script>
 
