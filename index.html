@@ -10,14 +10,14 @@
 
 <style>
 
-/* RESET BASE */
+/* BASE */
 body{
 margin:0;
 font-family:system-ui, Arial, sans-serif;
 overflow:hidden;
 }
 
-/* FUNDO ANIMADO */
+/* FUNDO */
 .bg-animated{
 position:fixed;
 width:100%;
@@ -50,36 +50,46 @@ height:100vh;
 
 /* CARD */
 .login-box{
-background:rgba(255,255,255,0.95);
+background:rgba(255,255,255,0.96);
 padding:60px 70px;
-border-radius:20px;
+border-radius:22px;
 
 box-shadow:
-0 25px 60px rgba(0,0,0,0.15);
+0 30px 80px rgba(0,0,0,0.18);
 
 text-align:center;
 
-max-width:420px;
+max-width:460px;
 width:100%;
 }
 
 /* LOGO */
-.login-box img{
-height:70px;
-margin-bottom:20px;
-}
-
-/* TITULO */
-.login-box h1{
-font-size:22px;
+.login-logo{
+height:90px;
 margin-bottom:10px;
 }
 
-/* SUBTITULO */
-.login-box p{
+/* MARCA */
+.login-brand{
+font-size:12px;
+letter-spacing:2px;
+color:#64748b;
+font-weight:600;
+margin-bottom:6px;
+}
+
+/* TITULO */
+.login-title{
+font-size:24px;
+font-weight:700;
+margin-bottom:10px;
+}
+
+/* SUB */
+.login-sub{
 font-size:14px;
 color:#64748b;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
 /* BOTÃO */
@@ -88,26 +98,26 @@ background:linear-gradient(135deg,#3b82f6,#2563eb);
 border:none;
 color:white;
 
-padding:14px 26px;
-border-radius:12px;
+padding:15px 28px;
+border-radius:14px;
 
 font-weight:600;
 cursor:pointer;
 
-box-shadow:0 10px 25px rgba(37,99,235,0.35);
+box-shadow:0 12px 30px rgba(37,99,235,0.35);
 
 transition:all .25s;
 }
 
 .login-btn:hover{
 transform:translateY(-2px);
-box-shadow:0 20px 40px rgba(37,99,235,0.45);
+box-shadow:0 20px 45px rgba(37,99,235,0.45);
 }
 
 /* LOADING */
 .spinner{
-width:28px;
-height:28px;
+width:30px;
+height:30px;
 
 border:3px solid #cbd5f5;
 border-top:3px solid #3b82f6;
@@ -134,35 +144,26 @@ color:#64748b;
 
 <body>
 
-<!-- FUNDO -->
 <div class="bg-animated"></div>
 
-<!-- LOGIN -->
 <div class="login-wrapper">
 
 <div class="login-box">
 
-<div class="login-header">
-
 <img src="assets/montedopasto.png" class="login-logo">
 
-<div class="login-brand">
-Monte do Pasto
-</div>
+<div class="login-brand">MONTE DO PASTO</div>
 
-</div>
+<div class="login-title">Aprovação de Faturas</div>
 
-<h1>Aprovação de Faturas</h1>
-
-<p>
+<div class="login-sub">
 Sistema interno para gestão e aprovação de despesas
-</p>
+</div>
 
 <button class="login-btn" onclick="iniciarLogin()" id="btnLogin">
 Iniciar sessão com Microsoft
 </button>
 
-<!-- LOADING -->
 <div id="loadingBox" style="display:none; margin-top:20px;">
 
 <div class="spinner"></div>
@@ -181,18 +182,12 @@ A ligar ao sistema...
 <script src="js/auth.js"></script>
 
 <script>
-
 function iniciarLogin(){
-
 document.getElementById("btnLogin").style.display = "none";
 document.getElementById("loadingBox").style.display = "block";
-
 login();
-
 }
-
 </script>
 
 </body>
-
 </html>
