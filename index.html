@@ -46,14 +46,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 height:100vh;
-transition:all 0.5s ease;
-}
-
-/* TRANSIÇÃO LOGIN */
-.fade-out{
-opacity:0;
-transform:scale(0.96);
-filter:blur(6px);
+transition:all 0.4s ease;
 }
 
 /* CARD */
@@ -71,23 +64,22 @@ max-width:460px;
 width:100%;
 }
 
-/* LOGO COM GLOW */
+/* LOGO */
 .login-logo{
-height:90px;
+height:95px;
 margin-bottom:10px;
 
 filter:drop-shadow(0 6px 18px rgba(59,130,246,0.25));
-
 animation:logoFloat 3s ease-in-out infinite;
 }
 
 @keyframes logoFloat{
 0%{transform:translateY(0px);}
 50%{transform:translateY(-4px);}
-100%{transform:translateY(0px);}
+100%{transform:translateY(0);}
 }
 
-/* MARCA */
+/* TEXTO */
 .login-brand{
 font-size:12px;
 letter-spacing:2px;
@@ -96,14 +88,12 @@ font-weight:600;
 margin-bottom:6px;
 }
 
-/* TITULO */
 .login-title{
-font-size:24px;
+font-size:26px;
 font-weight:700;
 margin-bottom:10px;
 }
 
-/* SUB */
 .login-sub{
 font-size:14px;
 color:#64748b;
@@ -123,7 +113,6 @@ font-weight:600;
 cursor:pointer;
 
 box-shadow:0 12px 30px rgba(37,99,235,0.35);
-
 transition:all .25s;
 }
 
@@ -141,7 +130,6 @@ border:3px solid #cbd5f5;
 border-top:3px solid #3b82f6;
 
 border-radius:50%;
-
 margin:0 auto 10px;
 
 animation:spin 0.8s linear infinite;
@@ -156,6 +144,52 @@ font-size:13px;
 color:#64748b;
 }
 
+/* OVERLAY */
+.welcome-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:linear-gradient(180deg,#0f172a,#1e293b);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+opacity:0;
+pointer-events:none;
+
+transition:all 0.4s ease;
+
+z-index:999;
+}
+
+.welcome-overlay.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.welcome-text{
+font-size:44px;
+font-weight:700;
+color:white;
+
+animation:fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 </style>
 
 </head>
@@ -164,7 +198,7 @@ color:#64748b;
 
 <div class="bg-animated"></div>
 
-<div class="login-wrapper" id="loginWrapper">
+<div class="login-wrapper">
 
 <div class="login-box">
 
@@ -183,17 +217,21 @@ Iniciar sessão com Microsoft
 </button>
 
 <div id="loadingBox" style="display:none; margin-top:20px;">
-
 <div class="spinner"></div>
-
 <div class="loading-text" id="loadingText">
 A ligar ao sistema...
 </div>
-
 </div>
 
 </div>
 
+</div>
+
+<!-- OVERLAY -->
+<div id="welcomeOverlay" class="welcome-overlay">
+  <div class="welcome-text" id="welcomeText">
+    Bem-vindo
+  </div>
 </div>
 
 <script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
@@ -206,30 +244,14 @@ function iniciarLogin(){
 document.getElementById("btnLogin").style.display = "none";
 document.getElementById("loadingBox").style.display = "block";
 
-/* animação saída */
-document.getElementById("loginWrapper").classList.add("fade-out");
-
-/* pequeno delay para UX */
 setTimeout(() => {
 login();
-}, 600);
-
-}
-function iniciarLogin(){
-
-document.getElementById("btnLogin").style.display = "none";
-document.getElementById("loadingBox").style.display = "block";
-
-document.getElementById("loginWrapper").classList.add("fade-out");
-
-setTimeout(() => {
-login();
-}, 600);
+}, 500);
 
 }
 
 
-/* DETETAR SE JÁ ESTÁ LOGADO */
+/* DETETAR LOGIN */
 window.addEventListener("load", async () => {
 
 try{
@@ -238,19 +260,22 @@ const conta = msalInstance.getAllAccounts()[0];
 
 if(conta){
 
-document.getElementById("btnLogin").style.display = "none";
-document.getElementById("loadingBox").style.display = "block";
-
 const nome = conta.name || "Utilizador";
+const primeiroNome = nome.split(" ")[0];
 
-const texto = document.getElementById("loadingText");
+const overlay = document.getElementById("welcomeOverlay");
+const texto = document.getElementById("welcomeText");
 
-texto.innerText = "Bem-vindo, " + nome.split(" ")[0];
+/* mostrar overlay */
+overlay.classList.add("show");
 
-/* pequeno delay para UX */
+/* texto grande */
+texto.innerText = "Bem-vindo, " + primeiroNome;
+
+/* entrar no dashboard */
 setTimeout(() => {
 window.location.href = "pages/dashboard.html";
-}, 1200);
+}, 1800);
 
 }
 
@@ -259,7 +284,7 @@ console.log("Sem sessão ativa");
 }
 
 });
-  
+
 </script>
 
 </body>
