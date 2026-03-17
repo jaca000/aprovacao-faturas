@@ -83,27 +83,33 @@
 
         <!-- APROVAÇÃO -->
         <div class="form-section">
-          <h3>Aprovação</h3>
+  <h3>Aprovação</h3>
 
-          <div class="form-grid">
+  <div class="form-grid">
 
-            <div>
-              <label>1º Aprovador</label>
-              <select id="aprovador1">
-                <option value="">Selecionar</option>
-              </select>
-            </div>
+    <div>
+      <label>Aprovador</label>
+      <select id="aprovador1">
+        <option value="">Selecionar</option>
+      </select>
+    </div>
 
-            <div>
-              <label>2º Aprovador (opcional)</label>
-              <select id="aprovador2">
-                <option value="">Selecionar</option>
-              </select>
-            </div>
+  </div>
 
-          </div>
+  <button type="button" class="btn-add" onclick="mostrarSegundoAprovador()">
+    + Adicionar segundo aprovador
+  </button>
 
-        </div>
+  <div id="segundoAprovadorBox" style="display:none; margin-top:15px;">
+
+    <label>2º Aprovador</label>
+    <select id="aprovador2">
+      <option value="">Selecionar</option>
+    </select>
+
+  </div>
+
+</div>
 
         <!-- DOCUMENTO -->
         <div class="form-section">
