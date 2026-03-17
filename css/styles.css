@@ -584,3 +584,15 @@ border-radius:10px;
 text-decoration:none;
 color:#111;
 }
+.btn-add{
+margin-top:10px;
+background:transparent;
+border:none;
+color:#3b82f6;
+cursor:pointer;
+font-size:13px;
+}
+
+.btn-add:hover{
+text-decoration:underline;
+}
