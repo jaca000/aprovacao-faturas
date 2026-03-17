@@ -46,6 +46,14 @@ display:flex;
 align-items:center;
 justify-content:center;
 height:100vh;
+transition:all 0.5s ease;
+}
+
+/* TRANSIÇÃO LOGIN */
+.fade-out{
+opacity:0;
+transform:scale(0.96);
+filter:blur(6px);
 }
 
 /* CARD */
@@ -63,10 +71,20 @@ max-width:460px;
 width:100%;
 }
 
-/* LOGO */
+/* LOGO COM GLOW */
 .login-logo{
 height:90px;
 margin-bottom:10px;
+
+filter:drop-shadow(0 6px 18px rgba(59,130,246,0.25));
+
+animation:logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-4px);}
+100%{transform:translateY(0px);}
 }
 
 /* MARCA */
@@ -110,8 +128,8 @@ transition:all .25s;
 }
 
 .login-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 20px 45px rgba(37,99,235,0.45);
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 25px 55px rgba(37,99,235,0.5);
 }
 
 /* LOADING */
@@ -146,18 +164,18 @@ color:#64748b;
 
 <div class="bg-animated"></div>
 
-<div class="login-wrapper">
+<div class="login-wrapper" id="loginWrapper">
 
 <div class="login-box">
 
-<img src="assets/montedopasto.png" class="login-logo">
+<img src="assets/logo-monte-do-pasto.png" class="login-logo">
 
 <div class="login-brand">MONTE DO PASTO</div>
 
 <div class="login-title">Aprovação de Faturas</div>
 
 <div class="login-sub">
-Sistema Interno para Gestão e Aprovação de Faturas e Despesas
+Sistema interno para gestão e aprovação de despesas
 </div>
 
 <button class="login-btn" onclick="iniciarLogin()" id="btnLogin">
@@ -182,12 +200,24 @@ A ligar ao sistema...
 <script src="js/auth.js"></script>
 
 <script>
+
 function iniciarLogin(){
+
 document.getElementById("btnLogin").style.display = "none";
 document.getElementById("loadingBox").style.display = "block";
+
+/* animação saída */
+document.getElementById("loginWrapper").classList.add("fade-out");
+
+/* pequeno delay para UX */
+setTimeout(() => {
 login();
+}, 600);
+
 }
+
 </script>
 
 </body>
+
 </html>
