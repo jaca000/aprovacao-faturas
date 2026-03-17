@@ -14,38 +14,128 @@
 
 <body>
 
-<h1>Registar Fatura</h1>
+<div class="app">
 
-<div>
+<header class="topbar">
+  <div class="logo-area">
+    <img src="../assets/logo-monte-do-pasto.png" class="logo">
+    <div class="titulo-app">Aprovação de Faturas</div>
+  </div>
 
-<label>Fornecedor</label><br>
-<input type="text" id="fornecedor"><br><br>
+  <div class="topbar-direita">
+    <a href="dashboard.html" class="btn-voltar">← Voltar</a>
+  </div>
+</header>
 
-<label>Nº Fatura</label><br>
-<input type="text" id="numeroFatura"><br><br>
+<div class="main">
 
-<label>Valor</label><br>
-<input type="number" id="valor"><br><br>
+  <aside class="sidebar">
 
-<label>Data da Fatura</label><br>
-<input type="date" id="dataFatura"><br><br>
+    <button class="nav-btn" onclick="window.location.href='dashboard.html'">Dashboard</button>
+    <button class="nav-btn" onclick="window.location.href='aprovacoes.html'">Aprovações</button>
+    <button class="nav-btn nav-active" onclick="window.location.href='nova-fatura.html'">Nova Fatura</button>
+    <button class="nav-btn" onclick="window.location.href='pedidos.html'">Pedidos</button>
 
-<label>Data de Vencimento</label><br>
-<input type="date" id="dataVencimento"><br><br>
+  </aside>
 
-<label>PDF da Fatura</label><br>
-<input type="file" id="ficheiroPDF" accept="application/pdf"><br><br>
+  <section class="content">
 
-<button onclick="guardarFatura()">Guardar Fatura</button>
+    <h2>Registar Fatura</h2>
+
+    <div class="form-container">
+
+      <div class="form-card">
+
+        <!-- DADOS -->
+        <div class="form-section">
+          <h3>Dados da Fatura</h3>
+
+          <div class="form-grid">
+
+            <div>
+              <label>Fornecedor</label>
+              <input type="text" id="fornecedor">
+            </div>
+
+            <div>
+              <label>Nº Fatura</label>
+              <input type="text" id="numeroFatura">
+            </div>
+
+            <div>
+              <label>Valor (€)</label>
+              <input type="number" id="valor">
+            </div>
+
+            <div>
+              <label>Data da Fatura</label>
+              <input type="date" id="dataFatura">
+            </div>
+
+            <div>
+              <label>Data de Vencimento</label>
+              <input type="date" id="dataVencimento">
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- APROVAÇÃO -->
+        <div class="form-section">
+          <h3>Aprovação</h3>
+
+          <div class="form-grid">
+
+            <div>
+              <label>1º Aprovador</label>
+              <select id="aprovador1">
+                <option value="">Selecionar</option>
+              </select>
+            </div>
+
+            <div>
+              <label>2º Aprovador (opcional)</label>
+              <select id="aprovador2">
+                <option value="">Selecionar</option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- DOCUMENTO -->
+        <div class="form-section">
+          <h3>Documento</h3>
+
+          <input type="file" id="ficheiroPDF" accept="application/pdf">
+        </div>
+
+        <!-- AÇÕES -->
+        <div class="form-actions">
+
+          <button onclick="guardarFatura()" class="btn-primary">
+            Guardar Fatura
+          </button>
+
+          <a href="dashboard.html" class="btn-secondary">
+            Cancelar
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 
 </div>
 
-<br>
-
-<a href="dashboard.html">Voltar ao Dashboard</a>
+</div>
 
 <script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
-
 <script src="../js/auth.js"></script>
 <script src="../js/graph.js"></script>
 <script src="../js/app.js"></script>
