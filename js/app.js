@@ -712,3 +712,6 @@ async function aprovarPedido(){
 await atualizarEstadoPedido("Aprovado");
 
 }
+function mostrarSegundoAprovador(){
+  document.getElementById("segundoAprovadorBox").style.display = "block";
+}
