@@ -832,7 +832,7 @@ linha.innerHTML = `
 <td>${badgeEstado(f.EstadoPedido)}</td>
 <td>
 
-<button class="btn-ver" onclick="abrirPdf('${f.PdfUrl}')">
+<button class="btn-ver" onclick="window.open('${f.PdfUrl}','_blank')">
 📄 PDF
 </button>
 
