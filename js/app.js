@@ -215,13 +215,19 @@ linha.innerHTML = `
 
 });
 }
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
 
-    const tabela = document.getElementById("listaPedidos");
+const tabela = document.getElementById("listaPedidos");
 
-    if(tabela){
-        carregarDashboard();
-    }
+if(tabela){
+await carregarDashboard();
+}
+
+const selectAprovador = document.getElementById("aprovador1");
+
+if(selectAprovador){
+await carregarAprovadores();
+}
 
 });
 window.guardarFatura = async function guardarFatura(){
@@ -230,6 +236,8 @@ window.guardarFatura = async function guardarFatura(){
     const numeroFatura = document.getElementById("numeroFatura").value;
     const numeroNormalizado = numeroFatura.toUpperCase().trim();
     const numeroInterno = await gerarNumeroInterno();
+    const aprovador1 = document.getElementById("aprovador1")?.value || "";
+const aprovador2 = document.getElementById("aprovador2")?.value || "";
 
 const duplicado = await verificarFaturaDuplicada(numeroNormalizado);
 
@@ -295,6 +303,8 @@ if(ficheiro){
             DataCriacaoPedido: new Date().toISOString(),
 
             EstadoPedido: "Pendente",
+            Aprovador1Email: aprovador1,
+Aprovador2Email: aprovador2,
 PdfUrl: pdfUrl,
 PdfNomeFicheiro: pdfNome
         }
@@ -740,5 +750,37 @@ return data.value.map(item => ({
 nome: item.fields.NomeAprovador,
 email: item.fields.EmailAprovador
 }));
+
+}
+async function carregarAprovadores(){
+
+const aprovadores = await obterAprovadores();
+
+const select1 = document.getElementById("aprovador1");
+const select2 = document.getElementById("aprovador2");
+
+if(!select1) return;
+
+select1.innerHTML = `<option value="">Selecionar</option>`;
+
+if(select2){
+select2.innerHTML = `<option value="">Selecionar</option>`;
+}
+
+aprovadores.forEach(a => {
+
+const opt1 = document.createElement("option");
+opt1.value = a.email;
+opt1.textContent = a.nome;
+select1.appendChild(opt1);
+
+if(select2){
+const opt2 = document.createElement("option");
+opt2.value = a.email;
+opt2.textContent = a.nome;
+select2.appendChild(opt2);
+}
+
+});
 
 }
