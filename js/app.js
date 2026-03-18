@@ -179,7 +179,13 @@ if(f.PdfUrl){
 }
 
 };
-
+const aprovadores = [
+    f.Aprovador1Email,
+    f.Aprovador2Email
+]
+.filter(a => a && a !== "")
+.map(a => a.split("@")[0]) // só nome antes do email
+.join(" / ");
 linha.innerHTML = `
 <td>
 <input type="checkbox" class="checkPedido" value="${p.id}" onclick="event.stopPropagation()">
