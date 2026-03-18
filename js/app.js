@@ -238,7 +238,10 @@ window.guardarFatura = async function guardarFatura(){
     const numeroInterno = await gerarNumeroInterno();
     const aprovador1 = document.getElementById("aprovador1")?.value || "";
 const aprovador2 = document.getElementById("aprovador2")?.value || "";
-
+if(!aprovador1){
+alert("Tem de selecionar um aprovador.");
+return;
+}
 const duplicado = await verificarFaturaDuplicada(numeroNormalizado);
 
 if(duplicado){
