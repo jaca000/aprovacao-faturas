@@ -193,6 +193,7 @@ linha.innerHTML = `
 <td>${f.NumeroInterno || ""}</td>
 <td>${f.Fornecedor || ""}</td>
 <td>${f.NumeroFaturaOriginal || ""}</td>
+<td>${aprovadores || "-"}</td>
 <td>${badgeEstado(f.EstadoPedido)}</td>
 `;
 
