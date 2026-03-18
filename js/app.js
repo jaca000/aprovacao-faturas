@@ -251,9 +251,6 @@ if(duplicado){
     return;
 
 }
-    const valor = document.getElementById("valor").value;
-    const dataDocumento = document.getElementById("dataFatura").value;
-    const dataVencimento = document.getElementById("dataVencimento").value;
     const ficheiro = document.getElementById("ficheiroPDF").files[0];
     let pdfUrl = "";
 let pdfNome = "";
@@ -290,14 +287,6 @@ if(ficheiro){
             NumeroFaturaOriginal: numeroFatura,
 
             NumeroFaturaNormalizado: numeroNormalizado,
-
-            ValorDocumento: parseFloat(valor),
-
-            Moeda: "EUR",
-
-            DataDocumento: dataDocumento,
-
-            DataVencimento: dataVencimento,
 
             CriadoPorNome: utilizador.displayName,
 
