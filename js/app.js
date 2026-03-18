@@ -542,11 +542,7 @@ const siteId = site.id;
 const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
 
 const body = {
-
-fields:{
 EstadoPedido: estado
-}
-
 };
 
 await fetch(
