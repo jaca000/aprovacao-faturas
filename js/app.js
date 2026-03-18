@@ -737,8 +737,8 @@ const data = await resp.json();
 console.log("Aprovadores:", data);
 
 return data.value.map(item => ({
-nome: item.fields.Title,
-email: item.fields.Email
+nome: item.fields.NomeAprovador,
+email: item.fields.EmailAprovador
 }));
 
 }
