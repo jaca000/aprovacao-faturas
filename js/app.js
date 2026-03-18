@@ -831,9 +831,27 @@ linha.innerHTML = `
 <td>${f.NumeroFaturaOriginal || ""}</td>
 <td>${badgeEstado(f.EstadoPedido)}</td>
 <td>
-<button class="btn-tabela-acao" onclick="window.location.href='ver-pedido.html?id=${p.id}'">
-Abrir
+
+<button class="btn-ver" onclick="abrirPdf('${f.PdfUrl}')">
+📄 PDF
 </button>
+
+<button class="btn-aprovar" onclick="aprovarDireto('${p.id}')">
+✔
+</button>
+
+<button class="btn-rejeitar" onclick="mostrarRejeicaoLinha('${p.id}')">
+✖
+</button>
+
+<div id="rej-${p.id}" class="box-rejeicao-linha">
+<textarea id="obs-${p.id}" placeholder="Motivo da rejeição..."></textarea>
+
+<button onclick="confirmarRejeicaoLinha('${p.id}')">
+Confirmar
+</button>
+</div>
+
 </td>
 `;
 
