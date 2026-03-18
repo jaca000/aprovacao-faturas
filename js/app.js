@@ -908,7 +908,7 @@ Authorization:"Bearer "+token,
 body: JSON.stringify({
 fields:{
 EstadoPedido:"Rejeitado",
-ComentarioRejeicao: obs
+Observacoes: obs
 }
 })
 }
