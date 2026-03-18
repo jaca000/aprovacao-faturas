@@ -206,16 +206,19 @@ linha.innerHTML = `
 }
 window.addEventListener("load", async () => {
 
-const tabela = document.getElementById("listaPedidos");
-
-if(tabela){
+const tabelaDashboard = document.getElementById("listaPedidos");
+if(tabelaDashboard){
 await carregarDashboard();
 }
 
 const selectAprovador = document.getElementById("aprovador1");
-
 if(selectAprovador){
 await carregarAprovadores();
+}
+
+const tabelaAprovacoes = document.getElementById("listaAprovacoes");
+if(tabelaAprovacoes){
+await carregarAprovacoes();
 }
 
 });
