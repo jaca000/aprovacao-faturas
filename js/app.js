@@ -897,7 +897,7 @@ const site = await obterSiteApp();
 const siteId = site.id;
 const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
 
-await fetch(
+const resp = await fetch(
 `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
 {
 method:"PATCH",
@@ -913,6 +913,15 @@ Observacoes: obs
 })
 }
 );
+
+const data = await resp.json();
+
+console.log("RESPOSTA SHAREPOINT:", data);
+
+if(!resp.ok){
+alert("Erro ao rejeitar pedido");
+return;
+}
 
 alert("Pedido rejeitado");
 
