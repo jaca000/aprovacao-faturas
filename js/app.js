@@ -878,3 +878,12 @@ linha.style.display = linha.innerText.toLowerCase().includes(termo) ? "" : "none
 }
 
 }
+async function aprovarDireto(id){
+
+await atualizarEstadoPedidoId(id, "Aprovado");
+
+alert("Pedido aprovado");
+
+location.reload();
+
+}
