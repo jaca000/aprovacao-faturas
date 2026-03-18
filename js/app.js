@@ -887,3 +887,45 @@ alert("Pedido aprovado");
 location.reload();
 
 }
+function mostrarRejeicaoLinha(id){
+
+document.getElementById("rej-" + id).style.display = "block";
+
+}
+async function confirmarRejeicaoLinha(id){
+
+const obs = document.getElementById("obs-" + id).value.trim();
+
+if(!obs){
+alert("Tem de escrever um motivo.");
+return;
+}
+
+const token = await getAccessToken();
+const site = await obterSiteApp();
+
+const siteId = site.id;
+const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+await fetch(
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
+{
+method:"PATCH",
+headers:{
+Authorization:"Bearer "+token,
+"Content-Type":"application/json"
+},
+body: JSON.stringify({
+fields:{
+EstadoPedido:"Rejeitado",
+ComentarioRejeicao: obs
+}
+})
+}
+);
+
+alert("Pedido rejeitado");
+
+location.reload();
+
+}
