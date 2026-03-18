@@ -118,15 +118,7 @@ f.Aprovador2Email === email
 );
 
 });
-let valorAprovar = 0;
 
-meusPendentes.forEach(p => {
-
-const v = parseFloat(p.fields.ValorDocumento || 0);
-
-valorAprovar += v;
-
-});
 lista.sort((a,b)=>{
 
 const estadoA = a.fields.EstadoPedido;
@@ -159,8 +151,6 @@ return 0;
     document.getElementById("aprovados").innerText = aprovados;
     document.getElementById("rejeitados").innerText = rejeitados;
     document.getElementById("meusPendentes").innerText = meusPendentes.length;
-    document.getElementById("valorAprovar").innerText =
-valorAprovar.toLocaleString("pt-PT",{style:"currency",currency:"EUR"});
 const tabela = document.getElementById("listaPedidos");
 
 tabela.innerHTML = "";
@@ -201,14 +191,14 @@ alerta = '<span class="vencimento-alerta">vence em '+dias+' dias</span>';
 }
 
 linha.innerHTML = `
+linha.innerHTML = `
 <td>
 <input type="checkbox" class="checkPedido" value="${p.id}" onclick="event.stopPropagation()">
 </td>
 <td>${f.NumeroInterno || ""}</td>
 <td>${f.Fornecedor || ""}</td>
 <td>${f.NumeroFaturaOriginal || ""}</td>
-<td>${f.ValorDocumento || ""}</td>
-<td>${badgeEstado(f.EstadoPedido)} ${alerta}</td>
+<td>${badgeEstado(f.EstadoPedido)}</td>
 `;
 
     tabela.appendChild(linha);
