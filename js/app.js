@@ -171,7 +171,13 @@ f.Aprovador2Email === email
 linha.classList.add("linha-para-aprovar");
 }
 linha.onclick = () => {
-window.location.href = `ver-pedido.html?id=${p.id}`;
+
+if(f.PdfUrl){
+    window.open(f.PdfUrl, "_blank");
+}else{
+    alert("Este pedido não tem PDF associado.");
+}
+
 };
 
 const dias = diasParaVencimento(f.DataVencimento);
