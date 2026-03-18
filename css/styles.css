@@ -596,3 +596,18 @@ font-size:13px;
 .btn-add:hover{
 text-decoration:underline;
 }
+.btn-tabela-acao{
+background:linear-gradient(135deg,#3b82f6,#2563eb);
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+font-weight:600;
+}
+
+.btn-tabela-acao:hover{
+transform:translateY(-1px);
+box-shadow:0 8px 18px rgba(37,99,235,0.25);
+}
