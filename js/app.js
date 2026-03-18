@@ -765,3 +765,95 @@ select2.appendChild(opt2);
 });
 
 }
+async function carregarAprovacoes(){
+
+const perfil = await obterPerfilUtilizador();
+
+const btnFatura = document.getElementById("btnNovaFatura");
+const btnDespesa = document.getElementById("btnNovaDespesa");
+const btnAdmin = document.getElementById("btnAdmin");
+
+if(btnFatura && btnDespesa && btnAdmin){
+
+if(perfil === "Admin"){
+btnFatura.style.display = "inline-block";
+btnDespesa.style.display = "inline-block";
+btnAdmin.style.display = "inline-block";
+}
+else if(perfil === "GestorFaturas"){
+btnFatura.style.display = "inline-block";
+btnDespesa.style.display = "inline-block";
+btnAdmin.style.display = "none";
+}
+else{
+btnFatura.style.display = "none";
+btnDespesa.style.display = "inline-block";
+btnAdmin.style.display = "none";
+}
+
+}
+
+const utilizador = await testarGraph();
+const email = utilizador.mail || utilizador.userPrincipalName;
+
+const pedidos = await obterPedidosFaturas();
+const lista = pedidos.value || [];
+
+const pendentesParaMim = lista.filter(p => {
+
+const f = p.fields;
+
+return f.EstadoPedido === "Pendente" &&
+(
+f.Aprovador1Email === email ||
+f.Aprovador2Email === email
+);
+
+});
+
+document.getElementById("totalAprovacoesPendentes").innerText = pendentesParaMim.length;
+
+const tabela = document.getElementById("listaAprovacoes");
+tabela.innerHTML = "";
+
+pendentesParaMim.forEach(p => {
+
+const f = p.fields;
+
+const linha = document.createElement("tr");
+
+linha.innerHTML = `
+<td>${f.NumeroInterno || ""}</td>
+<td>${f.Fornecedor || ""}</td>
+<td>${f.NumeroFaturaOriginal || ""}</td>
+<td>${badgeEstado(f.EstadoPedido)}</td>
+<td>
+<button class="btn-tabela-acao" onclick="window.location.href='ver-pedido.html?id=${p.id}'">
+Abrir
+</button>
+</td>
+`;
+
+tabela.appendChild(linha);
+
+});
+
+const pesquisa = document.getElementById("pesquisaAprovacoes");
+
+if(pesquisa){
+
+pesquisa.addEventListener("keyup", function(){
+
+const termo = this.value.toLowerCase();
+
+document.querySelectorAll("#listaAprovacoes tr").forEach(linha => {
+
+linha.style.display = linha.innerText.toLowerCase().includes(termo) ? "" : "none";
+
+});
+
+});
+
+}
+
+}
