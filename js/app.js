@@ -191,7 +191,6 @@ alerta = '<span class="vencimento-alerta">vence em '+dias+' dias</span>';
 }
 
 linha.innerHTML = `
-linha.innerHTML = `
 <td>
 <input type="checkbox" class="checkPedido" value="${p.id}" onclick="event.stopPropagation()">
 </td>
