@@ -906,20 +906,16 @@ Authorization:"Bearer "+token,
 "Content-Type":"application/json"
 },
 body: JSON.stringify({
-fields:{
-EstadoPedido:"Rejeitado",
+EstadoPedido: "Rejeitado",
 Observacoes: obs
-}
 })
 }
 );
 
-const data = await resp.json();
-
-console.log("RESPOSTA SHAREPOINT:", data);
-
 if(!resp.ok){
-alert("Erro ao rejeitar pedido");
+const erro = await resp.text();
+console.error("ERRO SHAREPOINT:", erro);
+alert("Erro ao rejeitar");
 return;
 }
 
