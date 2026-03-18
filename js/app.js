@@ -180,22 +180,6 @@ if(f.PdfUrl){
 
 };
 
-const dias = diasParaVencimento(f.DataVencimento);
-
-let alerta = "";
-
-if(dias !== null){
-
-if(dias <= 3){
-alerta = '<span class="vencimento-urgente">⚠ vence em '+dias+' dias</span>';
-}
-
-else if(dias <= 8){
-alerta = '<span class="vencimento-alerta">vence em '+dias+' dias</span>';
-}
-
-}
-
 linha.innerHTML = `
 <td>
 <input type="checkbox" class="checkPedido" value="${p.id}" onclick="event.stopPropagation()">
