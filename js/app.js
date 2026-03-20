@@ -486,7 +486,9 @@ const body = {
 EstadoPedido: novoEstado,
 Observacoes: comentario,
 PdfUrl: novoPdfUrl,
-PdfNomeFicheiro: novoNome
+PdfNomeFicheiro: novoNome,
+PdfDriveItemId: novoPdfId,
+PdfDownloadUrl: novoPdfDownloadUrl
 };
 
 const resp = await fetch(
@@ -1011,7 +1013,10 @@ const ficheiro = new File(
 
 /* upload */
 const upload = await uploadPdfSharePoint(ficheiro);
-
+const novoPdfUrl = upload.webUrl;
+const novoPdfId = upload.id;
+const novoPdfDownloadUrl = upload.downloadUrl || "";
+const novoPdfNome = upload.name;
 /* update SharePoint */
 await fetch(
 `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
@@ -1024,7 +1029,10 @@ Authorization:"Bearer "+token,
 body: JSON.stringify({
 EstadoPedido: novoEstado,
 Observacoes: comentario,
-PdfUrl: upload.webUrl
+PdfUrl: novoPdfUrl,
+PdfNomeFicheiro: novoPdfNome,
+PdfDriveItemId: novoPdfId,
+PdfDownloadUrl: novoPdfDownloadUrl
 })
 }
 );
