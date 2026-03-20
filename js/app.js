@@ -697,10 +697,14 @@ const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
 const utilizador = await testarGraph();
 
-const texto =
+let texto =
 estado + "\n" +
 utilizador.displayName + "\n" +
 new Date().toLocaleString("pt-PT");
+
+if(estado === "Rejeitado" && comentario){
+    texto += "\nMotivo: " + comentario;
+}
 
 /* escrever no PDF */
 const { width, height } = page.getSize();
