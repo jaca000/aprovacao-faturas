@@ -666,58 +666,7 @@ const pdfFinal = await pdfDoc.save();
 return pdfFinal;
 
 }
-});
 
-const dataItem = await respItem.json();
-
-const pdfUrl = dataItem.fields.PdfUrl;
-
-console.log("PDF URL:", pdfUrl);
-
-/* buscar PDF real */
-const resp = await fetch(pdfUrl, {
-    headers: {
-        Authorization: "Bearer " + token
-    }
-});
-
-if(!resp.ok){
-    alert("Erro ao carregar PDF");
-    throw new Error("Erro PDF");
-}
-
-const bytes = await resp.arrayBuffer();
-
-/* carregar PDF */
-const pdfDoc = await PDFDocument.load(bytes);
-
-const pages = pdfDoc.getPages();
-const page = pages[0];
-
-const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-
-const utilizador = await testarGraph();
-
-const texto =
-estado + "\n" +
-utilizador.displayName + "\n" +
-new Date().toLocaleString("pt-PT");
-
-/* escrever no PDF */
-page.drawText(texto,{
-x:50,
-y:100,
-size:20,
-font:font,
-color: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.8,0,0)
-});
-
-/* guardar */
-const pdfFinal = await pdfDoc.save();
-
-return pdfFinal;
-
-}
 function atualizarDataHora(){
 
 const agora = new Date();
