@@ -888,7 +888,7 @@ const perfil = await obterPerfilUtilizador();
 
 const btnFatura = document.getElementById("btnNovaFatura");
 const btnDespesa = document.getElementById("btnNovaDespesa");
-const btnAdmin = document.getElementById("btnAdmin");
+const menuAdmin = document.getElementById("menuAdmin");
 
 if(btnFatura && btnDespesa && btnAdmin){
 
