@@ -753,7 +753,30 @@ if(linha.startsWith("Motivo:")){
 const baseHeight = 60;
 const alturaLinha = 16;
 const boxHeight = baseHeight + (linhas.length * alturaLinha);
+/* posição correta */
+const boxWidth = 260;
+const margin = 20;
 
+const x = width - boxWidth - margin;
+const y = height - boxHeight - margin;
+
+/* fundo */
+page.drawRectangle({
+x, y,
+width: boxWidth,
+height: boxHeight,
+color: rgb(1,1,1),
+opacity: 0.7
+});
+
+/* borda */
+page.drawRectangle({
+x, y,
+width: boxWidth,
+height: boxHeight,
+borderWidth: 2,
+borderColor: corPrincipal
+});
 /* escrever linhas */
 linhas.forEach((linha, i) => {
 page.drawText(linha,{
