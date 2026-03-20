@@ -890,7 +890,7 @@ const btnFatura = document.getElementById("btnNovaFatura");
 const btnDespesa = document.getElementById("btnNovaDespesa");
 const menuAdmin = document.getElementById("menuAdmin");
 
-if(btnFatura && btnDespesa && btnAdmin){
+if(btnFatura && btnDespesa){
 
 if(perfil === "Admin"){
 btnFatura.style.display = "inline-block";
