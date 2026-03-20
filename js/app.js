@@ -875,33 +875,7 @@ alert("Tem de escrever um motivo.");
 return;
 }
 
-const token = await getAccessToken();
-const site = await obterSiteApp();
-
-const siteId = site.id;
-const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
-
-const resp = await fetch(
-`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
-{
-method:"PATCH",
-headers:{
-Authorization:"Bearer "+token,
-"Content-Type":"application/json"
-},
-body: JSON.stringify({
-EstadoPedido: "Rejeitado",
-Observacoes: obs
-})
-}
-);
-
-if(!resp.ok){
-const erro = await resp.text();
-console.error("ERRO SHAREPOINT:", erro);
-alert("Erro ao rejeitar");
-return;
-}
+await atualizarEstadoPedidoPorId(id, "Rejeitado", obs);
 
 alert("Pedido rejeitado");
 
