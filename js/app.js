@@ -754,8 +754,6 @@ const baseHeight = 60;
 const alturaLinha = 16;
 const boxHeight = baseHeight + (linhas.length * alturaLinha);
 /* posição correta */
-const boxWidth = 260;
-const margin = 20;
 
 const x = width - boxWidth - margin;
 const y = height - boxHeight - margin;
