@@ -592,7 +592,7 @@ const site = await obterSiteApp();
 const siteId = site.id;
 
 const resp = await fetch(
-`https://graph.microsoft.com/v1.0/sites/${siteId}/drive/root:/Shared Documents/${pdfId}:/content`,
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/driveItem/content`,
 {
     headers: {
         Authorization: "Bearer " + token
