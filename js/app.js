@@ -248,8 +248,9 @@ if(ficheiro){
 
     const upload = await uploadPdfSharePoint(ficheiro);
 
-    pdfUrl = upload.webUrl;
-    pdfNome = upload.name;
+pdfUrl = upload.webUrl;
+pdfNome = upload.name;
+pdfId = upload.id;
 
 }
     const utilizador = await testarGraph();
