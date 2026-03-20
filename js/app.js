@@ -1,4 +1,16 @@
 console.log("App iniciada");
+async function obterListaPedidosSegura(){
+
+    const pedidos = await obterPedidosFaturas();
+
+    if(!pedidos || !pedidos.value){
+        console.warn("Sem pedidos ou erro no Graph");
+        return [];
+    }
+
+    return pedidos.value;
+
+}
 async function uploadPdfSharePoint(ficheiro){
 
     const token = await getAccessToken();
@@ -950,8 +962,7 @@ if(menuAdmin) menuAdmin.style.display = "none";
 const utilizador = await testarGraph();
 const email = utilizador.mail || utilizador.userPrincipalName;
 
-const pedidos = await obterPedidosFaturas();
-const lista = pedidos.value || [];
+const lista = await obterListaPedidosSegura();
 
 const pendentesParaMim = lista.filter(p => {
 
