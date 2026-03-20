@@ -583,17 +583,20 @@ async function carimbarPdf(urlPdf, estado){
 
 const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
+/* buscar PDF */
 const resp = await fetch(urlPdf);
+
+if(!resp.ok){
+    alert("Erro ao carregar PDF");
+    throw new Error("Erro PDF");
+}
+
 const bytes = await resp.arrayBuffer();
 
-const token = await getAccessToken();
-
-const bytes = await resp.arrayBuffer();
-
+/* carregar PDF */
 const pdfDoc = await PDFDocument.load(bytes);
 
 const pages = pdfDoc.getPages();
-
 const page = pages[0];
 
 const font = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
@@ -605,6 +608,7 @@ estado + "\n" +
 utilizador.displayName + "\n" +
 new Date().toLocaleString("pt-PT");
 
+/* escrever no PDF */
 page.drawText(texto,{
 x:50,
 y:100,
@@ -613,6 +617,7 @@ font:font,
 color: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.8,0,0)
 });
 
+/* guardar */
 const pdfFinal = await pdfDoc.save();
 
 return pdfFinal;
