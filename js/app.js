@@ -119,6 +119,9 @@ if(email === adminEmail){
     if(menuAdmin) menuAdmin.style.display = "none";
 
 }
+    if(menuPedidos){
+    menuPedidos.style.display = "none";
+}
     const pedidos = await obterPedidosFaturas();
 
     const utilizador = await testarGraph();
