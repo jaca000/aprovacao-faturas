@@ -101,7 +101,11 @@ const perfil = await obterPerfilUtilizador();
 
 console.log("Perfil do utilizador:", perfil);
     const btnFatura = document.getElementById("btnNovaFatura");
+    if(btnFatura){
     btnFatura.onclick = () => {
+        window.location.href = "nova-fatura.html";
+    };
+}
 
     window.location.href = "nova-fatura.html";
 
