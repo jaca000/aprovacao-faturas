@@ -730,7 +730,9 @@ if(estado === "Rejeitado" && comentario){
 
 /* escrever no PDF */
 const { width, height } = page.getSize();
-
+const corPrincipal = estado === "Aprovado"
+? rgb(0,0.6,0)
+: rgb(0.8,0,0);
 /* posição do carimbo */
 const boxWidth = 260;
 const margin = 20;
