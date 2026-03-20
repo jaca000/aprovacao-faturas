@@ -707,8 +707,10 @@ new Date().toLocaleString("pt-PT");
 /* escrever no PDF */
 const { height } = page.getSize();
 
+const { width, height } = page.getSize();
+
 page.drawText(texto,{
-x: 40,
+x: width - 250,
 y: height - 80,
 size: 14,
 font: font,
