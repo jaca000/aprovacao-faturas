@@ -524,7 +524,7 @@ const selecionados = document.querySelectorAll(".checkPedido:checked");
 
 for(const check of selecionados){
 
-await atualizarEstadoPedido(check.value,"Aprovado");
+await atualizarEstadoPedidoPorId(check.value,"Aprovado");
 
 }
 
@@ -539,7 +539,7 @@ const selecionados = document.querySelectorAll(".checkPedido:checked");
 
 for(const check of selecionados){
 
-await atualizarEstadoPedido(check.value,"Rejeitado");
+await atualizarEstadoPedidoPorId(check.value,"Rejeitado");
 
 }
 
@@ -548,35 +548,7 @@ alert("Pedidos rejeitados");
 location.reload();
 
 }
-async function atualizarEstadoPedido(id,estado){
 
-const token = await getAccessToken();
-
-const site = await obterSiteApp();
-const siteId = site.id;
-
-const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
-
-const body = {
-EstadoPedido: estado
-};
-
-await fetch(
-
-`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
-
-{
-method:"PATCH",
-headers:{
-Authorization:"Bearer "+token,
-"Content-Type":"application/json"
-},
-body:JSON.stringify(body)
-}
-
-);
-
-}
 const checkTodos = document.getElementById("checkTodos");
 
 if(checkTodos){
@@ -882,7 +854,7 @@ linha.style.display = linha.innerText.toLowerCase().includes(termo) ? "" : "none
 }
 async function aprovarDireto(id){
 
-await atualizarEstadoPedido(id, "Aprovado");
+await atualizarEstadoPedidoPorId(id, "Aprovado");
 
 alert("Pedido aprovado");
 
@@ -934,5 +906,54 @@ return;
 alert("Pedido rejeitado");
 
 location.reload();
+
+}
+async function atualizarEstadoPedidoPorId(id, novoEstado, comentario=""){
+
+const token = await getAccessToken();
+const site = await obterSiteApp();
+const siteId = site.id;
+const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
+/* buscar pedido */
+const respPedido = await fetch(
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}?expand=fields`,
+{
+headers:{ Authorization:"Bearer "+token }
+}
+);
+
+const dados = await respPedido.json();
+const f = dados.fields;
+
+/* carimbar PDF */
+const pdfCarimbado = await carimbarPdf(f.PdfUrl, novoEstado);
+
+/* criar novo ficheiro */
+const ficheiro = new File(
+[pdfCarimbado],
+`fatura_${id}_${Date.now()}.pdf`,
+{ type: "application/pdf" }
+);
+
+/* upload */
+const upload = await uploadPdfSharePoint(ficheiro);
+
+/* update SharePoint */
+await fetch(
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/fields`,
+{
+method:"PATCH",
+headers:{
+Authorization:"Bearer "+token,
+"Content-Type":"application/json"
+},
+body: JSON.stringify({
+EstadoPedido: novoEstado,
+Observacoes: comentario,
+PdfUrl: upload.webUrl
+})
+}
+);
 
 }
