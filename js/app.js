@@ -733,7 +733,10 @@ const { width, height } = page.getSize();
 
 /* posição do carimbo */
 const boxWidth = 260;
-const boxHeight = estado === "Rejeitado" ? 120 : 80;
+const baseHeight = 60;
+const alturaLinha = 16;
+
+const boxHeight = baseHeight + (linhas.length * alturaLinha);
 const margin = 20;
 
 const x = width - boxWidth - margin;
