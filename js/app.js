@@ -579,12 +579,20 @@ const diff = venc - hoje;
 return Math.ceil(diff / (1000*60*60*24));
 
 }
-async function carimbarPdf(urlPdf, estado){
+async function carimbarPdf(pdfId, estado){
 
 const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
 /* buscar PDF */
-const resp = await fetch(urlPdf);
+const token = await getAccessToken();
+
+const resp = await fetch(
+`https://graph.microsoft.com/v1.0/me/drive/items/${pdfId}/content`,
+{
+    headers: {
+        Authorization: "Bearer " + token
+    }
+});
 
 if(!resp.ok){
     alert("Erro ao carregar PDF");
@@ -906,7 +914,7 @@ const dados = await respPedido.json();
 const f = dados.fields;
 
 /* carimbar PDF */
-const pdfCarimbado = await carimbarPdf(f.PdfUrl, novoEstado);
+const pdfCarimbado = await carimbarPdf(f.PdfDriveItemId, novoEstado);
 
 /* criar novo ficheiro */
 const ficheiro = new File(
