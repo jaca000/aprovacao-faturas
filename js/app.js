@@ -900,7 +900,7 @@ if(menuAdmin) menuAdmin.style.display = "flex";
 else if(perfil === "GestorFaturas"){
 btnFatura.style.display = "inline-block";
 btnDespesa.style.display = "inline-block";
-btnAdmin.style.display = "none";
+if(menuAdmin) menuAdmin.style.display = "none";
 }
 else{
 btnFatura.style.display = "none";
