@@ -629,6 +629,28 @@ const diff = venc - hoje;
 return Math.ceil(diff / (1000*60*60*24));
 
 }
+function dividirTexto(texto, maxChars){
+
+const palavras = texto.split(" ");
+const linhas = [];
+let linha = "";
+
+for(let p of palavras){
+
+if((linha + p).length > maxChars){
+    linhas.push(linha.trim());
+    linha = p + " ";
+}else{
+    linha += p + " ";
+}
+
+}
+
+if(linha) linhas.push(linha.trim());
+
+return linhas;
+
+}
 async function carimbarPdf(itemId, estado, comentarioExtra = ""){
 
 const { PDFDocument, rgb, StandardFonts } = PDFLib;
