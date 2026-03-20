@@ -705,10 +705,6 @@ utilizador.displayName + "\n" +
 new Date().toLocaleString("pt-PT");
 
 /* escrever no PDF */
-const { height } = page.getSize();
-
-const { width, height } = page.getSize();
-
 const { width, height } = page.getSize();
 
 /* posição do carimbo */
