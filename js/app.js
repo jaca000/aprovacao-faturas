@@ -733,10 +733,7 @@ const { width, height } = page.getSize();
 
 /* posição do carimbo */
 const boxWidth = 260;
-const baseHeight = 60;
-const alturaLinha = 16;
-
-const boxHeight = baseHeight + (linhas.length * alturaLinha);
+const margin = 20;
 const margin = 20;
 
 const x = width - boxWidth - margin;
@@ -767,7 +764,23 @@ borderColor: corPrincipal
 });
 
 /* texto dividido */
-const linhas = texto.split("\n");
+let linhas = [];
+
+texto.split("\n").forEach(linha => {
+
+if(linha.startsWith("Motivo:")){
+    const partes = dividirTexto(linha, 35);
+    linhas.push(...partes);
+}else{
+    linhas.push(linha);
+}
+
+});
+
+/* AGORA SIM: calcular altura */
+const baseHeight = 60;
+const alturaLinha = 16;
+const boxHeight = baseHeight + (linhas.length * alturaLinha);
 
 /* escrever linhas */
 linhas.forEach((linha, i) => {
