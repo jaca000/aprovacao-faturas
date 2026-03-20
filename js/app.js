@@ -584,11 +584,7 @@ const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
 const token = await getAccessToken();
 
-const resp = await fetch(urlPdf + "?download=1", {
-    headers: {
-        Authorization: "Bearer " + token
-    }
-});
+const resp = await fetch(urlPdf + "?download=1");
 
 const bytes = await resp.arrayBuffer();
 
