@@ -241,8 +241,10 @@ if(duplicado){
 
 }
     const ficheiro = document.getElementById("ficheiroPDF").files[0];
-    let pdfUrl = "";
+let pdfUrl = "";
 let pdfNome = "";
+let pdfId = "";
+let pdfDownloadUrl = "";
 
 if(ficheiro){
 
@@ -251,7 +253,9 @@ if(ficheiro){
 pdfUrl = upload.webUrl;
 pdfNome = upload.name;
 pdfId = upload.id;
+pdfDownloadUrl = upload.downloadUrl || "";
 console.log("UPLOAD ID:", pdfId);
+console.log("UPLOAD DOWNLOAD URL:", pdfDownloadUrl);
 
 }
     const utilizador = await testarGraph();
@@ -290,7 +294,8 @@ console.log("UPLOAD ID:", pdfId);
 Aprovador2Email: aprovador2,
 PdfUrl: pdfUrl,
 PdfNomeFicheiro: pdfNome,
-PdfDriveItemId: pdfId
+PdfDriveItemId: pdfId,
+PdfDownloadUrl: pdfDownloadUrl
         }
     };
 
