@@ -1,5 +1,44 @@
 console.log("App iniciada");
+async function uploadPdfSharePoint(ficheiro){
 
+    const token = await getAccessToken();
+
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const nomeFicheiro = ficheiro.name;
+
+    /* caminho onde vai guardar */
+    const caminho = `Faturas/${nomeFicheiro}`;
+
+    const url = `https://graph.microsoft.com/v1.0/sites/${siteId}/drive/root:/${caminho}:/content`;
+
+    const resp = await fetch(url, {
+        method: "PUT",
+        headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": ficheiro.type
+        },
+        body: ficheiro
+    });
+
+    if(!resp.ok){
+        alert("Erro no upload do PDF");
+        throw new Error("Erro upload");
+    }
+
+    const data = await resp.json();
+
+    console.log("UPLOAD GRAPH:", data);
+
+    return {
+        webUrl: data.webUrl,
+        name: data.name,
+        id: data.id,
+        downloadUrl: data["@microsoft.graph.downloadUrl"]
+    };
+
+}
 const appDiv = document.getElementById("app");
 
 if(appDiv){
