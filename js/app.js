@@ -455,19 +455,22 @@ const f = dados.fields;
 
 const pdfCarimbado = await carimbarPdf(f.PdfUrl, novoEstado);
 
-/* substituir PDF no SharePoint */
+/* upload novo PDF */
 
 const ficheiro = new Blob([pdfCarimbado],{type:"application/pdf"});
 
-await uploadPdfSharePoint(ficheiro);
+const upload = await uploadPdfSharePoint(ficheiro);
 
-/* atualizar estado */
+const novoPdfUrl = upload.webUrl;
+const novoNome = upload.name;
+
+/* atualizar estado + novo PDF */
 
 const body = {
-fields:{
 EstadoPedido: novoEstado,
-ComentarioRejeicao: comentario
-}
+Observacoes: comentario,
+PdfUrl: novoPdfUrl,
+PdfNomeFicheiro: novoNome
 };
 
 const resp = await fetch(
