@@ -589,7 +589,7 @@ const { PDFDocument, rgb, StandardFonts } = PDFLib;
 const token = await getAccessToken();
 
 const resp = await fetch(
-`https://graph.microsoft.com/v1.0/me/drive/items/${pdfId}/content`,
+`https://graph.microsoft.com/v1.0/sites/${siteId}/drive/items/${pdfId}/content`,
 {
     headers: {
         Authorization: "Bearer " + token
