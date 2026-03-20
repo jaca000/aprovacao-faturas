@@ -705,11 +705,14 @@ utilizador.displayName + "\n" +
 new Date().toLocaleString("pt-PT");
 
 /* escrever no PDF */
+const { height } = page.getSize();
+
 page.drawText(texto,{
-x:50,
-y:100,
-size:20,
-font:font,
+x: 40,
+y: height - 80,
+size: 14,
+font: font,
+lineHeight: 16,
 color: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.8,0,0)
 });
 
