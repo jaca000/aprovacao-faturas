@@ -753,14 +753,24 @@ const margin = 20;
 /* texto dividido */
 let linhas = [];
 
-texto.split("\n").forEach(linha => {
+const partesTexto = texto.split("\n");
 
-if(linha.startsWith("Motivo:")){
-    const partes = dividirTexto(linha, 35);
-    linhas.push(...partes);
-}else{
-    linhas.push(linha);
-}
+partesTexto.forEach(linha => {
+
+    if(linha.includes("Motivo:")){
+        
+        const textoLimpo = linha.replace("Motivo: ", "");
+        const partes = dividirTexto(textoLimpo, 35);
+
+        linhas.push("Motivo:");
+
+        partes.forEach(p => {
+            linhas.push(p);
+        });
+
+    } else {
+        linhas.push(linha);
+    }
 
 });
 
