@@ -134,9 +134,7 @@ if(email === adminEmail){
     if(menuPedidos){
     menuPedidos.style.display = "none";
 }
-    const pedidos = await obterPedidosFaturas();
-
-const lista = pedidos.value;
+const lista = await obterListaPedidosSegura();
 const paraMim = [];
 const outros = [];
 
