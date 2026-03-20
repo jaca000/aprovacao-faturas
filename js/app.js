@@ -658,7 +658,7 @@ const dataItem = await respItem.json();
 
 const pdfDownloadUrl = dataItem.fields.PdfDownloadUrl;
 const pdfDriveItemId = dataItem.fields.PdfDriveItemId;
-const comentario = dataItem.fields.Observacoes || "";
+const comentario = comentarioExtra || dataItem.fields.Observacoes || "";
 console.log("PDF DOWNLOAD URL:", pdfDownloadUrl);
 console.log("PDF DRIVE ITEM ID:", pdfDriveItemId);
 
