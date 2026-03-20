@@ -735,32 +735,6 @@ const { width, height } = page.getSize();
 const boxWidth = 260;
 const margin = 20;
 
-const x = width - boxWidth - margin;
-
-/* fundo branco semi-transparente */
-page.drawRectangle({
-x: x,
-y: y,
-width: boxWidth,
-height: boxHeight,
-color: rgb(1,1,1),
-opacity: 0.7
-});
-
-/* borda */
-const corPrincipal = estado === "Aprovado"
-? rgb(0,0.6,0)
-: rgb(0.8,0,0);
-
-page.drawRectangle({
-x: x,
-y: y,
-width: boxWidth,
-height: boxHeight,
-borderWidth: 2,
-borderColor: corPrincipal
-});
-
 /* texto dividido */
 let linhas = [];
 
