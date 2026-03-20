@@ -726,13 +726,17 @@ opacity: 0.7
 });
 
 /* borda */
+const corPrincipal = estado === "Aprovado"
+? rgb(0,0.6,0)
+: rgb(0.8,0,0);
+
 page.drawRectangle({
 x: x,
 y: y,
 width: boxWidth,
 height: boxHeight,
-borderWidth: 1.5,
-borderColor: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.8,0,0)
+borderWidth: 2,
+borderColor: corPrincipal
 });
 
 /* texto dividido */
