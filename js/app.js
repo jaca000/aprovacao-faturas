@@ -385,11 +385,11 @@ Rejeitado
 </li>
 `;
 
-if(f.ComentarioRejeicao){
+if(f.Observacoes){
 
 timeline.innerHTML += `
 <li>
-Motivo: ${f.ComentarioRejeicao}
+Motivo: ${f.Observacoes}
 </li>
 `;
 
@@ -677,7 +677,7 @@ document.getElementById("areaRejeicao").style.display = "flex";
 async function confirmarRejeicao(){
 
 const comentario = document
-.getElementById("comentarioRejeicao")
+.getElementById("Observacoes")
 .value
 .trim();
 
