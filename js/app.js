@@ -456,7 +456,7 @@ const f = dados.fields;
 
 /* carimbar PDF */
 
-const pdfCarimbado = await carimbarPdf(f.PdfDriveItemId, novoEstado);
+const pdfCarimbado = await carimbarPdf(id, novoEstado);
 
 /* upload novo PDF */
 
