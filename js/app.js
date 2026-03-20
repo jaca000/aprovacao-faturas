@@ -629,7 +629,7 @@ const diff = venc - hoje;
 return Math.ceil(diff / (1000*60*60*24));
 
 }
-async function carimbarPdf(itemId, estado){
+async function carimbarPdf(itemId, estado, comentarioExtra = ""){
 
 const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
