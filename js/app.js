@@ -100,15 +100,16 @@ async function carregarDashboard(){
 const perfil = await obterPerfilUtilizador();
 
 console.log("Perfil do utilizador:", perfil);
-    const btnFatura = document.getElementById("btnNovaFatura");
-    if(btnFatura){
+
+const btnFatura = document.getElementById("btnNovaFatura");
+if(btnFatura){
     btnFatura.onclick = () => {
         window.location.href = "nova-fatura.html";
     };
 }
 
 const btnDespesa = document.getElementById("btnNovaDespesa");
-const menuAdmin = document.getElementById("menuAdmin");
+const btnAdmin = document.getElementById("btnAdmin");
 const menuPedidos = document.getElementById("menuPedidos");
 
 const utilizador = await testarGraph();
@@ -118,21 +119,22 @@ const email = utilizador.mail || utilizador.userPrincipalName;
 const adminEmail = "TEU_EMAIL_AQUI";
 
 /* BOTÕES BASE */
-btnFatura.style.display = "inline-block";
-btnDespesa.style.display = "inline-block";
+if(btnFatura){
+    btnFatura.style.display = "inline-block";
+}
+if(btnDespesa){
+    btnDespesa.style.display = "inline-block";
+}
 
 /* ADMIN */
 if(email === adminEmail){
-
-    if(menuAdmin) menuAdmin.style.display = "flex";
-
-/* NÃO ADMIN */
+    if(btnAdmin) btnAdmin.style.display = "inline-block";
 }else{
-
-    if(menuAdmin) menuAdmin.style.display = "none";
-
+    if(btnAdmin) btnAdmin.style.display = "none";
 }
-    if(menuPedidos){
+
+/* PEDIDOS */
+if(menuPedidos){
     menuPedidos.style.display = "none";
 }
 const lista = await obterListaPedidosSegura();
