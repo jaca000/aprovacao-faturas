@@ -583,6 +583,9 @@ async function carimbarPdf(urlPdf, estado){
 
 const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
+const resp = await fetch(urlPdf);
+const bytes = await resp.arrayBuffer();
+
 const token = await getAccessToken();
 
 const bytes = await resp.arrayBuffer();
