@@ -457,7 +457,13 @@ const pdfCarimbado = await carimbarPdf(f.PdfUrl, novoEstado);
 
 /* upload novo PDF */
 
-const ficheiro = new Blob([pdfCarimbado],{type:"application/pdf"});
+const nomeFicheiro = `fatura_${Date.now()}.pdf`;
+
+const ficheiro = new File(
+    [pdfCarimbado],
+    nomeFicheiro,
+    { type: "application/pdf" }
+);
 
 const upload = await uploadPdfSharePoint(ficheiro);
 
