@@ -584,9 +584,14 @@ const { PDFDocument, rgb, StandardFonts } = PDFLib;
 
 const token = await getAccessToken();
 
-const resp = await fetch(urlPdf,{
-headers:{ Authorization:"Bearer "+token }
-});
+const resp = await fetch(
+`https://graph.microsoft.com/v1.0/sites/montedopasto.sharepoint.com:/sites/AppRegistoFaturas:${new URL(urlPdf).pathname.split("/sites/AppRegistoFaturas")[1]}:/content`,
+{
+headers:{
+Authorization: "Bearer " + token
+}
+}
+);
 
 const bytes = await resp.arrayBuffer();
 
