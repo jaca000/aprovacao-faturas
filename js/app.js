@@ -593,9 +593,23 @@ const siteId = site.id;
 
 const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
 
-const resp = await fetch(
-`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${itemId}/driveItem/content`,
+/* ir buscar dados do item */
+const respItem = await fetch(
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${itemId}?expand=fields`,
 {
+    headers: {
+        Authorization: "Bearer " + token
+    }
+});
+
+const dataItem = await respItem.json();
+
+const pdfUrl = dataItem.fields.PdfUrl;
+
+console.log("PDF URL:", pdfUrl);
+
+/* buscar PDF real */
+const resp = await fetch(pdfUrl, {
     headers: {
         Authorization: "Bearer " + token
     }
