@@ -9,7 +9,7 @@ async function uploadPdfSharePoint(ficheiro){
     const nomeFicheiro = ficheiro.name;
 
     /* caminho onde vai guardar */
-    const caminho = `Faturas/${nomeFicheiro}`;
+    const caminho = nomeFicheiro;
 
     const url = `https://graph.microsoft.com/v1.0/sites/${siteId}/drive/root:/${caminho}:/content`;
 
@@ -23,20 +23,22 @@ async function uploadPdfSharePoint(ficheiro){
     });
 
     if(!resp.ok){
-        alert("Erro no upload do PDF");
-        throw new Error("Erro upload");
-    }
+    const erroTexto = await resp.text();
+    console.error("ERRO UPLOAD PDF:", erroTexto);
+    alert("Erro no upload do PDF");
+    throw new Error("Erro upload");
+}
 
     const data = await resp.json();
 
     console.log("UPLOAD GRAPH:", data);
 
     return {
-        webUrl: data.webUrl,
-        name: data.name,
-        id: data.id,
-        downloadUrl: data["@microsoft.graph.downloadUrl"]
-    };
+    webUrl: data.webUrl,
+    name: data.name,
+    id: data.id,
+    downloadUrl: `https://graph.microsoft.com/v1.0/sites/${siteId}/drive/items/${data.id}/content`
+};
 
 }
 const appDiv = document.getElementById("app");
@@ -657,16 +659,28 @@ if(!respItem.ok){
 const dataItem = await respItem.json();
 
 const pdfDownloadUrl = dataItem.fields.PdfDownloadUrl;
+const pdfDriveItemId = dataItem.fields.PdfDriveItemId;
 
 console.log("PDF DOWNLOAD URL:", pdfDownloadUrl);
+console.log("PDF DRIVE ITEM ID:", pdfDriveItemId);
 
-if(!pdfDownloadUrl){
-    alert("Este pedido não tem PdfDownloadUrl gravado.");
-    throw new Error("PdfDownloadUrl em falta");
+let urlPdfFinal = pdfDownloadUrl;
+
+if(!urlPdfFinal && pdfDriveItemId){
+    urlPdfFinal = `https://graph.microsoft.com/v1.0/sites/${siteId}/drive/items/${pdfDriveItemId}/content`;
+}
+
+if(!urlPdfFinal){
+    alert("Este pedido não tem PdfDownloadUrl nem PdfDriveItemId gravados.");
+    throw new Error("URL PDF em falta");
 }
 
 /* buscar PDF bruto */
-const resp = await fetch(pdfDownloadUrl);
+const resp = await fetch(urlPdfFinal, {
+    headers: {
+        Authorization: "Bearer " + token
+    }
+});
 
 if(!resp.ok){
     alert("Erro ao carregar PDF");
