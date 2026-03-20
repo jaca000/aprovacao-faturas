@@ -600,11 +600,6 @@ const resp = await fetch(
         Authorization: "Bearer " + token
     }
 });
-{
-    headers: {
-        Authorization: "Bearer " + token
-    }
-});
 
 if(!resp.ok){
     alert("Erro ao carregar PDF");
