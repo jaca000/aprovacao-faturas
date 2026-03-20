@@ -9,7 +9,7 @@ async function uploadPdfSharePoint(ficheiro){
     const nomeFicheiro = ficheiro.name;
 
     /* caminho onde vai guardar */
-    const caminho = nomeFicheiro;
+    const caminho = `DocumentosAprovacao/${nomeFicheiro}`;
 
     const url = `https://graph.microsoft.com/v1.0/sites/${siteId}/drive/root:/${caminho}:/content`;
 
