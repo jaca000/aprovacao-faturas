@@ -749,7 +749,7 @@ page.drawText(linha,{
     y: y + boxHeight - 20 - (i * 18),
     size: i === 0 ? 16 : 12,
     font: font,
-    color: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.2,0.2,0.2)
+    color: i === 0 ? corPrincipal : rgb(0.2,0.2,0.2)
 });
 });
 
