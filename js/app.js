@@ -124,10 +124,6 @@ if(email === adminEmail){
 }
     const pedidos = await obterPedidosFaturas();
 
-    const utilizador = await testarGraph();
-
-const email = utilizador.mail || utilizador.userPrincipalName;
-
 const lista = pedidos.value;
 const paraMim = [];
 const outros = [];
