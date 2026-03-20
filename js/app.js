@@ -288,7 +288,8 @@ pdfId = upload.id;
             Aprovador1Email: aprovador1,
 Aprovador2Email: aprovador2,
 PdfUrl: pdfUrl,
-PdfNomeFicheiro: pdfNome
+PdfNomeFicheiro: pdfNome,
+PdfDriveItemId: pdfId
         }
     };
 
@@ -454,7 +455,7 @@ const f = dados.fields;
 
 /* carimbar PDF */
 
-const pdfCarimbado = await carimbarPdf(f.PdfUrl, novoEstado);
+const pdfCarimbado = await carimbarPdf(f.PdfDriveItemId, novoEstado);
 
 /* upload novo PDF */
 
@@ -914,6 +915,7 @@ const dados = await respPedido.json();
 const f = dados.fields;
 
 /* carimbar PDF */
+    console.log("PDF ID:", f.PdfDriveItemId);
 const pdfCarimbado = await carimbarPdf(f.PdfDriveItemId, novoEstado);
 
 /* criar novo ficheiro */
