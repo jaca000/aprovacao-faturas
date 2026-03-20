@@ -591,8 +591,15 @@ const token = await getAccessToken();
 const site = await obterSiteApp();
 const siteId = site.id;
 
+const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+
 const resp = await fetch(
-`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}/driveItem/content`,
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${itemId}/driveItem/content`,
+{
+    headers: {
+        Authorization: "Bearer " + token
+    }
+});
 {
     headers: {
         Authorization: "Bearer " + token
