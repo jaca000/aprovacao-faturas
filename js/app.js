@@ -251,6 +251,7 @@ if(ficheiro){
 pdfUrl = upload.webUrl;
 pdfNome = upload.name;
 pdfId = upload.id;
+console.log("UPLOAD ID:", pdfId);
 
 }
     const utilizador = await testarGraph();
