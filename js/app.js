@@ -709,13 +709,48 @@ const { height } = page.getSize();
 
 const { width, height } = page.getSize();
 
-page.drawText(texto,{
-x: width - 250,
-y: height - 80,
-size: 14,
-font: font,
-lineHeight: 16,
-color: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.8,0,0)
+const { width, height } = page.getSize();
+
+/* posição do carimbo */
+const boxWidth = 260;
+const boxHeight = 80;
+const margin = 20;
+
+const x = width - boxWidth - margin;
+const y = height - boxHeight - margin;
+
+/* fundo branco semi-transparente */
+page.drawRectangle({
+x: x,
+y: y,
+width: boxWidth,
+height: boxHeight,
+color: rgb(1,1,1),
+opacity: 0.7
+});
+
+/* borda */
+page.drawRectangle({
+x: x,
+y: y,
+width: boxWidth,
+height: boxHeight,
+borderWidth: 1.5,
+borderColor: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.8,0,0)
+});
+
+/* texto dividido */
+const linhas = texto.split("\n");
+
+/* escrever linhas */
+linhas.forEach((linha, i) => {
+page.drawText(linha,{
+    x: x + 10,
+    y: y + boxHeight - 20 - (i * 18),
+    size: i === 0 ? 16 : 12,
+    font: font,
+    color: estado==="Aprovado" ? rgb(0,0.6,0) : rgb(0.2,0.2,0.2)
+});
 });
 
 /* guardar */
