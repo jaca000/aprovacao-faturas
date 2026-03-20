@@ -95,7 +95,8 @@ console.log("Perfil do utilizador:", perfil);
 
 };
 const btnDespesa = document.getElementById("btnNovaDespesa");
-const btnAdmin = document.getElementById("btnAdmin");
+const menuAdmin = document.getElementById("menuAdmin");
+const menuPedidos = document.getElementById("menuPedidos");
 
 if(perfil === "Admin"){
 
