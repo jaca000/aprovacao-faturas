@@ -920,7 +920,7 @@ const f = dados.fields;
 
 /* carimbar PDF */
     console.log("PDF ID:", f.PdfDriveItemId);
-const pdfCarimbado = await carimbarPdf(f.PdfDriveItemId, novoEstado);
+const pdfCarimbado = await carimbarPdf(id, novoEstado);
 
 /* criar novo ficheiro */
 const ficheiro = new File(
