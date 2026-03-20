@@ -477,6 +477,8 @@ const upload = await uploadPdfSharePoint(ficheiro);
 
 const novoPdfUrl = upload.webUrl;
 const novoNome = upload.name;
+const novoPdfId = upload.id;
+const novoPdfDownloadUrl = upload.downloadUrl || "";
 
 /* atualizar estado + novo PDF */
 
