@@ -500,7 +500,7 @@ const f = dados.fields;
 
 /* carimbar PDF */
 
-const pdfCarimbado = await carimbarPdf(id, novoEstado);
+const pdfCarimbado = await carimbarPdf(id, novoEstado, comentario);
 
 /* upload novo PDF */
 
