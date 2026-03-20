@@ -734,10 +734,8 @@ const { width, height } = page.getSize();
 /* posição do carimbo */
 const boxWidth = 260;
 const margin = 20;
-const margin = 20;
 
 const x = width - boxWidth - margin;
-const y = height - boxHeight - margin;
 
 /* fundo branco semi-transparente */
 page.drawRectangle({
