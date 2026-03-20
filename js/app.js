@@ -773,7 +773,7 @@ const linhas = texto.split("\n");
 linhas.forEach((linha, i) => {
 page.drawText(linha,{
     x: x + 10,
-    y: y + boxHeight - 20 - (i * 18),
+    y: y + boxHeight - 20 - (i * 16),
     size: i === 0 ? 18 : 11,
     font: font,
     color: i === 0 ? corPrincipal : rgb(0.2,0.2,0.2)
