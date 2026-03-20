@@ -107,9 +107,6 @@ console.log("Perfil do utilizador:", perfil);
     };
 }
 
-    window.location.href = "nova-fatura.html";
-
-};
 const btnDespesa = document.getElementById("btnNovaDespesa");
 const menuAdmin = document.getElementById("menuAdmin");
 const menuPedidos = document.getElementById("menuPedidos");
