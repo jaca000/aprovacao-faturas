@@ -98,27 +98,25 @@ const btnDespesa = document.getElementById("btnNovaDespesa");
 const menuAdmin = document.getElementById("menuAdmin");
 const menuPedidos = document.getElementById("menuPedidos");
 
-if(perfil === "Admin"){
+const utilizador = await testarGraph();
+const email = utilizador.mail || utilizador.userPrincipalName;
 
-    btnFatura.style.display = "inline-block";
-    btnDespesa.style.display = "inline-block";
-    btnAdmin.style.display = "inline-block";
+/* METE AQUI O TEU EMAIL */
+const adminEmail = "TEU_EMAIL_AQUI";
 
-}
+/* BOTÕES BASE */
+btnFatura.style.display = "inline-block";
+btnDespesa.style.display = "inline-block";
 
-else if(perfil === "GestorFaturas"){
+/* ADMIN */
+if(email === adminEmail){
 
-    btnFatura.style.display = "inline-block";
-    btnDespesa.style.display = "inline-block";
-    btnAdmin.style.display = "none";
+    if(menuAdmin) menuAdmin.style.display = "flex";
 
-}
+/* NÃO ADMIN */
+}else{
 
-else{
-
-    btnFatura.style.display = "none";
-    btnDespesa.style.display = "inline-block";
-    btnAdmin.style.display = "none";
+    if(menuAdmin) menuAdmin.style.display = "none";
 
 }
     const pedidos = await obterPedidosFaturas();
