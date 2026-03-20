@@ -524,7 +524,7 @@ const selecionados = document.querySelectorAll(".checkPedido:checked");
 
 for(const check of selecionados){
 
-await atualizarEstadoPedidoId(check.value,"Aprovado");
+await atualizarEstadoPedido(check.value,"Aprovado");
 
 }
 
@@ -539,7 +539,7 @@ const selecionados = document.querySelectorAll(".checkPedido:checked");
 
 for(const check of selecionados){
 
-await atualizarEstadoPedidoId(check.value,"Rejeitado");
+await atualizarEstadoPedido(check.value,"Rejeitado");
 
 }
 
@@ -548,7 +548,7 @@ alert("Pedidos rejeitados");
 location.reload();
 
 }
-async function atualizarEstadoPedidoId(id,estado){
+async function atualizarEstadoPedido(id,estado){
 
 const token = await getAccessToken();
 
@@ -882,7 +882,7 @@ linha.style.display = linha.innerText.toLowerCase().includes(termo) ? "" : "none
 }
 async function aprovarDireto(id){
 
-await atualizarEstadoPedidoId(id, "Aprovado");
+await atualizarEstadoPedido(id, "Aprovado");
 
 alert("Pedido aprovado");
 
