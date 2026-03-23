@@ -259,7 +259,15 @@ window.addEventListener("load", async () => {
 
     try{
 
-        await login(); // 🔥 GARANTE AUTENTICAÇÃO
+        let utilizador;
+
+try{
+    utilizador = await testarGraph(); // tenta usar sessão existente
+}catch(e){
+    console.log("Sem sessão, a iniciar login...");
+    await login();
+    return; // ⚠️ IMPORTANTE: parar aqui para evitar erro
+}
 
     }catch(e){
         console.warn("Utilizador já autenticado ou erro silencioso");
