@@ -16,7 +16,10 @@ async function login() {
 
     try {
 
-        const response = await msalInstance.loginPopup(loginRequest);
+        const response = await msalInstance.loginPopup({
+    scopes: ["User.Read"],
+    prompt: "select_account" // 🔥 força seleção limpa
+});
 
         console.log("Login efetuado:", response.account);
 
