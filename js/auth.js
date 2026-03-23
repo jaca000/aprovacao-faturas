@@ -20,7 +20,7 @@ async function login() {
 
         console.log("Login efetuado:", response.account);
 
-        window.location.href = "pages/dashboard.html";
+        window.location.href = "/aprovacao-faturas/pages/dashboard.html";
 
     } catch (error) {
 
