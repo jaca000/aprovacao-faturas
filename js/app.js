@@ -118,19 +118,34 @@ const email = utilizador.mail || utilizador.userPrincipalName;
 /* METE AQUI O TEU EMAIL */
 const adminEmail = "TEU_EMAIL_AQUI";
 
-/* BOTÕES BASE */
+/* CONTROLO POR PERFIL */
+const perfil = await obterPerfilUtilizador();
+
+/* NOVA FATURA */
 if(btnFatura){
-    btnFatura.style.display = "inline-block";
+    if(perfil === "Admin" || perfil === "GestorFaturas"){
+        btnFatura.style.display = "inline-block";
+    } else {
+        btnFatura.style.display = "none";
+    }
 }
+
+/* NOVA DESPESA */
 if(btnDespesa){
-    btnDespesa.style.display = "inline-block";
+    if(perfil === "Admin" || perfil === "GestorFaturas" || perfil === "Utilizador"){
+        btnDespesa.style.display = "inline-block";
+    } else {
+        btnDespesa.style.display = "none";
+    }
 }
 
 /* ADMIN */
-if(email === adminEmail){
-    if(btnAdmin) btnAdmin.style.display = "inline-block";
-}else{
-    if(btnAdmin) btnAdmin.style.display = "none";
+if(btnAdmin){
+    if(perfil === "Admin"){
+        btnAdmin.style.display = "inline-block";
+    } else {
+        btnAdmin.style.display = "none";
+    }
 }
 
 /* PEDIDOS */
