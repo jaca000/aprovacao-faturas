@@ -119,7 +119,6 @@ const email = utilizador.mail || utilizador.userPrincipalName;
 const adminEmail = "TEU_EMAIL_AQUI";
 
 /* CONTROLO POR PERFIL */
-const perfil = await obterPerfilUtilizador();
 
 /* NOVA FATURA */
 if(btnFatura){
