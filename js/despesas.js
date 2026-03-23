@@ -9,7 +9,7 @@ function addLinhaKM(){
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
-    <td><input type="number" min="1" max="31" class="dia"></td>
+    <td><input type="date" class="data"></td>
     <td><input type="text" class="origem"></td>
     <td><input type="text" class="destino"></td>
     <td><input type="text" class="justificacao"></td>
