@@ -51,7 +51,31 @@ Nova Nota de Despesa
 
 <div id="areaKM" style="display:none; margin-top:20px;">
     <h3>Deslocações em KM</h3>
-    <p>👉 Aqui vamos meter a tabela a seguir</p>
+    <table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Origem</th>
+<th>Destino</th>
+<th>Justificação</th>
+<th>KMs</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="linhasKM"></tbody>
+</table>
+
+<button onclick="addLinhaKM()">+ Adicionar linha</button>
+
+<br><br>
+
+<p><b>Total KMs:</b> <span id="totalKMs">0</span></p>
+
+<label>Valor por KM (€)</label>
+<input id="valorKM" type="number" value="0.36" step="0.01" oninput="calcularKM()">
+
+<p><b>Total Recebido:</b> <span id="totalFinalKM">0.00 €</span></p>
 </div>
 
 <div id="areaDespesas" style="display:none; margin-top:20px;">
