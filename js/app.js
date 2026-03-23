@@ -255,20 +255,30 @@ linha.innerHTML = `
 }
 window.addEventListener("load", async () => {
 
-const tabelaDashboard = document.getElementById("listaPedidos");
-if(tabelaDashboard){
-await carregarDashboard();
-}
+    console.log("A iniciar app com login automático");
 
-const selectAprovador = document.getElementById("aprovador1");
-if(selectAprovador){
-await carregarAprovadores();
-}
+    try{
 
-const tabelaAprovacoes = document.getElementById("listaAprovacoes");
-if(tabelaAprovacoes){
-await carregarAprovacoes();
-}
+        await login(); // 🔥 GARANTE AUTENTICAÇÃO
+
+    }catch(e){
+        console.warn("Utilizador já autenticado ou erro silencioso");
+    }
+
+    const tabelaDashboard = document.getElementById("listaPedidos");
+    if(tabelaDashboard){
+        await carregarDashboard();
+    }
+
+    const selectAprovador = document.getElementById("aprovador1");
+    if(selectAprovador){
+        await carregarAprovadores();
+    }
+
+    const tabelaAprovacoes = document.getElementById("listaAprovacoes");
+    if(tabelaAprovacoes){
+        await carregarAprovacoes();
+    }
 
 });
 window.guardarFatura = async function guardarFatura(){
