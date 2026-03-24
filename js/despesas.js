@@ -196,3 +196,29 @@ async function carregarAprovadoresDespesa(){
     });
 
 }
+async function obterAprovadores(){
+
+    const token = await getAccessToken();
+    const site = await obterSiteApp();
+
+    const siteId = site.id;
+
+    const listaNome = "AprovadoresApp";
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items?expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const data = await resp.json();
+
+    console.log("APROVADORES RAW:", data); // 👈 IMPORTANTE
+
+    return data.value.map(item => ({
+        nome: item.fields.NomeAprovador,
+        email: item.fields.EmailAprovador
+    }));
+
+}
