@@ -112,13 +112,7 @@ for(const tr of rows){
 
     /* JSON */
     const linhasJSON = JSON.stringify(linhas);
-const pdfBytes = await gerarPdfKM(
-    linhas,
-    totalKMs,
-    valorKM,
-    totalRecebido,
-    utilizador
-);
+
     const listaNome = "NotasDespesa";
 const aprovador1 = document.getElementById("aprovador1")?.value || "";
 const aprovador2 = document.getElementById("aprovador2")?.value || "";
@@ -138,8 +132,8 @@ if(!aprovador1){
             ValorPorKM: valorKM,
             TotalRecebido: totalRecebido,
             LinhasJSON: linhasJSON,
-            Estado: "Pendente"
-           Aprovador1Email: aprovador1,
+            Estado: "Pendente",
+Aprovador1Email: aprovador1,
 Aprovador2Email: aprovador2,
         }
     };
