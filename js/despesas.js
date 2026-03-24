@@ -114,7 +114,13 @@ for(const tr of rows){
     const linhasJSON = JSON.stringify(linhas);
 
     const listaNome = "NotasDespesa";
+const aprovador1 = document.getElementById("aprovador1")?.value || "";
+const aprovador2 = document.getElementById("aprovador2")?.value || "";
 
+if(!aprovador1){
+    alert("Tem de selecionar um aprovador.");
+    return;
+}
     const body = {
         fields: {
             Title: "Nota KM - " + new Date().toLocaleDateString("pt-PT"),
