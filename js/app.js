@@ -1037,7 +1037,11 @@ linha.innerHTML = `
 <td>${badgeEstado(f.EstadoPedido)}</td>
 <td>
 
-<button class="btn-ver" onclick="verPdfKM('${p.id}')">
+${
+f.TipoDocumento === "KMS"
+? `<button class="btn-ver" onclick="verPdfKM('${p.id}')">📄 PDF</button>`
+: `<button class="btn-ver" onclick="window.open('${f.PdfUrl}','_blank')">📄 PDF</button>`
+}
 📄 PDF
 </button>
 
