@@ -158,20 +158,13 @@ const text = await resp.text();
 console.log("RESPOSTA:", text);
 
 if(!resp.ok){
-    alert("Erro ao guardar (ver consola)");
+    alert("Erro ao guardar nota de despesa");
     return;
 }
 
-    console.log("Resposta SharePoint:", data);
+alert("✅ Nota de despesa guardada com sucesso!");
 
-    if(!resp.ok){
-        alert("Erro ao guardar nota de despesa");
-        return;
-    }
-
-    alert("Nota de despesa guardada com sucesso!");
-
-    window.location.href = "dashboard.html";
+window.location.href = "dashboard.html";
 
 }
 async function carregarAprovadoresDespesa(){
