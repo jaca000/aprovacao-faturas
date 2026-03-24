@@ -123,19 +123,23 @@ if(!aprovador1){
 }
     const body = {
         fields: {
-            Title: "Nota KM - " + new Date().toLocaleDateString("pt-PT"),
-            TipoDocumento: "KMS",
-            CriadoPorNome: utilizador.displayName,
-            CriadoPorEmail: utilizador.mail || utilizador.userPrincipalName,
-            DataCriacao: new Date().toISOString(),
-            TotalKMs: totalKMs,
-            ValorPorKM: valorKM,
-            TotalRecebido: totalRecebido,
-            LinhasJSON: linhasJSON,
-            EstadoPedido: "Pendente",
-Aprovador1Email: aprovador1,
-Aprovador2Email: aprovador2,
-        }
+    Title: "Nota KM - " + new Date().toLocaleDateString("pt-PT"),
+    TipoDocumento: "KMS",
+    CriadoPorNome: utilizador.displayName,
+    CriadoPorEmail: utilizador.mail || utilizador.userPrincipalName,
+
+    // ❌ REMOVIDO DataCriacao
+
+    TotalKMs: totalKMs,
+    ValorPorKM: valorKM,
+    TotalRecebido: totalRecebido,
+    LinhasJSON: linhasJSON,
+
+    EstadoPedido: "Pendente",
+
+    Aprovador1Email: aprovador1,
+    Aprovador2Email: aprovador2,
+}
     };
 
     const resp = await fetch(
