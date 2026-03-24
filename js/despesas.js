@@ -143,7 +143,7 @@ if(!aprovador1){
     };
 
     const resp = await fetch(
-    `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items`,
+    `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items`,
     {
         method: "POST",
         headers: {
