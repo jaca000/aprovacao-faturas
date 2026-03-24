@@ -78,36 +78,22 @@ Nova Nota de Despesa
 <p><b>Total Recebido:</b> <span id="totalFinalKM">0.00 €</span></p>
 <br><br>
 
-<!-- ================== APROVAÇÃO ================== -->
+<!-- ================= APROVAÇÃO ================= -->
 
-<div class="bloco-aprovacao">
+<h3 style="margin-top:40px;">Aprovação</h3>
 
-    <h3>Aprovação</h3>
+<label>Aprovador</label><br>
+<select id="aprovador1"></select>
 
-    <div class="campo">
-        <label>Aprovador</label>
-        <select id="aprovador1"></select>
-    </div>
+<br><br>
 
-    <button type="button" class="btn-link" onclick="mostrarSegundoAprovador()">
-        + Adicionar segundo aprovador
-    </button>
+<button type="button" onclick="mostrarSegundoAprovador()">
+    + Adicionar segundo aprovador
+</button>
 
-    <div id="segundoAprovadorBox" class="campo" style="display:none;">
-        <label>Segundo aprovador</label>
-        <select id="aprovador2"></select>
-    </div>
-
-</div>
-
-
-<!-- ================== SUBMETER ================== -->
-
-<div class="bloco-submeter">
-    <button class="btn-primary" onclick="guardarDespesaKM()">
-        Submeter Nota de Despesa
-    </button>
-</div>
+<div id="segundoAprovadorBox" style="display:none; margin-top:10px;">
+    <label>Segundo aprovador</label><br>
+    <select id="aprovador2"></select>
 </div>
 
 <div id="areaDespesas" style="display:none; margin-top:20px;">
