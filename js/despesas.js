@@ -133,6 +133,8 @@ if(!aprovador1){
             TotalRecebido: totalRecebido,
             LinhasJSON: linhasJSON,
             Estado: "Pendente"
+           Aprovador1Email: aprovador1,
+Aprovador2Email: aprovador2,
         }
     };
 
