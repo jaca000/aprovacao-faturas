@@ -222,3 +222,106 @@ async function obterAprovadores(){
     }));
 
 }
+async function gerarPdfKM(linhas, totalKMs, valorKM, totalRecebido, utilizador){
+
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage();
+
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+
+    const { width, height } = page.getSize();
+
+    let y = height - 50;
+
+    // Título
+    page.drawText("Nota de Despesa - Deslocações", {
+        x: 50,
+        y,
+        size: 18,
+        font: bold
+    });
+
+    y -= 30;
+
+    // Info utilizador
+    page.drawText("Colaborador: " + utilizador.displayName, {
+        x: 50,
+        y,
+        size: 10,
+        font
+    });
+
+    y -= 20;
+
+    page.drawText("Data: " + new Date().toLocaleDateString("pt-PT"), {
+        x: 50,
+        y,
+        size: 10,
+        font
+    });
+
+    y -= 30;
+
+    // Cabeçalho tabela
+    const headers = ["Data", "Origem", "Destino", "Justificação", "KMs"];
+
+    let x = 50;
+
+    headers.forEach(h => {
+        page.drawText(h, { x, y, size: 10, font: bold });
+        x += 100;
+    });
+
+    y -= 20;
+
+    // Linhas
+    linhas.forEach(l => {
+
+        let x = 50;
+
+        page.drawText(l.data || "", { x, y, size: 9, font }); x += 100;
+        page.drawText(l.origem || "", { x, y, size: 9, font }); x += 100;
+        page.drawText(l.destino || "", { x, y, size: 9, font }); x += 100;
+        page.drawText(l.justificacao || "", { x, y, size: 9, font }); x += 100;
+        page.drawText(String(l.kms), { x, y, size: 9, font });
+
+        y -= 15;
+
+    });
+
+    y -= 20;
+
+    // Totais
+    page.drawText("Total KMs: " + totalKMs, {
+        x: 50,
+        y,
+        size: 11,
+        font: bold
+    });
+
+    y -= 15;
+
+    page.drawText("Valor por KM: " + valorKM + " €", {
+        x: 50,
+        y,
+        size: 11,
+        font: bold
+    });
+
+    y -= 15;
+
+    page.drawText("Total a receber: " + totalRecebido.toFixed(2) + " €", {
+        x: 50,
+        y,
+        size: 12,
+        font: bold,
+        color: rgb(0,0.6,0)
+    });
+
+    const pdfBytes = await pdfDoc.save();
+
+    return pdfBytes;
+}
