@@ -82,11 +82,11 @@ async function guardarDespesaKM(){
         const kms = Number(tr.querySelector(".kms")?.value) || 0;
 
         // ignorar linhas vazias
-        if(!data || !origem || !destino || !justificacao || kms <= 0){
+        if(!data || !origem.trim() || !destino.trim() || !justificacao.trim() || kms <= 0){
 
-    alert("Todos os campos da linha são obrigatórios e KMs devem ser superiores a 0.");
+    alert("Preencha todos os campos corretamente em todas as linhas.");
 
-    throw new Error("Validação falhou");
+    return;
 
 }
 
