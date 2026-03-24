@@ -73,32 +73,30 @@ async function guardarDespesaKM(){
 
     const linhas = [];
 
-    document.querySelectorAll("#linhasKM tr").forEach(tr => {
+    const rows = document.querySelectorAll("#linhasKM tr");
 
-        const data = tr.querySelector(".data")?.value || "";
-        const origem = tr.querySelector(".origem")?.value || "";
-        const destino = tr.querySelector(".destino")?.value || "";
-        const justificacao = tr.querySelector(".justificacao")?.value || "";
-        const kms = Number(tr.querySelector(".kms")?.value) || 0;
+for(const tr of rows){
 
-        // ignorar linhas vazias
-        if(!data || !origem.trim() || !destino.trim() || !justificacao.trim() || kms <= 0){
+    const data = tr.querySelector(".data")?.value || "";
+    const origem = tr.querySelector(".origem")?.value.trim() || "";
+    const destino = tr.querySelector(".destino")?.value.trim() || "";
+    const justificacao = tr.querySelector(".justificacao")?.value.trim() || "";
+    const kms = Number(tr.querySelector(".kms")?.value) || 0;
 
-    alert("Preencha todos os campos corretamente em todas as linhas.");
+    if(!data || !origem || !destino || !justificacao || kms <= 0){
+        alert("Preencha todos os campos corretamente em todas as linhas.");
+        return; // 👈 aqui sim pára tudo
+    }
 
-    return;
+    linhas.push({
+        data,
+        origem,
+        destino,
+        justificacao,
+        kms
+    });
 
 }
-
-        linhas.push({
-            data,
-            origem,
-            destino,
-            justificacao,
-            kms
-        });
-
-    });
 
     if(linhas.length === 0){
         alert("Tem de inserir pelo menos uma linha.");
