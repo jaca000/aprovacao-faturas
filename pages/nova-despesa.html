@@ -78,13 +78,19 @@ Nova Nota de Despesa
 <p><b>Total Recebido:</b> <span id="totalFinalKM">0.00 €</span></p>
 <br><br>
 
-<label>Aprovador 1</label>
-<select id="aprovador1"></select>
+<div style="display:flex; gap:20px; margin-top:20px;">
 
-<br><br>
+    <div>
+        <label>Aprovador 1</label><br>
+        <select id="aprovador1"></select>
+    </div>
 
-<label>Aprovador 2 (opcional)</label>
-<select id="aprovador2"></select>
+    <div>
+        <label>Aprovador 2 (opcional)</label><br>
+        <select id="aprovador2"></select>
+    </div>
+
+</div>
 
 <button onclick="guardarDespesaKM()">Submeter Nota de Despesa</button>
 </div>
