@@ -135,7 +135,7 @@ if(!aprovador1){
     TotalRecebido: totalRecebido,
     LinhasJSON: linhasJSON,
 
-    EstadoPedido: "Pendente",
+    Estado: "Pendente",
 
     Aprovador1Email: aprovador1,
     Aprovador2Email: aprovador2,
