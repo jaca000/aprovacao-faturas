@@ -366,3 +366,106 @@ async function verPdfKM(id){
 
     window.open(url, "_blank");
 }
+/* =============================
+   DASHBOARD DESPESAS
+============================= */
+
+async function carregarDashboardDespesas(){
+
+    const utilizador = await testarGraph();
+    const token = await getAccessToken();
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const listaNome = "NotasDespesa";
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items?expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const data = await resp.json();
+
+    const items = data.value || [];
+
+    console.log("DESPESAS:", items);
+
+    /* =============================
+       FILTRAR POR PERFIL
+    ============================= */
+
+    const emailUser = utilizador.mail || utilizador.userPrincipalName;
+
+    const filtrados = items.filter(item => {
+
+        const f = item.fields;
+
+        return (
+            f.CriadoPorEmail === emailUser ||
+            f.Aprovador1Email === emailUser ||
+            f.Aprovador2Email === emailUser
+        );
+
+    });
+
+    /* =============================
+       CONTADORES
+    ============================= */
+
+    let total = filtrados.length;
+    let pendentes = 0;
+    let aprovados = 0;
+    let rejeitados = 0;
+
+    filtrados.forEach(item => {
+
+        const estado = item.fields.Estado;
+
+        if(estado === "Pendente") pendentes++;
+        if(estado === "Aprovado") aprovados++;
+        if(estado === "Rejeitado") rejeitados++;
+
+    });
+
+    document.getElementById("totalPedidos").innerText = total;
+    document.getElementById("totalPendentes").innerText = pendentes;
+    document.getElementById("totalAprovados").innerText = aprovados;
+    document.getElementById("totalRejeitados").innerText = rejeitados;
+
+    /* =============================
+       TABELA
+    ============================= */
+
+    const tbody = document.getElementById("tabelaDespesas");
+
+    tbody.innerHTML = "";
+
+    filtrados.forEach(item => {
+
+        const f = item.fields;
+
+        const tr = document.createElement("tr");
+
+        const aprovadores = [
+            f.Aprovador1Email || "",
+            f.Aprovador2Email || ""
+        ].filter(a => a).join(", ");
+
+        tr.innerHTML = `
+            <td>${new Date(f.Created).toLocaleDateString("pt-PT")}</td>
+            <td>${f.CriadoPorNome || ""}</td>
+            <td>${Number(f.TotalRecebido || 0).toFixed(2)} €</td>
+            <td>${aprovadores}</td>
+            <td>${f.Estado}</td>
+            <td>
+                <button onclick="verPdfKM('${item.id}')">📄 PDF</button>
+            </td>
+        `;
+
+        tbody.appendChild(tr);
+
+    });
+
+}
