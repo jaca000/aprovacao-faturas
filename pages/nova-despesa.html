@@ -81,13 +81,23 @@ Nova Nota de Despesa
 <div style="display:flex; gap:20px; margin-top:20px;">
 
     <div>
-        <label>Aprovador 1</label><br>
-        <select id="aprovador1"></select>
-    </div>
+        <h3>Aprovação</h3>
 
-    <div>
-        <label>Aprovador 2 (opcional)</label><br>
-        <select id="aprovador2"></select>
+<label>Aprovador</label>
+<select id="aprovador1"></select>
+
+<br><br>
+
+<div id="segundoAprovadorBox" style="display:none;">
+    <label>Segundo aprovador</label>
+    <select id="aprovador2"></select>
+</div>
+
+<br>
+
+<button type="button" onclick="mostrarSegundoAprovador()">
++ Adicionar segundo aprovador
+</button>
     </div>
 
 </div>
