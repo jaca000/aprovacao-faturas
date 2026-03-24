@@ -138,8 +138,8 @@ Aprovador2Email: aprovador2,
         }
     };
 
-    const resp = await fetch(
-        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items`,
+    await fetch(
+`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items`,
         {
             method: "POST",
             headers: {
