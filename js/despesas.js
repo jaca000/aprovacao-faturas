@@ -113,7 +113,7 @@ for(const tr of rows){
     /* JSON */
     const linhasJSON = JSON.stringify(linhas);
 
-    const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
+    const listaNome = "NotasDespesa";
 const aprovador1 = document.getElementById("aprovador1")?.value || "";
 const aprovador2 = document.getElementById("aprovador2")?.value || "";
 
@@ -344,7 +344,7 @@ async function verPdfKM(id){
     const listaId = "5baaca12-aaf0-4e67-b094-20ed3487f7e9";
 
     const resp = await fetch(
-        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaId}/items/${id}?expand=fields`,
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items/${id}?expand=fields`,
         {
             headers:{ Authorization:"Bearer " + token }
         }
