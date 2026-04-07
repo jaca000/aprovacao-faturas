@@ -418,7 +418,7 @@ items.forEach(item => {
 
 });
 }
-function fecharModalKM(){
+window.fecharModalKM = function(){
     document.getElementById("modalKM").style.display = "none";
 }
 
