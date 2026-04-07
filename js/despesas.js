@@ -654,8 +654,8 @@ items.forEach(item => {
 
     /* abrir PDF ao clicar */
     linha.onclick = () => {
-        verPdfKM(item.id);
-    };
+    verDetalheKM(item.id);
+};
 
     tabela.appendChild(linha);
 
