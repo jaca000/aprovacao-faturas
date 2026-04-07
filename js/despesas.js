@@ -469,3 +469,65 @@ async function carregarDashboardDespesas(){
     });
 
 }
+/* =============================
+   APROVAÇÕES DESPESAS
+============================= */
+
+async function carregarAprovacoesDespesas(){
+
+    const utilizador = await testarGraph();
+    const token = await getAccessToken();
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const listaNome = "NotasDespesa";
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items?expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const data = await resp.json();
+    const items = data.value || [];
+
+    const emailUser = utilizador.mail || utilizador.userPrincipalName;
+
+    const filtrados = items.filter(item => {
+
+        const f = item.fields;
+
+        return (
+            (f.Aprovador1Email === emailUser || f.Aprovador2Email === emailUser)
+            && f.Estado === "Pendente"
+        );
+
+    });
+
+    const tbody = document.getElementById("tabelaAprovacoesDespesas");
+
+    tbody.innerHTML = "";
+
+    filtrados.forEach(item => {
+
+        const f = item.fields;
+
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${new Date(f.Created).toLocaleDateString("pt-PT")}</td>
+            <td>${f.CriadoPorNome}</td>
+            <td>${Number(f.TotalRecebido).toFixed(2)} €</td>
+            <td>
+                <button onclick="verPdfKM('${item.id}')">📄 Ver</button>
+                <button onclick="aprovarDespesa('${item.id}')">✔</button>
+                <button onclick="rejeitarDespesa('${item.id}')">✖</button>
+            </td>
+        `;
+
+        tbody.appendChild(tr);
+
+    });
+
+}
