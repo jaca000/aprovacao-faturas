@@ -619,5 +619,45 @@ async function carregarDashboardDespesas(){
     document.getElementById("aprovados").innerText = aprovados;
     document.getElementById("rejeitados").innerText = rejeitados;
     document.getElementById("meusPendentes").innerText = meusPendentes;
+/* =============================
+   TABELA
+============================= */
 
+const tabela = document.getElementById("listaPedidos");
+
+if(!tabela) return;
+
+tabela.innerHTML = "";
+
+items.forEach(item => {
+
+    const f = item.fields;
+
+    const linha = document.createElement("tr");
+
+    const aprovadores = [
+        f.Aprovador1Email,
+        f.Aprovador2Email
+    ]
+    .filter(a => a)
+    .map(a => a.split("@")[0])
+    .join(" / ");
+
+    linha.innerHTML = `
+        <td></td>
+        <td>${item.id}</td>
+        <td>—</td>
+        <td>${f.TipoDocumento || "KMS"}</td>
+        <td>${aprovadores || "-"}</td>
+        <td>${f.Estado}</td>
+    `;
+
+    /* abrir PDF ao clicar */
+    linha.onclick = () => {
+        verPdfKM(item.id);
+    };
+
+    tabela.appendChild(linha);
+
+});
 }
