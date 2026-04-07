@@ -418,7 +418,7 @@ async function carregarAprovacoesDespesas(){
             <td>${f.CriadoPorNome}</td>
             <td>${Number(f.TotalRecebido).toFixed(2)} €</td>
             <td>
-                <button onclick="verPdfKM('${item.id}')">📄 Ver</button>
+                <button onclick="verDetalheKM('${item.id}')">👁 Ver</button>
                 <button onclick="aprovarDespesa('${item.id}')">✔</button>
                 <button onclick="rejeitarDespesa('${item.id}')">✖</button>
             </td>
