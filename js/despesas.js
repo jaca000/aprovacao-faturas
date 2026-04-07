@@ -418,3 +418,59 @@ items.forEach(item => {
 
 });
 }
+function fecharModalKM(){
+    document.getElementById("modalKM").style.display = "none";
+}
+
+async function verDetalheKM(id){
+
+    const token = await getAccessToken();
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/NotasDespesa/items/${id}?expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const data = await resp.json();
+    const f = data.fields;
+
+    const linhas = JSON.parse(f.LinhasJSON || "[]");
+
+    let html = `
+        <p><b>Total KMs:</b> ${f.TotalKMs}</p>
+        <p><b>Valor/KM:</b> ${f.ValorPorKM} €</p>
+        <p><b>Total:</b> ${Number(f.TotalRecebido).toFixed(2)} €</p>
+
+        <br>
+
+        <table style="width:100%">
+            <tr>
+                <th>Data</th>
+                <th>Origem</th>
+                <th>Destino</th>
+                <th>Justificação</th>
+                <th>KMs</th>
+            </tr>
+    `;
+
+    linhas.forEach(l => {
+        html += `
+            <tr>
+                <td>${l.data}</td>
+                <td>${l.origem}</td>
+                <td>${l.destino}</td>
+                <td>${l.justificacao}</td>
+                <td>${l.kms}</td>
+            </tr>
+        `;
+    });
+
+    html += `</table>`;
+
+    document.getElementById("conteudoKM").innerHTML = html;
+    document.getElementById("modalKM").style.display = "block";
+}
