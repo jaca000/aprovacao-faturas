@@ -225,44 +225,6 @@ async function obterAprovadores(){
     }));
 
 }
-async function verPdfKM(id){
-
-    const token = await getAccessToken();
-    const site = await obterSiteApp();
-    const siteId = site.id;
-
-    const listaNome = "NotasDespesa";
-
-    const resp = await fetch(
-        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items/${id}?expand=fields`,
-        {
-            headers:{ Authorization:"Bearer " + token }
-        }
-    );
-
-    const data = await resp.json();
-    const f = data.fields;
-
-    const linhas = JSON.parse(f.LinhasJSON || "[]");
-
-    const utilizador = {
-        displayName: f.CriadoPorNome
-    };
-
-    const pdfBytes = await gerarPdfKM(
-        linhas,
-        f.TotalKMs,
-        f.ValorPorKM,
-        f.TotalRecebido,
-        utilizador
-    );
-
-    // 🔥 abrir no browser
-    const blob = new Blob([pdfBytes], { type: "application/pdf" });
-    const url = URL.createObjectURL(blob);
-
-    window.open(url, "_blank");
-}
    
 /* =============================
    APROVAÇÕES DESPESAS
