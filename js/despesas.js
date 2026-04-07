@@ -422,7 +422,7 @@ function fecharModalKM(){
     document.getElementById("modalKM").style.display = "none";
 }
 
-async function verDetalheKM(id){
+window.verDetalheKM = async function(id){
 
     const token = await getAccessToken();
     const site = await obterSiteApp();
