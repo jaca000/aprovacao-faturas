@@ -568,3 +568,56 @@ async function atualizarEstadoDespesa(id, estado){
     carregarAprovacoesDespesas();
 
 }
+/* =============================
+   DASHBOARD DESPESAS
+============================= */
+
+async function carregarDashboardDespesas(){
+
+    const utilizador = await testarGraph();
+    const token = await getAccessToken();
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/NotasDespesa/items?expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const data = await resp.json();
+    const items = data.value || [];
+
+    const email = utilizador.mail || utilizador.userPrincipalName;
+
+    let total = items.length;
+    let pendentes = 0;
+    let aprovados = 0;
+    let rejeitados = 0;
+    let meusPendentes = 0;
+
+    items.forEach(i => {
+
+        const f = i.fields;
+
+        if(f.Estado === "Pendente"){
+            pendentes++;
+
+            if(f.Aprovador1Email === email || f.Aprovador2Email === email){
+                meusPendentes++;
+            }
+        }
+
+        if(f.Estado === "Aprovado") aprovados++;
+        if(f.Estado === "Rejeitado") rejeitados++;
+
+    });
+
+    document.getElementById("totalPedidos").innerText = total;
+    document.getElementById("pendentes").innerText = pendentes;
+    document.getElementById("aprovados").innerText = aprovados;
+    document.getElementById("rejeitados").innerText = rejeitados;
+    document.getElementById("meusPendentes").innerText = meusPendentes;
+
+}
