@@ -531,3 +531,40 @@ async function carregarAprovacoesDespesas(){
     });
 
 }
+async function aprovarDespesa(id){
+
+    await atualizarEstadoDespesa(id, "Aprovado");
+}
+
+async function rejeitarDespesa(id){
+
+    await atualizarEstadoDespesa(id, "Rejeitado");
+}
+
+async function atualizarEstadoDespesa(id, estado){
+
+    const token = await getAccessToken();
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const listaNome = "NotasDespesa";
+
+    await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items/${id}/fields`,
+        {
+            method: "PATCH",
+            headers: {
+                Authorization: "Bearer " + token,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                Estado: estado
+            })
+        }
+    );
+
+    alert("Estado atualizado: " + estado);
+
+    carregarAprovacoesDespesas();
+
+}
