@@ -272,15 +272,17 @@ async function carregarAprovacoesDespesas(){
         const tr = document.createElement("tr");
 
         tr.innerHTML = `
-            <td>${new Date(f.Created).toLocaleDateString("pt-PT")}</td>
-            <td>${f.CriadoPorNome}</td>
-            <td>${Number(f.TotalRecebido).toFixed(2)} €</td>
-            <td>
-                <button onclick="verDetalheKM('${item.id}')">👁 Ver</button>
-                <button onclick="aprovarDespesa('${item.id}')">✔</button>
-                <button onclick="rejeitarDespesa('${item.id}')">✖</button>
-            </td>
-        `;
+    <td>${new Date(f.Created).toLocaleDateString("pt-PT")}</td>
+    <td>${f.CriadoPorNome}</td>
+    <td>${Number(f.TotalRecebido).toFixed(2)} €</td>
+    <td>
+        <button onclick="verDetalheKM('${item.id}')" class="btn-icon" title="Ver detalhe">
+            <i data-lucide="eye"></i>
+        </button>
+        <button onclick="aprovarDespesa('${item.id}')" class="btn-icon" title="Aprovar">✔</button>
+        <button onclick="rejeitarDespesa('${item.id}')" class="btn-icon" title="Rejeitar">✖</button>
+    </td>
+`;
 
         tbody.appendChild(tr);
 
