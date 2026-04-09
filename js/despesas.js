@@ -380,7 +380,7 @@ async function carregarDashboardDespesas(){
    TABELA
 ============================= */
 
-const tabela = document.getElementById("listaPedidos");
+const tabela = document.getElementById("tabelaDespesas");
 
 if(!tabela) return;
 
