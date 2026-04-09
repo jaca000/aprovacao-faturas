@@ -401,14 +401,20 @@ items.forEach(item => {
     .join(" / ");
 
     linha.innerHTML = `
-        <td></td>
-        <td>${item.id}</td>
-        <td>—</td>
-        <td>${f.TipoDocumento || "KMS"}</td>
-        <td>${aprovadores || "-"}</td>
-        <td>${f.Estado}</td>
-    `;
-
+    <td>${new Date(f.Created).toLocaleDateString("pt-PT")}</td>
+    <td>${f.CriadoPorNome}</td>
+    <td>${Number(f.TotalRecebido).toFixed(2)} €</td>
+    <td>${aprovadores || "-"}</td>
+    <td>
+        <span class="estado ${f.Estado}">
+            ${f.Estado}
+        </span>
+    </td>
+    <td>
+        <button onclick="verDetalheKM('${item.id}')">👁</button>
+    </td>
+`;
+linha.style.cursor = "pointer";
     /* abrir PDF ao clicar */
     linha.onclick = () => {
     verDetalheKM(item.id);
