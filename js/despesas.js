@@ -418,8 +418,8 @@ items.forEach(item => {
     </td>
     <td>
         <button onclick="verDetalheKM('${item.id}')" class="btn-icon" title="Ver detalhe">
-    <i data-lucide="file-text"></i>
-</button>
+            <i data-lucide="file-text"></i>
+        </button>
     </td>
 `;
 linha.style.cursor = "pointer";
