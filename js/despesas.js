@@ -273,7 +273,7 @@ async function carregarAprovacoesDespesas(){
 
         const tr = document.createElement("tr");
 
-        tr.innerHTML = `
+      tr.innerHTML = `
     <td>${new Date(f.Created).toLocaleDateString("pt-PT")}</td>
     <td>${f.CriadoPorNome}</td>
     <td>${Number(f.TotalRecebido).toFixed(2)} €</td>
@@ -281,8 +281,14 @@ async function carregarAprovacoesDespesas(){
         <button onclick="verDetalheKM('${item.id}')" class="btn-icon" title="Ver detalhe">
             <i data-lucide="file-text"></i>
         </button>
-        <button onclick="aprovarDespesa('${item.id}')" class="btn-icon" title="Aprovar">✔</button>
-        <button onclick="rejeitarDespesa('${item.id}')" class="btn-icon" title="Rejeitar">✖</button>
+
+        <button onclick="aprovarDespesa('${item.id}')" class="btn-icon btn-aprovar" title="Aprovar">
+            <i data-lucide="check"></i>
+        </button>
+
+        <button onclick="rejeitarDespesa('${item.id}')" class="btn-icon btn-rejeitar" title="Rejeitar">
+            <i data-lucide="x"></i>
+        </button>
     </td>
 `;
 
@@ -296,15 +302,26 @@ if (window.lucide) {
 }
 async function aprovarDespesa(id){
 
-    await atualizarEstadoDespesa(id, "Aprovado");
+    await atualizarEstadoDespesa(id, "Aprovado", "");
 }
 
 async function rejeitarDespesa(id){
 
-    await atualizarEstadoDespesa(id, "Rejeitado");
+    const justificacao = prompt("Indique a justificação da rejeição:");
+
+    if(justificacao === null){
+        return; // utilizador cancelou
+    }
+
+    if(!justificacao.trim()){
+        alert("Tem de indicar uma justificação para rejeitar.");
+        return;
+    }
+
+    await atualizarEstadoDespesa(id, "Rejeitado", justificacao.trim());
 }
 
-async function atualizarEstadoDespesa(id, estado){
+async function atualizarEstadoDespesa(id, estado, justificacao = ""){
 
     const token = await getAccessToken();
     const site = await obterSiteApp();
@@ -312,7 +329,15 @@ async function atualizarEstadoDespesa(id, estado){
 
     const listaNome = "NotasDespesa";
 
-    await fetch(
+    const body = {
+        Estado: estado
+    };
+
+    if(estado === "Rejeitado"){
+        body.JustificacaoRejeicao = justificacao;
+    }
+
+    const resp = await fetch(
         `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listaNome}/items/${id}/fields`,
         {
             method: "PATCH",
@@ -320,16 +345,18 @@ async function atualizarEstadoDespesa(id, estado){
                 Authorization: "Bearer " + token,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                Estado: estado
-            })
+            body: JSON.stringify(body)
         }
     );
+
+    if(!resp.ok){
+        alert("Erro ao atualizar o estado.");
+        return;
+    }
 
     alert("Estado atualizado: " + estado);
 
     carregarAprovacoesDespesas();
-
 }
 /* =============================
    DASHBOARD DESPESAS
