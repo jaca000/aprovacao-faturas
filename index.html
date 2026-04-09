@@ -217,10 +217,10 @@ opacity:0.95;
 
 <div class="login-brand">MONTE DO PASTO</div>
 
-<div class="login-title">Aprovação de Faturas</div>
+<div class="login-title">Gestão de Pedidos</div>
 
 <div class="login-sub">
-Sistema Interno para Gestão e Aprovação de Faturas e Despesas
+Sistema Interno para Gestão e Aprovação de Pedidos
 </div>
 
 <button class="login-btn" onclick="iniciarLogin()" id="btnLogin">
@@ -300,7 +300,7 @@ texto.innerText = "Bem-vindo, " + primeiroNome;
 
 /* entrar */
 setTimeout(() => {
-window.location.href = "pages/dashboard.html";
+    window.location.replace("pages/dashboard.html");
 }, 1800);
 
 }
