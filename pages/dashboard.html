@@ -118,25 +118,70 @@ Dashboard Despesas
 
 <h2>Pedidos</h2>
 
-<div class="lista-pedidos">
+<!-- ================== CARDS ================== -->
 
-<table id="tabelaPedidos">
+<div class="cards">
+
+    <div class="card">
+        <div>Total</div>
+        <h2 id="totalPedidos">0</h2>
+    </div>
+
+    <div class="card">
+        <div>Pendentes</div>
+        <h2 id="totalPendentes">0</h2>
+    </div>
+
+    <div class="card">
+        <div>Aprovados</div>
+        <h2 id="totalAprovados">0</h2>
+    </div>
+
+    <div class="card">
+        <div>Rejeitados</div>
+        <h2 id="totalRejeitados">0</h2>
+    </div>
+
+</div>
+
+<br>
+
+<!-- ================== FILTROS ================== -->
+
+<div style="display:flex; gap:10px; margin-bottom:15px;">
+
+    <input type="text" id="filtroPesquisa" placeholder="Pesquisar..." 
+           style="padding:8px; border-radius:8px; border:1px solid #ccc; width:200px;">
+
+    <select id="filtroEstado" style="padding:8px; border-radius:8px;">
+        <option value="">Todos os estados</option>
+        <option value="Pendente">Pendente</option>
+        <option value="Aprovado">Aprovado</option>
+        <option value="Rejeitado">Rejeitado</option>
+    </select>
+
+</div>
+
+<!-- ================== TABELA ================== -->
+
+<table>
 
 <thead>
 <tr>
-<th>ID</th>
-<th>Tipo</th>
-<th>Aprovador(es)</th>
-<th>Estado</th>
+    <th>Data</th>
+    <th>Colaborador</th>
+    <th>Total (€)</th>
+    <th>Aprovador(es)</th>
+    <th>Estado</th>
+    <th></th>
 </tr>
 </thead>
 
-<tbody id="listaPedidos">
+<tbody id="tabelaDespesas">
+
 </tbody>
 
 </table>
-
-</div>
 
 </section>
 
