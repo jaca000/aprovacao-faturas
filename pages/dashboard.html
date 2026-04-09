@@ -124,39 +124,14 @@ Nova Nota de Despesa
 
 <div class="lista-pedidos">
 
-<div class="acoes-tabela">
-
-<button onclick="aprovarSelecionados()">Aprovar selecionados</button>
-
-<button onclick="rejeitarSelecionados()">Rejeitar selecionados</button>
-
-</div>
-
-<div class="toolbar">
-
-<input type="text" id="pesquisa" placeholder="Pesquisar fornecedor ou nº fatura">
-
-<select id="filtroEstado">
-<option value="">Todos os estados</option>
-<option value="Pendente">Pendentes</option>
-<option value="Aprovado">Aprovados</option>
-<option value="Rejeitado">Rejeitados</option>
-</select>
-
-</div>
-
 <table id="tabelaPedidos">
 
 <thead>
 <tr>
-<th>
-<input type="checkbox" id="checkTodos">
-</th>
-<th onclick="ordenarTabela(1)">Nº Interno</th>
-<th onclick="ordenarTabela(2)">Fornecedor</th>
-<th onclick="ordenarTabela(3)">Nº Fatura</th>
-<th onclick="ordenarTabela(4)">Aprovador(es)</th>
-<th onclick="ordenarTabela(5)">Estado</th>
+<th>ID</th>
+<th>Tipo</th>
+<th>Aprovador(es)</th>
+<th>Estado</th>
 </tr>
 </thead>
 
