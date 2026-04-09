@@ -279,7 +279,7 @@ async function carregarAprovacoesDespesas(){
     <td>${Number(f.TotalRecebido).toFixed(2)} €</td>
     <td>
         <button onclick="verDetalheKM('${item.id}')" class="btn-icon" title="Ver detalhe">
-            <i data-lucide="eye"></i>
+            <i data-lucide="file-text"></i>
         </button>
         <button onclick="aprovarDespesa('${item.id}')" class="btn-icon" title="Aprovar">✔</button>
         <button onclick="rejeitarDespesa('${item.id}')" class="btn-icon" title="Rejeitar">✖</button>
@@ -414,7 +414,9 @@ items.forEach(item => {
         </span>
     </td>
     <td>
-        <button onclick="verDetalheKM('${item.id}')">👁</button>
+        <button onclick="verDetalheKM('${item.id}')" class="btn-icon" title="Ver detalhe">
+    <i data-lucide="file-text"></i>
+</button>
     </td>
 `;
 linha.style.cursor = "pointer";
