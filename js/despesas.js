@@ -84,9 +84,8 @@ for(const tr of rows){
     const kms = Number(tr.querySelector(".kms")?.value) || 0;
 
     if(!data || !origem || !destino || !justificacao || kms <= 0){
-        alert("Preencha todos os campos corretamente em todas as linhas.");
-        return; // 👈 aqui sim pára tudo
-    }
+    continue; // ignora só essa linha
+}
 
     linhas.push({
         data,
@@ -443,7 +442,7 @@ window.verDetalheKM = async function(id){
 
     const data = await resp.json();
     const f = data.fields;
-
+console.log("LINHAS RAW:", f.LinhasJSON);
     const linhas = JSON.parse(f.LinhasJSON || "[]");
 
     let html = `
@@ -482,7 +481,7 @@ window.verDetalheKM = async function(id){
 }
 window.verPreviewKM = function(){
 
-    const rows = document.querySelectorAll("#linhasKM tr");
+    const rows = document.querySelectorAll("#linhasKM tr:not(:first-child)");
 
     const linhas = [];
 
