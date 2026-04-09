@@ -474,3 +474,63 @@ window.verDetalheKM = async function(id){
     document.getElementById("conteudoKM").innerHTML = html;
     document.getElementById("modalKM").style.display = "block";
 }
+window.verPreviewKM = function(){
+
+    const rows = document.querySelectorAll("#linhasKM tr");
+
+    const linhas = [];
+
+    let totalKMs = 0;
+
+    rows.forEach(tr => {
+
+        const data = tr.querySelector(".data")?.value || "";
+        const origem = tr.querySelector(".origem")?.value || "";
+        const destino = tr.querySelector(".destino")?.value || "";
+        const justificacao = tr.querySelector(".justificacao")?.value || "";
+        const kms = Number(tr.querySelector(".kms")?.value) || 0;
+
+        if(data || origem || destino || justificacao || kms){
+            linhas.push({ data, origem, destino, justificacao, kms });
+            totalKMs += kms;
+        }
+
+    });
+
+    const valorKM = Number(document.getElementById("valorKM")?.value) || 0;
+    const totalRecebido = totalKMs * valorKM;
+
+    let html = `
+        <p><b>Total KMs:</b> ${totalKMs}</p>
+        <p><b>Valor/KM:</b> ${valorKM} €</p>
+        <p><b>Total:</b> ${totalRecebido.toFixed(2)} €</p>
+
+        <br>
+
+        <table style="width:100%">
+            <tr>
+                <th>Data</th>
+                <th>Origem</th>
+                <th>Destino</th>
+                <th>Justificação</th>
+                <th>KMs</th>
+            </tr>
+    `;
+
+    linhas.forEach(l => {
+        html += `
+            <tr>
+                <td>${l.data}</td>
+                <td>${l.origem}</td>
+                <td>${l.destino}</td>
+                <td>${l.justificacao}</td>
+                <td>${l.kms}</td>
+            </tr>
+        `;
+    });
+
+    html += `</table>`;
+
+    document.getElementById("conteudoKM").innerHTML = html;
+    document.getElementById("modalKM").style.display = "block";
+}
