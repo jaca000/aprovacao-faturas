@@ -286,8 +286,11 @@ async function carregarAprovacoesDespesas(){
     </td>
 `;
 
-        tbody.appendChild(tr);
+tbody.appendChild(tr);
 
+if (window.lucide) {
+    lucide.createIcons();
+}
     });
 
 }
@@ -426,7 +429,9 @@ linha.style.cursor = "pointer";
 };
 
     tabela.appendChild(linha);
-
+if (window.lucide) {
+    lucide.createIcons();
+}
 });
 }
 window.fecharModalKM = function(){
