@@ -657,3 +657,44 @@ border-radius:6px;
 padding:6px;
 margin-bottom:5px;
 }
+.btn-icon{
+    background:#f3f4f6;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    width:38px;
+    height:38px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+
+.btn-icon:hover{
+    transform:translateY(-1px);
+}
+
+.btn-icon i{
+    width:18px;
+    height:18px;
+}
+
+.btn-aprovar{
+    background:#e8f5e9;
+    border:1px solid #81c784;
+    color:#2e7d32;
+}
+
+.btn-aprovar:hover{
+    background:#dff3e3;
+}
+
+.btn-rejeitar{
+    background:#ffebee;
+    border:1px solid #e57373;
+    color:#c62828;
+}
+
+.btn-rejeitar:hover{
+    background:#fde2e5;
+}
