@@ -18,7 +18,9 @@ function addLinhaKM(){
     `;
 
     tbody.appendChild(tr);
-
+if (window.lucide) {
+    lucide.createIcons();
+}
 }
 
 
