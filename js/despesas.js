@@ -682,7 +682,18 @@ window.downloadPDF = async function(){
         <p><b>Submetido por:</b> ${f.CriadoPorNome}</p>
         <p><b>Aprovado por:</b> ${f.AprovadoPorNome || "—"}</p>
         <p><b>Estado:</b> ${f.Estado}</p>
-
+${f.Estado === "Rejeitado" && f.JustificacaoRejeicao ? `
+    <div style="
+        margin-top:10px;
+        padding:10px;
+        background:#ffecec;
+        border:1px solid #f5c2c2;
+        border-radius:6px;
+    ">
+        <b>Justificação da rejeição:</b><br>
+        ${f.JustificacaoRejeicao}
+    </div>
+` : ""}
         <br>
 
         <p><b>Total KMs:</b> ${f.TotalKMs}</p>
