@@ -668,7 +668,7 @@ window.downloadPDF = async function(){
     <div style="font-family:Arial; padding:30px; color:#333;">
 
         <div style="display:flex; justify-content:space-between; align-items:center;">
-            <img src="../assets/logo-monte-do-pasto.png" style="height:50px;">
+            <img src="data:image/png;base64,COLE_AQUI_O_BASE64" style="height:50px;">
             <div style="text-align:right;">
                 <b>Gestão de Despesas</b><br>
                 ${dataHora}
