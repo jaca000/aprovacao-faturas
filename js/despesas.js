@@ -508,8 +508,17 @@ if(zonaEstado && carimbo && caixaJustificacao && textoJustificacao){
         carimbo.style.background = "#2e7d32";
     }
     else if(f.Estado === "Rejeitado"){
-        carimbo.innerText = "✖ REJEITADO";
-        carimbo.style.background = "#c62828";
+
+    const dataHora = new Date(f.Modified).toLocaleString("pt-PT");
+
+    carimbo.innerHTML = `
+        ✖ REJEITADO<br>
+        <span style="font-size:12px; font-weight:500;">
+            ${dataHora}
+        </span>
+    `;
+
+    carimbo.style.background = "#c62828";
 
         if(f.JustificacaoRejeicao && f.JustificacaoRejeicao.trim()){
             caixaJustificacao.style.display = "block";
