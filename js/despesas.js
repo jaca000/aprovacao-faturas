@@ -480,20 +480,6 @@ window.verDetalheKM = async function(id){
 
     const data = await resp.json();
     const f = data.fields;
-const btnPDF = document.getElementById("btnDownloadPDF");
-
-if(btnPDF){
-
-    if(f.PdfUrl){
-        btnPDF.style.display = "inline-block";
-
-        btnPDF.onclick = () => {
-            window.open(f.PdfUrl, "_blank");
-        };
-    } else {
-        btnPDF.style.display = "none";
-    }
-}
 const zonaEstado = document.getElementById("zonaEstadoPedido");
 const carimbo = document.getElementById("carimboEstado");
 const caixaJustificacao = document.getElementById("justificacaoRejeicao");
@@ -644,4 +630,23 @@ window.verPreviewKM = function(){
 
     document.getElementById("conteudoKM").innerHTML = html;
     document.getElementById("modalKM").style.display = "block";
+}
+window.downloadPDF = function(){
+
+    const elemento = document.querySelector("#modalKM > div");
+
+    if(!elemento){
+        alert("Erro ao gerar PDF");
+        return;
+    }
+
+    const opt = {
+        margin:       10,
+        filename:     'Nota_Despesa.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(elemento).save();
 }
