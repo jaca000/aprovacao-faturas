@@ -682,6 +682,7 @@ window.downloadPDF = async function(){
         <p><b>Submetido por:</b> ${f.CriadoPorNome}</p>
         <p><b>Aprovado por:</b> ${f.AprovadoPorNome || "—"}</p>
         <p><b>Estado:</b> ${f.Estado}</p>
+<p><b>Data/Hora:</b> ${dataHora}</p>
 ${f.Estado === "Rejeitado" && f.JustificacaoRejeicao ? `
     <div style="
         margin-top:10px;
