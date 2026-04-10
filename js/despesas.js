@@ -470,7 +470,7 @@ window.fecharModalKM = function(){
 }
 
 window.verDetalheKM = async function(id){
-
+document.getElementById("modalKM").dataset.id = id;
     const token = await getAccessToken();
     const site = await obterSiteApp();
     const siteId = site.id;
