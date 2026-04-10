@@ -480,8 +480,6 @@ window.verDetalheKM = async function(id){
 
     const data = await resp.json();
     const f = data.fields;
-const data = await resp.json();
-const f = data.fields;
 
 const zonaEstado = document.getElementById("zonaEstadoPedido");
 const carimbo = document.getElementById("carimboEstado");
