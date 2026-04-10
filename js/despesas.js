@@ -329,9 +329,13 @@ async function atualizarEstadoDespesa(id, estado, justificacao = ""){
 
     const listaNome = "NotasDespesa";
 
-    const body = {
-        Estado: estado
-    };
+    const utilizador = await testarGraph();
+
+const body = {
+    Estado: estado,
+    AprovadoPorNome: utilizador.displayName,
+    AprovadoPorEmail: utilizador.mail || utilizador.userPrincipalName
+};
 
     if(estado === "Rejeitado"){
         body.JustificacaoRejeicao = justificacao;
