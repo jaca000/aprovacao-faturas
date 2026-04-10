@@ -637,7 +637,7 @@ window.verPreviewKM = function(){
 }
 window.downloadPDF = function(){
 
-    const elemento = document.querySelector("#modalKM > div");
+    const elemento = document.getElementById("conteudoPDF");
 
     if(!elemento){
         alert("Erro ao gerar PDF");
