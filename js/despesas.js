@@ -493,7 +493,18 @@ if(zonaEstado && carimbo && caixaJustificacao && textoJustificacao){
     textoJustificacao.innerText = "";
 
     if(f.Estado === "Aprovado"){
-        carimbo.innerText = "✔ APROVADO";
+
+    const dataHora = new Date(f.Modified).toLocaleString("pt-PT");
+
+    carimbo.innerHTML = `
+        ✔ APROVADO<br>
+        <span style="font-size:12px; font-weight:500;">
+            ${dataHora}
+        </span>
+    `;
+
+    carimbo.style.background = "#2e7d32";
+}
         carimbo.style.background = "#2e7d32";
     }
     else if(f.Estado === "Rejeitado"){
