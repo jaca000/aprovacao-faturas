@@ -480,7 +480,20 @@ window.verDetalheKM = async function(id){
 
     const data = await resp.json();
     const f = data.fields;
+const btnPDF = document.getElementById("btnDownloadPDF");
 
+if(btnPDF){
+
+    if(f.PdfUrl){
+        btnPDF.style.display = "inline-block";
+
+        btnPDF.onclick = () => {
+            window.open(f.PdfUrl, "_blank");
+        };
+    } else {
+        btnPDF.style.display = "none";
+    }
+}
 const zonaEstado = document.getElementById("zonaEstadoPedido");
 const carimbo = document.getElementById("carimboEstado");
 const caixaJustificacao = document.getElementById("justificacaoRejeicao");
