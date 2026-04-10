@@ -668,11 +668,12 @@ window.downloadPDF = async function(){
     <div style="font-family:Arial; padding:30px; color:#333;">
 
         <div style="display:flex; justify-content:space-between; align-items:center;">
-            <img src="https://montedopastopt.sharepoint.com/:i:/r/sites/AppRegistoFaturas/Documentos%20Partilhados/montedopasto.png?csf=1&web=1&e=Ex6zhF" style="height:50px;">
-                <b>Gestão de Despesas</b><br>
-                ${dataHora}
-            </div>
-        </div>
+    <img src="../assets/logo-monte-do-pasto.png" style="height:50px;">
+    
+    <div style="text-align:right;">
+        <b>Gestão de Despesas</b>
+    </div>
+</div>
 
         <hr>
 
