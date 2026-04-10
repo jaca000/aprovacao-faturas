@@ -497,11 +497,14 @@ if(zonaEstado && carimbo && caixaJustificacao && textoJustificacao){
     const dataHora = new Date(f.Modified).toLocaleString("pt-PT");
 
     carimbo.innerHTML = `
-        ✔ APROVADO<br>
-        <span style="font-size:12px; font-weight:500;">
-            ${dataHora}
-        </span>
-    `;
+    ✔ APROVADO
+    <div style="font-size:11px; margin-top:4px; opacity:0.9;">
+        ${dataHora}
+    </div>
+`;
+
+carimbo.style.transform = "rotate(-5deg)";
+carimbo.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)";
 
     carimbo.style.background = "#2e7d32";
 }
@@ -511,19 +514,21 @@ if(zonaEstado && carimbo && caixaJustificacao && textoJustificacao){
     const dataHora = new Date(f.Modified).toLocaleString("pt-PT");
 
     carimbo.innerHTML = `
-        ✖ REJEITADO<br>
-        <span style="font-size:12px; font-weight:500;">
+        ✖ REJEITADO
+        <div style="font-size:11px; margin-top:4px; opacity:0.9;">
             ${dataHora}
-        </span>
+        </div>
     `;
 
     carimbo.style.background = "#c62828";
+    carimbo.style.transform = "rotate(-5deg)";
+    carimbo.style.boxShadow = "0 4px 10px rgba(0,0,0,0.2)";
 
-        if(f.JustificacaoRejeicao && f.JustificacaoRejeicao.trim()){
-            caixaJustificacao.style.display = "block";
-            textoJustificacao.innerText = f.JustificacaoRejeicao;
-        }
+    if(f.JustificacaoRejeicao && f.JustificacaoRejeicao.trim()){
+        caixaJustificacao.style.display = "block";
+        textoJustificacao.innerText = f.JustificacaoRejeicao;
     }
+}
     else{
         carimbo.innerText = f.Estado || "PENDENTE";
         carimbo.style.background = "#b08900";
