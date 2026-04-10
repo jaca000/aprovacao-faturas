@@ -480,8 +480,41 @@ window.verDetalheKM = async function(id){
 
     const data = await resp.json();
     const f = data.fields;
+const data = await resp.json();
+const f = data.fields;
+
+const zonaEstado = document.getElementById("zonaEstadoPedido");
+const carimbo = document.getElementById("carimboEstado");
+const caixaJustificacao = document.getElementById("justificacaoRejeicao");
+const textoJustificacao = document.getElementById("textoJustificacaoRejeicao");
+
+if(zonaEstado && carimbo && caixaJustificacao && textoJustificacao){
+
+    zonaEstado.style.display = "block";
+    caixaJustificacao.style.display = "none";
+    textoJustificacao.innerText = "";
+
+    if(f.Estado === "Aprovado"){
+        carimbo.innerText = "✔ APROVADO";
+        carimbo.style.background = "#2e7d32";
+    }
+    else if(f.Estado === "Rejeitado"){
+        carimbo.innerText = "✖ REJEITADO";
+        carimbo.style.background = "#c62828";
+
+        if(f.JustificacaoRejeicao && f.JustificacaoRejeicao.trim()){
+            caixaJustificacao.style.display = "block";
+            textoJustificacao.innerText = f.JustificacaoRejeicao;
+        }
+    }
+    else{
+        carimbo.innerText = f.Estado || "PENDENTE";
+        carimbo.style.background = "#b08900";
+    }
+}
+
 console.log("LINHAS RAW:", f.LinhasJSON);
-    const linhas = JSON.parse(f.LinhasJSON || "[]");
+const linhas = JSON.parse(f.LinhasJSON || "[]");
 
     let html = `
         <p><b>Total KMs:</b> ${f.TotalKMs}</p>
