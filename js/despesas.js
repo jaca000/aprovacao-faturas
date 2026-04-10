@@ -505,8 +505,7 @@ if(zonaEstado && carimbo && caixaJustificacao && textoJustificacao){
 
     carimbo.style.background = "#2e7d32";
 }
-        carimbo.style.background = "#2e7d32";
-    }
+     
     else if(f.Estado === "Rejeitado"){
 
     const dataHora = new Date(f.Modified).toLocaleString("pt-PT");
