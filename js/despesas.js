@@ -635,22 +635,116 @@ window.verPreviewKM = function(){
     document.getElementById("conteudoKM").innerHTML = html;
     document.getElementById("modalKM").style.display = "block";
 }
-window.downloadPDF = function(){
+window.downloadPDF = async function(){
 
-    const elemento = document.getElementById("conteudoPDF");
+    const modal = document.getElementById("modalKM");
+    const id = modal.dataset.id;
 
-    if(!elemento){
-        alert("Erro ao gerar PDF");
+    if(!id){
+        alert("Erro: sem ID");
         return;
     }
 
+    const token = await getAccessToken();
+    const site = await obterSiteApp();
+    const siteId = site.id;
+
+    const resp = await fetch(
+        `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/NotasDespesa/items/${id}?expand=fields`,
+        {
+            headers:{ Authorization:"Bearer " + token }
+        }
+    );
+
+    const data = await resp.json();
+    const f = data.fields;
+
+    const linhas = JSON.parse(f.LinhasJSON || "[]");
+
+    const dataHora = new Date(f.Modified).toLocaleString("pt-PT");
+
+    // 🧾 HTML PROFISSIONAL
+    let htmlPDF = `
+    <div style="font-family:Arial; padding:30px; color:#333;">
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <img src="../assets/logo-monte-do-pasto.png" style="height:50px;">
+            <div style="text-align:right;">
+                <b>Gestão de Despesas</b><br>
+                ${dataHora}
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Nota de Despesa</h2>
+
+        <p><b>Submetido por:</b> ${f.CriadoPorNome}</p>
+        <p><b>Aprovado por:</b> ${f.AprovadoPorNome || "—"}</p>
+        <p><b>Estado:</b> ${f.Estado}</p>
+
+        <br>
+
+        <p><b>Total KMs:</b> ${f.TotalKMs}</p>
+        <p><b>Valor/KM:</b> ${f.ValorPorKM} €</p>
+        <p><b>Total:</b> ${Number(f.TotalRecebido).toFixed(2)} €</p>
+
+        <br>
+
+        <table style="width:100%; border-collapse:collapse;">
+            <tr style="background:#2e7d32; color:white;">
+                <th style="padding:8px;">Data</th>
+                <th>Origem</th>
+                <th>Destino</th>
+                <th>Justificação</th>
+                <th>KMs</th>
+            </tr>
+    `;
+
+    linhas.forEach(l => {
+        htmlPDF += `
+        <tr>
+            <td style="padding:8px; border:1px solid #ccc;">${l.data}</td>
+            <td style="border:1px solid #ccc;">${l.origem}</td>
+            <td style="border:1px solid #ccc;">${l.destino}</td>
+            <td style="border:1px solid #ccc;">${l.justificacao}</td>
+            <td style="border:1px solid #ccc;">${l.kms}</td>
+        </tr>
+        `;
+    });
+
+    htmlPDF += `
+        </table>
+
+        <br><br>
+
+        <div style="display:flex; justify-content:space-between; margin-top:60px;">
+            <div>
+                ___________________________<br>
+                Submetido por
+            </div>
+
+            <div>
+                ___________________________<br>
+                Aprovado por
+            </div>
+        </div>
+
+    </div>
+    `;
+
+    const pdfDiv = document.getElementById("conteudoPDF");
+    pdfDiv.innerHTML = htmlPDF;
+    pdfDiv.style.display = "block";
+
     const opt = {
-        margin:       10,
-        filename:     'Nota_Despesa.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        margin: 10,
+        filename: 'Nota_Despesa.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(elemento).save();
+    html2pdf().set(opt).from(pdfDiv).save().then(() => {
+        pdfDiv.style.display = "none";
+    });
 }
